@@ -4,4 +4,5 @@
 
 ## Analyzers
 
-- ifacenames ... https://go.dev/doc/effective_go#interface-names
+- [ifacenames](analyzer/effective/ifacenames) ... https://go.dev/doc/effective_go#interface-names
+- [mixedcaps](analyzer/effective/mixedcaps) ... https://go.dev/doc/effective_go#mixed-caps
