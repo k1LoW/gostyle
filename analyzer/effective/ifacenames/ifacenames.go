@@ -10,7 +10,10 @@ import (
 	"golang.org/x/tools/go/ast/inspector"
 )
 
-const doc = "Analyzer based on https://go.dev/doc/effective_go#interface-names."
+const (
+	doc = "Analyzer based on https://go.dev/doc/effective_go#interface-names."
+	msg = "by convention, one-method interfaces are named by the method name plus an -er suffix or similar modification to construct an agent noun. (ref: https://go.dev/doc/effective_go#interface-names)"
+)
 
 var all bool
 
@@ -43,7 +46,7 @@ func run(pass *analysis.Pass) (any, error) {
 			if len(n.Methods.List) == 1 {
 				mn := n.Methods.List[0].Names[0].Name
 				if !strings.HasPrefix(ii.Name, mn) || !strings.HasSuffix(ii.Name, "er") { // huristic
-					pass.Reportf(n.Pos(), "by convention, one-method interfaces are named by the method name plus an -er suffix or similar modification to construct an agent noun. (ref: https://go.dev/doc/effective_go#interface-names)")
+					pass.Reportf(n.Pos(), msg)
 					return
 				}
 			}

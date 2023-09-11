@@ -10,9 +10,12 @@ import (
 	"golang.org/x/tools/go/ast/inspector"
 )
 
-const doc = "https://go.dev/doc/effective_go#mixed-caps"
+const (
+	doc = "Analyzer based on https://go.dev/doc/effective_go#mixed-caps"
+	msg = "the convention in Go is to use MixedCaps or mixedCaps rather than underscores to write multiword names. (ref: https://go.dev/doc/effective_go#mixed-caps)"
+)
 
-// Analyzer for https://go.dev/doc/effective_go#mixed-caps
+// Analyzer based on https://go.dev/doc/effective_go#mixed-caps
 var Analyzer = &analysis.Analyzer{
 	Name: "mixedcaps",
 	Doc:  doc,
@@ -36,7 +39,7 @@ func run(pass *analysis.Pass) (any, error) {
 		switch n := n.(type) {
 		case *ast.Ident:
 			if strings.Contains(n.Name, "_") {
-				pass.Reportf(n.Pos(), "The convention in Go is to use MixedCaps or mixedCaps rather than underscores to write multiword names. (ref: https://go.dev/doc/effective_go#mixed-caps)")
+				pass.Reportf(n.Pos(), msg)
 			}
 		}
 	})
