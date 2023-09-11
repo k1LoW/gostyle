@@ -18,9 +18,9 @@ $ go vet -vettool=`which gostyle`
 
 ### [Go Style](https://google.github.io/styleguide/go/)
 
-- [**Style Guide**](https://google.github.io/styleguide/go/guide)
+- [**Guide**](https://google.github.io/styleguide/go/guide)
   - [mixedcaps](analyzer/guide/mixedcaps) ... https://google.github.io/styleguide/go/guide#mixed-caps
-- [**Go Style Decisions**](https://google.github.io/styleguide/go/decisions)
+- [**Decisions**](https://google.github.io/styleguide/go/decisions)
   - [pkgnames](analyzer/decisions/pkgnames) ... https://google.github.io/styleguide/go/decisions#package-names
 
 ## Ignore Directive
