@@ -11,4 +11,4 @@
 ### [Go Style](https://google.github.io/styleguide/go/)
 
 - **Style Guide**
-  - [mixedcaps](analyzer/effective/mixedcaps) ... https://google.github.io/styleguide/go/guide#mixed-caps
+  - [mixedcaps](analyzer/guide/mixedcaps) ... https://google.github.io/styleguide/go/guide#mixed-caps
