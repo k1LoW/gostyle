@@ -1,13 +1,13 @@
 package a
 
-const MAX_LENGTH = 10 // want "MixedCaps"
+const MAX_LENGTH = 10 // want "gostyle.mixedcaps"
 
-func f_a() { // want "MixedCaps"
-	var go_Pher int // want "MixedCaps"
-	print(go_Pher)  // want "MixedCaps"
+func f_a() { // want "gostyle.mixedcaps"
+	var go_Pher int // want "gostyle.mixedcaps"
+	print(go_Pher)  // want "gostyle.mixedcaps"
 }
 
-type T_a struct { // want "MixedCaps"
+type T_a struct { // want "gostyle.mixedcaps"
 	foo_bar int //nolint:all
 }
 

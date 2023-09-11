@@ -1,10 +1,10 @@
 package b
 
-type Query interface { // want "-er suffix"
+type Query interface { // want "gostyle.ifacenames"
 	Do() error
 }
 
-type Closer interface { // want "-er suffix"
+type Closer interface { // want "gostyle.ifacenames"
 	Do() error
 }
 
@@ -12,7 +12,7 @@ type Writer interface {
 	Write() error
 }
 
-type Add interface { // want "-er suffix"
+type Add interface { // want "gostyle.ifacenames"
 	One() error
 	Two() error
 }

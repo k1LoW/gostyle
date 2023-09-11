@@ -1,3 +1,3 @@
-package util // want "package"
+package util // want "gostyle.pkgnames"
 
 func f() {}
