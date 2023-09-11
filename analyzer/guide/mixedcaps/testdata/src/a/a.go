@@ -7,7 +7,7 @@ func f_a() { // want "MixedCaps"
 	print(go_Pher)  // want "MixedCaps"
 }
 
-type t_a struct { // want "MixedCaps"
+type T_a struct { // want "MixedCaps"
 	foo_bar int // want "MixedCaps"
 }
 
