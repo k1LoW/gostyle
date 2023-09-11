@@ -8,9 +8,9 @@ func f_a() { // want "MixedCaps"
 }
 
 type T_a struct { // want "MixedCaps"
-	foo_bar int // want "MixedCaps"
+	foo_bar int //nolint:all
 }
 
-type i_a interface { // want "MixedCaps"
-	Foo_Bar() // want "MixedCaps"
+type i_a interface { //nostyle:all
+	Foo_Bar() //nostyle:mixedcaps
 }
