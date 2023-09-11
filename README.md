@@ -4,5 +4,11 @@
 
 ## Analyzers
 
+### [Effective Go](https://go.dev/doc/effective_go)
+
 - [ifacenames](analyzer/effective/ifacenames) ... https://go.dev/doc/effective_go#interface-names
-- [mixedcaps](analyzer/effective/mixedcaps) ... https://go.dev/doc/effective_go#mixed-caps
+
+### [Go Style](https://google.github.io/styleguide/go/)
+
+- **Style Guide**
+  - [mixedcaps](analyzer/effective/mixedcaps) ... https://google.github.io/styleguide/go/guide#mixed-caps
