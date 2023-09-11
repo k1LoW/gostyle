@@ -10,6 +10,8 @@ $ go vet -vettool=`which gostyle`
 
 ## Analyzers
 
+**Although not perfect**, it provides analyzers based on helpful styles.
+
 ### [Effective Go](https://go.dev/doc/effective_go)
 
 - [ifacenames](analyzer/effective/ifacenames) ... https://go.dev/doc/effective_go#interface-names
