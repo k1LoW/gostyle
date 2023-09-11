@@ -18,6 +18,8 @@ const (
 	msg  = "Go source code uses MixedCaps or mixedCaps (camel case) rather than underscores (snake case) when writing multi-word names. (ref: https://google.github.io/styleguide/go/guide#mixed-caps)"
 )
 
+var disable bool
+
 // Analyzer based on https://google.github.io/styleguide/go/guide#mixed-caps
 var Analyzer = &analysis.Analyzer{
 	Name: name,
@@ -30,6 +32,9 @@ var Analyzer = &analysis.Analyzer{
 }
 
 func run(pass *analysis.Pass) (any, error) {
+	if disable {
+		return nil, nil
+	}
 	i, ok := pass.ResultOf[inspect.Analyzer].(*inspector.Inspector)
 	if !ok {
 		return nil, fmt.Errorf("unexpected result type from inspect: %T", pass.ResultOf[inspect.Analyzer])
@@ -60,4 +65,8 @@ func run(pass *analysis.Pass) (any, error) {
 	})
 	r.Report()
 	return nil, nil
+}
+
+func init() {
+	Analyzer.Flags.BoolVar(&disable, "disable", false, "disable "+name+" analyzer")
 }

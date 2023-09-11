@@ -18,7 +18,10 @@ const (
 	msg  = "by convention, one-method interfaces are named by the method name plus an -er suffix or similar modification to construct an agent noun. (ref: https://go.dev/doc/effective_go#interface-names)"
 )
 
-var all bool
+var (
+	disable bool
+	all     bool
+)
 
 // Analyzer based on https://go.dev/doc/effective_go#interface-names.
 var Analyzer = &analysis.Analyzer{
@@ -33,6 +36,9 @@ var Analyzer = &analysis.Analyzer{
 }
 
 func run(pass *analysis.Pass) (any, error) {
+	if disable {
+		return nil, nil
+	}
 	i, ok := pass.ResultOf[inspect.Analyzer].(*inspector.Inspector)
 	if !ok {
 		return nil, fmt.Errorf("unexpected result type from inspect: %T", pass.ResultOf[inspect.Analyzer])
@@ -71,5 +77,6 @@ func run(pass *analysis.Pass) (any, error) {
 }
 
 func init() {
+	Analyzer.Flags.BoolVar(&disable, "disable", false, "disable "+name+" analyzer")
 	Analyzer.Flags.BoolVar(&all, "all", false, "all interface names with the -er suffix are required")
 }
