@@ -11,11 +11,11 @@ import (
 )
 
 const (
-	doc = "Analyzer based on https://go.dev/doc/effective_go#mixed-caps"
-	msg = "the convention in Go is to use MixedCaps or mixedCaps rather than underscores to write multiword names. (ref: https://go.dev/doc/effective_go#mixed-caps)"
+	doc = "Analyzer based on https://google.github.io/styleguide/go/guide#mixed-caps"
+	msg = "Go source code uses MixedCaps or mixedCaps (camel case) rather than underscores (snake case) when writing multi-word names. (ref: https://google.github.io/styleguide/go/guide#mixed-caps)"
 )
 
-// Analyzer based on https://go.dev/doc/effective_go#mixed-caps
+// Analyzer based on https://google.github.io/styleguide/go/guide#mixed-caps
 var Analyzer = &analysis.Analyzer{
 	Name: "mixedcaps",
 	Doc:  doc,
