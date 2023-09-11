@@ -16,3 +16,8 @@ type Add interface { // want "-er suffix"
 	One() error
 	Two() error
 }
+
+type Sub interface { //nostyle:ifacenames
+	One() error
+	Two() error
+}

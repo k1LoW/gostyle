@@ -16,3 +16,11 @@ type Add interface {
 	One() error
 	Two() error
 }
+
+type ReadCloser interface { //nolint:all
+	Do() error
+}
+
+type WriteCloser interface { //nostyle:ifacenames
+	Do() error
+}

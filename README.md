@@ -20,6 +20,13 @@ $ go vet -vettool=`which gostyle`
   - [mixedcaps](analyzer/guide/mixedcaps) ... https://google.github.io/styleguide/go/guide#mixed-caps
 
 
+## Ignore Directive
+
+- `//lint:ignore`
+- `//nolint:all`
+- `//nostyle:all`
+- `//nostyle:[analyzer name]` (e.g. `//nostyle:mixedcaps`)
+
 ## Install
 
 **go install:**
@@ -60,4 +67,3 @@ $ brew install k1LoW/tap/gostyle
 **manually:**
 
 Download binary from [releases page](https://github.com/k1LoW/gostyle/releases)
-

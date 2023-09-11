@@ -5,23 +5,27 @@ import (
 	"go/ast"
 	"strings"
 
+	"github.com/gostaticanalysis/comment/passes/commentmap"
+	"github.com/k1LoW/gostyle/reporter"
 	"golang.org/x/tools/go/analysis"
 	"golang.org/x/tools/go/analysis/passes/inspect"
 	"golang.org/x/tools/go/ast/inspector"
 )
 
 const (
-	doc = "Analyzer based on https://google.github.io/styleguide/go/guide#mixed-caps"
-	msg = "Go source code uses MixedCaps or mixedCaps (camel case) rather than underscores (snake case) when writing multi-word names. (ref: https://google.github.io/styleguide/go/guide#mixed-caps)"
+	name = "mixedcaps"
+	doc  = "Analyzer based on https://google.github.io/styleguide/go/guide#mixed-caps"
+	msg  = "Go source code uses MixedCaps or mixedCaps (camel case) rather than underscores (snake case) when writing multi-word names. (ref: https://google.github.io/styleguide/go/guide#mixed-caps)"
 )
 
 // Analyzer based on https://google.github.io/styleguide/go/guide#mixed-caps
 var Analyzer = &analysis.Analyzer{
-	Name: "mixedcaps",
+	Name: name,
 	Doc:  doc,
 	Run:  run,
 	Requires: []*analysis.Analyzer{
 		inspect.Analyzer,
+		commentmap.Analyzer,
 	},
 }
 
@@ -37,6 +41,10 @@ func run(pass *analysis.Pass) (any, error) {
 	}
 
 	var pkg bool
+	r, err := reporter.New(name, pass)
+	if err != nil {
+		return nil, err
+	}
 	i.Preorder(nodeFilter, func(n ast.Node) {
 		switch n := n.(type) {
 		case *ast.File:
@@ -45,11 +53,11 @@ func run(pass *analysis.Pass) (any, error) {
 			return
 		case *ast.Ident:
 			if strings.Contains(n.Name, "_") && !strings.HasPrefix(n.Name, "_") && !pkg {
-				pass.Reportf(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Name))
+				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Name))
 			}
 		}
 		pkg = false
 	})
-
+	r.Report()
 	return nil, nil
 }
