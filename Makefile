@@ -23,7 +23,7 @@ lint:
 	govulncheck ./...
 
 build:
-	go build -ldflags="$(BUILD_LDFLAGS)" -o gostyle cmd/gostyle/main.go
+	go build -ldflags="$(BUILD_LDFLAGS)" -o gostyle
 
 depsdev:
 	go install github.com/Songmu/ghch/cmd/ghch@latest
