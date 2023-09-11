@@ -1,6 +1,7 @@
 package mixedcaps
 
 import (
+	"fmt"
 	"go/ast"
 	"strings"
 
@@ -22,13 +23,16 @@ var Analyzer = &analysis.Analyzer{
 }
 
 func run(pass *analysis.Pass) (any, error) {
-	inspect := pass.ResultOf[inspect.Analyzer].(*inspector.Inspector)
+	i, ok := pass.ResultOf[inspect.Analyzer].(*inspector.Inspector)
+	if !ok {
+		return nil, fmt.Errorf("unexpected result type from inspect: %T", pass.ResultOf[inspect.Analyzer])
+	}
 
 	nodeFilter := []ast.Node{
 		(*ast.Ident)(nil),
 	}
 
-	inspect.Preorder(nodeFilter, func(n ast.Node) {
+	i.Preorder(nodeFilter, func(n ast.Node) {
 		switch n := n.(type) {
 		case *ast.Ident:
 			if strings.Contains(n.Name, "_") {
