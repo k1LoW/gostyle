@@ -16,6 +16,7 @@ const (
 	name = "ifacenames"
 	doc  = "Analyzer based on https://go.dev/doc/effective_go#interface-names."
 	msg  = "by convention, one-method interfaces are named by the method name plus an -er suffix or similar modification to construct an agent noun. (ref: https://go.dev/doc/effective_go#interface-names)"
+	msgc = "all interface names with the -er suffix are required. (THIS IS NOT IN Effective Go)"
 )
 
 var (
@@ -65,7 +66,7 @@ func run(pass *analysis.Pass) (any, error) {
 				}
 			}
 			if all && !strings.HasSuffix(ii.Name, "er") {
-				r.Append(n.Pos(), fmt.Sprintf("%s: %s", "all interface names with the -er suffix are required.", ii.Name))
+				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msgc, ii.Name))
 				return
 			}
 		case *ast.Ident:

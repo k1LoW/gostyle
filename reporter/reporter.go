@@ -11,6 +11,7 @@ import (
 )
 
 const (
+	msgPrefix                = "gostyle"
 	NoLintCommentAnnotation  = "nolint:"
 	NoStyleCommentAnnotation = "nostyle:"
 	LintIgnore               = "lint:ignore"
@@ -46,7 +47,7 @@ func (r *Reporter) Report() {
 		if r.IgnoreReport(report.Pos) {
 			continue
 		}
-		r.pass.Reportf(report.Pos, report.Msg)
+		r.pass.Reportf(report.Pos, fmt.Sprintf("[%s.%s] %s", msgPrefix, r.name, report.Msg))
 	}
 }
 

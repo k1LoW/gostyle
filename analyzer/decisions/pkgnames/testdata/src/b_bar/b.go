@@ -1,3 +1,3 @@
-package b_bar // want "package"
+package b_bar // want "gostyle.pkgnames"
 
 func f() {}
