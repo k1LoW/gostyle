@@ -11,11 +11,11 @@ import (
 )
 
 const (
-	doc = "Analyzer based on https://go.dev/doc/effective_go#mixed-caps"
-	msg = "the convention in Go is to use MixedCaps or mixedCaps rather than underscores to write multiword names. (ref: https://go.dev/doc/effective_go#mixed-caps)"
+	doc = "Analyzer based on https://google.github.io/styleguide/go/guide#mixed-caps"
+	msg = "Go source code uses MixedCaps or mixedCaps (camel case) rather than underscores (snake case) when writing multi-word names. (ref: https://google.github.io/styleguide/go/guide#mixed-caps)"
 )
 
-// Analyzer based on https://go.dev/doc/effective_go#mixed-caps
+// Analyzer based on https://google.github.io/styleguide/go/guide#mixed-caps
 var Analyzer = &analysis.Analyzer{
 	Name: "mixedcaps",
 	Doc:  doc,
@@ -32,16 +32,23 @@ func run(pass *analysis.Pass) (any, error) {
 	}
 
 	nodeFilter := []ast.Node{
+		(*ast.File)(nil),
 		(*ast.Ident)(nil),
 	}
 
+	var pkg bool
 	i.Preorder(nodeFilter, func(n ast.Node) {
 		switch n := n.(type) {
+		case *ast.File:
+			// Package names are not checked.
+			pkg = true
+			return
 		case *ast.Ident:
-			if strings.Contains(n.Name, "_") {
-				pass.Reportf(n.Pos(), msg)
+			if strings.Contains(n.Name, "_") && !strings.HasPrefix(n.Name, "_") && !pkg {
+				pass.Reportf(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Name))
 			}
 		}
+		pkg = false
 	})
 
 	return nil, nil
