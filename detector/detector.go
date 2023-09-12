@@ -35,5 +35,8 @@ func IsMixedCaps(s string) bool {
 }
 
 func NoUnderscore(s string) bool {
+	if s == "_" {
+		return true
+	}
 	return !strings.Contains(s, "_")
 }
