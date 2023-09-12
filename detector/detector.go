@@ -5,51 +5,6 @@ import (
 	"strings"
 )
 
-var initialisms = map[string]struct{}{
-	"ACL":    {},
-	"API":    {},
-	"ASCII":  {},
-	"CPU":    {},
-	"CSS":    {},
-	"DB":     {},
-	"DDoS":   {},
-	"DNS":    {},
-	"EOF":    {},
-	"GUID":   {},
-	"HTML":   {},
-	"ID":     {},
-	"MD5":    {},
-	"NS":     {},
-	"NTP":    {},
-	"UUID":   {},
-	"UTC":    {},
-	"iOS":    {},
-	"IP":     {},
-	"JSON":   {},
-	"OAuth":  {},
-	"OK":     {},
-	"QPS":    {},
-	"OS":     {},
-	"RAM":    {},
-	"RFC":    {},
-	"RPC":    {},
-	"SHA1":   {},
-	"SHA256": {},
-	"SHA512": {},
-	"SLA":    {},
-	"SMTP":   {},
-	"SSH":    {},
-	"TLS":    {},
-	"TCP":    {},
-	"TTL":    {},
-	"UDP":    {},
-	"UI":     {},
-	"UID":    {},
-	"URI":    {},
-	"URL":    {},
-	"XML":    {},
-}
-
 var initialismsRep *strings.Replacer = func() *strings.Replacer {
 	var r []string
 	for k := range initialisms {
