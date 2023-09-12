@@ -12,6 +12,7 @@ func TestIsMixedCaps(t *testing.T) {
 		{"snake_case", false},
 		{"Snake_Case", false},
 		{"userID", true},
+		{"a", true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.in, func(t *testing.T) {

@@ -61,14 +61,15 @@ func run(pass *analysis.Pass) (any, error) {
 	i.Preorder(nodeFilter, func(n ast.Node) {
 		switch n := n.(type) {
 		case *ast.File:
+			pkgname := n.Name.Name
+			if !detector.IsMixedCaps(strings.TrimSuffix(pkgname, "_test")) {
+				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, pkgname))
+			}
 			pkg = true
 			return
 		case *ast.Ident:
 			if pkg {
-				// skip _test package
-				if !detector.IsMixedCaps(strings.TrimSuffix(n.Name, "_test")) {
-					r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Name))
-				}
+				// skip package name
 				pkg = false
 				return
 			}
