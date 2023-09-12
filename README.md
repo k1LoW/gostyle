@@ -32,7 +32,17 @@ $ go vet -vettool=`which gostyle`
   - [pkgnames](analyzer/decisions/pkgnames) ... https://google.github.io/styleguide/go/decisions#package-names
   - [recvnames](analyzer/decisions/recvnames) ... https://google.github.io/styleguide/go/decisions#receiver-names
 
-## Ignore Directive
+## Disabling and Ignoring
+
+### Disable analyzer
+
+Use `-[analyser name].disable` flag.
+
+```console
+$ go vet -vettool=`which gostyle` -mixedcaps.disable # Disable mixedcaps analyzer only
+```
+
+### Ignore directive
 
 - `//lint:ignore`
 - `//nolint:all`
