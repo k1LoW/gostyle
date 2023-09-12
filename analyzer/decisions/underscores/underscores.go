@@ -25,7 +25,7 @@ const (
 var (
 	disable          bool
 	includeGenerated bool
-	excludeWords     string
+	exclude          string
 )
 
 // Analyzer based on https://google.github.io/styleguide/go/guide#mixed-caps
@@ -48,7 +48,7 @@ func run(pass *analysis.Pass) (any, error) {
 	if !ok {
 		return nil, fmt.Errorf("unexpected result type from inspect: %T", pass.ResultOf[inspect.Analyzer])
 	}
-	words := strings.Split(excludeWords, ",")
+	words := strings.Split(exclude, ",")
 
 	nodeFilter := []ast.Node{
 		(*ast.File)(nil),
@@ -167,5 +167,5 @@ func run(pass *analysis.Pass) (any, error) {
 func init() {
 	Analyzer.Flags.BoolVar(&disable, "disable", false, "disable "+name+" analyzer")
 	Analyzer.Flags.BoolVar(&includeGenerated, "include-generated", false, "include generated codes")
-	Analyzer.Flags.StringVar(&excludeWords, "exclude-words", "", "exclude words (comma separated)")
+	Analyzer.Flags.StringVar(&exclude, "exclude-words", "", "exclude words (comma separated)")
 }
