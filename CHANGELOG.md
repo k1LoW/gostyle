@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.3.1](https://github.com/k1LoW/gostyle/compare/v0.3.0...v0.3.1) - 2023-09-12
+### New Features 🎉
+- Add analyzer for receiver names by @k1LoW in https://github.com/k1LoW/gostyle/pull/13
+
 ## [v0.3.0](https://github.com/k1LoW/gostyle/compare/v0.2.0...v0.3.0) - 2023-09-11
 ### New Features 🎉
 - Support `-disable` option by @k1LoW in https://github.com/k1LoW/gostyle/pull/8
