@@ -1,11 +1,21 @@
 package a
 
+import (
+	"log"
+	"os"
+
+	_ "embed"
+)
+
 const MAX_LENGTH = 10 // want "gostyle.mixedcaps"
 
 func f_a(i i_a) { // want "gostyle.mixedcaps"
 	var go_Pher int // want "gostyle.mixedcaps"
 	print(go_Pher)
 	i.Foo_Bar()
+	d_d, _ := os.ReadDir("tmp") // want "gostyle.mixedcaps"
+	d_d, _ = os.ReadDir("tmp")
+	log.Println(d_d)
 }
 
 type T_a struct { // want "gostyle.mixedcaps"

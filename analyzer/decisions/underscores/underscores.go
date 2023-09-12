@@ -3,6 +3,7 @@ package underscores
 import (
 	"fmt"
 	"go/ast"
+	"go/token"
 	"slices"
 	"strings"
 
@@ -54,6 +55,7 @@ func run(pass *analysis.Pass) (any, error) {
 		(*ast.TypeSpec)(nil),
 		(*ast.InterfaceType)(nil),
 		(*ast.FuncDecl)(nil),
+		(*ast.AssignStmt)(nil),
 	}
 
 	opts := []reporter.Option{}
@@ -136,6 +138,22 @@ func run(pass *analysis.Pass) (any, error) {
 					if !detector.NoUnderscore(ident.Name) {
 						r.Append(ident.Pos(), fmt.Sprintf("%s: %s", msg, ident.Name))
 					}
+				}
+			}
+		case *ast.AssignStmt:
+			if n.Tok != token.DEFINE {
+				return
+			}
+			for _, expr := range n.Lhs {
+				ident, ok := expr.(*ast.Ident)
+				if !ok {
+					continue
+				}
+				if slices.Contains(words, ident.Name) {
+					continue
+				}
+				if !detector.NoUnderscore(ident.Name) {
+					r.Append(ident.Pos(), fmt.Sprintf("%s: %s", msg, ident.Name))
 				}
 			}
 		}
