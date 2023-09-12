@@ -53,10 +53,9 @@ func run(pass *analysis.Pass) (any, error) {
 
 	nodeFilter := []ast.Node{
 		(*ast.File)(nil),
-		(*ast.Ident)(nil),
+		(*ast.ImportSpec)(nil),
 	}
 
-	var pkg bool
 	opts := []reporter.Option{}
 	if includeGenerated {
 		opts = append(opts, reporter.IncludeGenerated())
@@ -67,26 +66,27 @@ func run(pass *analysis.Pass) (any, error) {
 	}
 
 	i.Preorder(nodeFilter, func(n ast.Node) {
+		var pkgname string
 		switch n := n.(type) {
+		case *ast.ImportSpec:
+			if n.Name != nil {
+				pkgname = n.Name.Name
+			}
 		case *ast.File:
-			// Package names are not checked.
-			pkg = true
-			return
-		case *ast.Ident:
-			if !pkg {
-				return
-			}
-			if strings.Contains(strings.TrimSuffix(n.Name, "_test"), "_") {
-				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Name))
-			}
-			if strings.ToLower(n.Name) != n.Name {
-				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Name))
-			}
-			if slices.Contains(uninformatives, strings.ToLower(n.Name)) {
-				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg2, n.Name))
-			}
+			pkgname = n.Name.Name
 		}
-		pkg = false
+		if pkgname == "" || pkgname == "_" {
+			return
+		}
+		if strings.Contains(strings.TrimSuffix(pkgname, "_test"), "_") {
+			r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, pkgname))
+		}
+		if strings.ToLower(pkgname) != pkgname {
+			r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, pkgname))
+		}
+		if slices.Contains(uninformatives, strings.ToLower(pkgname)) {
+			r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg2, pkgname))
+		}
 	})
 	r.Report()
 	return nil, nil
