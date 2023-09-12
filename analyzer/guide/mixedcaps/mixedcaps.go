@@ -3,9 +3,9 @@ package mixedcaps
 import (
 	"fmt"
 	"go/ast"
-	"strings"
 
 	"github.com/gostaticanalysis/comment/passes/commentmap"
+	"github.com/k1LoW/gostyle/detector"
 	"github.com/k1LoW/gostyle/reporter"
 	"golang.org/x/tools/go/analysis"
 	"golang.org/x/tools/go/analysis/passes/inspect"
@@ -61,7 +61,7 @@ func run(pass *analysis.Pass) (any, error) {
 				pkg = false
 				return
 			}
-			if strings.Contains(n.Name, "_") && !strings.HasPrefix(n.Name, "_") {
+			if !detector.IsMixedCaps(n.Name) {
 				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Name))
 			}
 		}
