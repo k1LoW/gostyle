@@ -1,5 +1,11 @@
 # Changelog
 
+## [v0.6.0](https://github.com/k1LoW/gostyle/compare/v0.5.0...v0.6.0) - 2023-09-12
+### Breaking Changes 🛠
+- Support config file by @k1LoW in https://github.com/k1LoW/gostyle/pull/23
+### New Features 🎉
+- Add `init` command to generate .gostyle.yml by @k1LoW in https://github.com/k1LoW/gostyle/pull/25
+
 ## [v0.5.0](https://github.com/k1LoW/gostyle/compare/v0.4.0...v0.5.0) - 2023-09-12
 ### New Features 🎉
 - Support exclude words in mixedcaps analyzer by @k1LoW in https://github.com/k1LoW/gostyle/pull/20
