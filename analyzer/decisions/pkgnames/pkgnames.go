@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/gostaticanalysis/comment/passes/commentmap"
+	"github.com/k1LoW/gostyle/config"
 	"github.com/k1LoW/gostyle/reporter"
 	"golang.org/x/tools/go/analysis"
 	"golang.org/x/tools/go/analysis/passes/inspect"
@@ -37,6 +38,7 @@ var Analyzer = &analysis.Analyzer{
 	Doc:  doc,
 	Run:  run,
 	Requires: []*analysis.Analyzer{
+		config.Loader,
 		inspect.Analyzer,
 		commentmap.Analyzer,
 	},
