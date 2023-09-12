@@ -73,7 +73,7 @@ analyzers:
 analyzers-settings:
   ifacenames:
     include-generated: false # include generated codes (default: false)
-    all: true # default: false
+    all: true # all interface names with the -er suffix are required (default: false)
 ```
 
 #### mixedcaps
