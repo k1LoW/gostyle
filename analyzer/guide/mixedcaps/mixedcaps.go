@@ -49,7 +49,10 @@ func run(pass *analysis.Pass) (any, error) {
 
 	nodeFilter := []ast.Node{
 		(*ast.File)(nil),
-		(*ast.Ident)(nil),
+		(*ast.ImportSpec)(nil),
+		(*ast.ValueSpec)(nil),
+		(*ast.TypeSpec)(nil),
+		(*ast.FuncDecl)(nil),
 	}
 
 	opts := []reporter.Option{}
@@ -60,7 +63,6 @@ func run(pass *analysis.Pass) (any, error) {
 	if err != nil {
 		return nil, err
 	}
-	var pkg bool
 	i.Preorder(nodeFilter, func(n ast.Node) {
 		switch n := n.(type) {
 		case *ast.File:
@@ -71,22 +73,52 @@ func run(pass *analysis.Pass) (any, error) {
 			if !detector.IsMixedCaps(strings.TrimSuffix(pkgname, "_test")) {
 				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, pkgname))
 			}
-			pkg = true
-			return
-		case *ast.Ident:
-			if pkg {
-				// skip package name
-				pkg = false
+		case *ast.ImportSpec:
+			if n.Name == nil {
 				return
 			}
-			if slices.Contains(words, n.Name) {
+			if slices.Contains(words, n.Name.Name) {
 				return
 			}
-			if !detector.IsMixedCaps(n.Name) {
-				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Name))
+			if !detector.IsMixedCaps(n.Name.Name) {
+				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Name.Name))
+			}
+		case *ast.ValueSpec:
+			for _, ident := range n.Names {
+				if slices.Contains(words, ident.Name) {
+					continue
+				}
+				if !detector.IsMixedCaps(ident.Name) {
+					r.Append(ident.Pos(), fmt.Sprintf("%s: %s", msg, ident.Name))
+				}
+			}
+		case *ast.TypeSpec:
+			if slices.Contains(words, n.Name.Name) {
+				return
+			}
+			if !detector.IsMixedCaps(n.Name.Name) {
+				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Name.Name))
+			}
+		case *ast.FuncDecl:
+			if !slices.Contains(words, n.Name.Name) {
+				if !detector.IsMixedCaps(n.Name.Name) {
+					r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Name.Name))
+				}
+			}
+			if n.Recv == nil {
+				return
+			}
+			for _, field := range n.Recv.List {
+				for _, ident := range field.Names {
+					if slices.Contains(words, ident.Name) {
+						continue
+					}
+					if !detector.IsMixedCaps(ident.Name) {
+						r.Append(ident.Pos(), fmt.Sprintf("%s: %s", msg, ident.Name))
+					}
+				}
 			}
 		}
-		pkg = false
 	})
 	r.Report()
 	return nil, nil
