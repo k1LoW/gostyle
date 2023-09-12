@@ -19,6 +19,7 @@ const (
 	IgnoreAll                = "all"
 )
 
+// Reporter is a wrapper of analysis.Pass.Reportf.
 type Reporter struct {
 	name              string
 	pass              *analysis.Pass
@@ -37,30 +38,35 @@ type report struct {
 
 type ReporterOption func(*Reporter)
 
+// IgnoreAnotation sets the annotation to ignore the report.
 func IgnoreAnotation(s string) ReporterOption {
 	return func(r *Reporter) {
 		r.ignoreAnotation = s
 	}
 }
 
+// DisableLintIgnore disables handling for '//lint:ignore'.
 func DisableLintIgnore() ReporterOption {
 	return func(r *Reporter) {
 		r.disableLintIgnore = true
 	}
 }
 
+// DisableNoLint disables handling for '//nolint:*'.
 func DisableNoLint() ReporterOption {
 	return func(r *Reporter) {
 		r.disableNoLint = true
 	}
 }
 
+// Prefix sets the prefix of the report.
 func Prefix(s string) ReporterOption {
 	return func(r *Reporter) {
 		r.prefix = s
 	}
 }
 
+// New returns a new Reporter.
 func New(name string, pass *analysis.Pass, opts ...ReporterOption) (*Reporter, error) {
 	cm, ok := pass.ResultOf[commentmap.Analyzer].(comment.Maps)
 	if !ok {
@@ -79,20 +85,22 @@ func New(name string, pass *analysis.Pass, opts ...ReporterOption) (*Reporter, e
 	return r, nil
 }
 
+// Append appends token.Pos and message to the report.
 func (r *Reporter) Append(pos token.Pos, msg string) {
 	r.reports = append(r.reports, &report{pos: pos, msg: msg})
 }
 
+// Report reports all reports.
 func (r *Reporter) Report() {
 	for _, rr := range r.reports {
-		if r.IgnoreReport(rr.pos) {
+		if r.ignoreReport(rr.pos) {
 			continue
 		}
 		r.pass.Reportf(rr.pos, fmt.Sprintf("%s%s", r.prefix, rr.msg))
 	}
 }
 
-func (r *Reporter) IgnoreReport(pos token.Pos) bool {
+func (r *Reporter) ignoreReport(pos token.Pos) bool {
 	f1 := r.pass.Fset.File(pos)
 	for i := range r.cm {
 		for n, cgs := range r.cm[i] {
