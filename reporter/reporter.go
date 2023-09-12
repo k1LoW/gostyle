@@ -36,38 +36,38 @@ type report struct {
 	msg string
 }
 
-type ReporterOption func(*Reporter)
+type Option func(*Reporter)
 
 // IgnoreAnotation sets the annotation to ignore the report.
-func IgnoreAnotation(s string) ReporterOption {
+func IgnoreAnotation(s string) Option {
 	return func(r *Reporter) {
 		r.ignoreAnotation = s
 	}
 }
 
 // DisableLintIgnore disables handling for '//lint:ignore'.
-func DisableLintIgnore() ReporterOption {
+func DisableLintIgnore() Option {
 	return func(r *Reporter) {
 		r.disableLintIgnore = true
 	}
 }
 
 // DisableNoLint disables handling for '//nolint:*'.
-func DisableNoLint() ReporterOption {
+func DisableNoLint() Option {
 	return func(r *Reporter) {
 		r.disableNoLint = true
 	}
 }
 
 // Prefix sets the prefix of the report.
-func Prefix(s string) ReporterOption {
+func Prefix(s string) Option {
 	return func(r *Reporter) {
 		r.prefix = s
 	}
 }
 
 // New returns a new Reporter.
-func New(name string, pass *analysis.Pass, opts ...ReporterOption) (*Reporter, error) {
+func New(name string, pass *analysis.Pass, opts ...Option) (*Reporter, error) {
 	cm, ok := pass.ResultOf[commentmap.Analyzer].(comment.Maps)
 	if !ok {
 		return nil, fmt.Errorf("unexpected result type from commentmap: %T", pass.ResultOf[commentmap.Analyzer])
