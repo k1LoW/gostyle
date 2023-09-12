@@ -20,8 +20,9 @@ const (
 )
 
 var (
-	disable bool
-	all     bool
+	disable          bool
+	includeGenerated bool
+	all              bool
 )
 
 // Analyzer based on https://go.dev/doc/effective_go#interface-names.
@@ -51,7 +52,11 @@ func run(pass *analysis.Pass) (any, error) {
 	}
 
 	var ii *ast.Ident
-	r, err := reporter.New(name, pass)
+	opts := []reporter.Option{}
+	if includeGenerated {
+		opts = append(opts, reporter.IncludeGenerated())
+	}
+	r, err := reporter.New(name, pass, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -79,5 +84,6 @@ func run(pass *analysis.Pass) (any, error) {
 
 func init() {
 	Analyzer.Flags.BoolVar(&disable, "disable", false, "disable "+name+" analyzer")
+	Analyzer.Flags.BoolVar(&includeGenerated, "include-generated", false, "include generated codes")
 	Analyzer.Flags.BoolVar(&all, "all", false, "all interface names with the -er suffix are required")
 }
