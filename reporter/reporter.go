@@ -22,12 +22,12 @@ type Reporter struct {
 	name    string
 	pass    *analysis.Pass
 	cm      comment.Maps
-	reports []*Report
+	reports []*report
 }
 
-type Report struct {
-	Pos token.Pos
-	Msg string
+type report struct {
+	pos token.Pos
+	msg string
 }
 
 func New(name string, pass *analysis.Pass) (*Reporter, error) {
@@ -39,15 +39,15 @@ func New(name string, pass *analysis.Pass) (*Reporter, error) {
 }
 
 func (r *Reporter) Append(pos token.Pos, msg string) {
-	r.reports = append(r.reports, &Report{Pos: pos, Msg: msg})
+	r.reports = append(r.reports, &report{pos: pos, msg: msg})
 }
 
 func (r *Reporter) Report() {
-	for _, report := range r.reports {
-		if r.IgnoreReport(report.Pos) {
+	for _, rr := range r.reports {
+		if r.IgnoreReport(rr.pos) {
 			continue
 		}
-		r.pass.Reportf(report.Pos, fmt.Sprintf("[%s.%s] %s", msgPrefix, r.name, report.Msg))
+		r.pass.Reportf(rr.pos, fmt.Sprintf("[%s.%s] %s", msgPrefix, r.name, rr.msg))
 	}
 }
 
@@ -63,6 +63,7 @@ func (r *Reporter) IgnoreReport(pos token.Pos) bool {
 
 			for _, cg := range cgs {
 				if f1.Line(pos) != f2.Line(cg.Pos()) {
+					// different line
 					continue
 				}
 
