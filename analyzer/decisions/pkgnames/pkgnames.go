@@ -21,8 +21,9 @@ const (
 )
 
 var (
-	disable        bool
-	uninformatives = []string{
+	disable          bool
+	includeGenerated bool
+	uninformatives   = []string{
 		"util",
 		"utility",
 		"common",
@@ -56,7 +57,11 @@ func run(pass *analysis.Pass) (any, error) {
 	}
 
 	var pkg bool
-	r, err := reporter.New(name, pass)
+	opts := []reporter.Option{}
+	if includeGenerated {
+		opts = append(opts, reporter.IncludeGenerated())
+	}
+	r, err := reporter.New(name, pass, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -89,4 +94,5 @@ func run(pass *analysis.Pass) (any, error) {
 
 func init() {
 	Analyzer.Flags.BoolVar(&disable, "disable", false, "disable "+name+" analyzer")
+	Analyzer.Flags.BoolVar(&includeGenerated, "include-generated", false, "include generated codes")
 }
