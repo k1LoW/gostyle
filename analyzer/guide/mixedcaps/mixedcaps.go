@@ -3,6 +3,7 @@ package mixedcaps
 import (
 	"fmt"
 	"go/ast"
+	"strings"
 
 	"github.com/gostaticanalysis/comment/passes/commentmap"
 	"github.com/k1LoW/gostyle/detector"
@@ -48,7 +49,6 @@ func run(pass *analysis.Pass) (any, error) {
 		(*ast.Ident)(nil),
 	}
 
-	var pkg bool
 	opts := []reporter.Option{}
 	if includeGenerated {
 		opts = append(opts, reporter.IncludeGenerated())
@@ -57,6 +57,7 @@ func run(pass *analysis.Pass) (any, error) {
 	if err != nil {
 		return nil, err
 	}
+	var pkg bool
 	i.Preorder(nodeFilter, func(n ast.Node) {
 		switch n := n.(type) {
 		case *ast.File:
@@ -64,7 +65,10 @@ func run(pass *analysis.Pass) (any, error) {
 			return
 		case *ast.Ident:
 			if pkg {
-				// Package names are not checked.
+				// skip _test package
+				if !detector.IsMixedCaps(strings.TrimSuffix(n.Name, "_test")) {
+					r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Name))
+				}
 				pkg = false
 				return
 			}
