@@ -53,11 +53,15 @@ func run(pass *analysis.Pass) (any, error) {
 	i.Preorder(nodeFilter, func(n ast.Node) {
 		switch n := n.(type) {
 		case *ast.File:
-			// Package names are not checked.
 			pkg = true
 			return
 		case *ast.Ident:
-			if strings.Contains(n.Name, "_") && !strings.HasPrefix(n.Name, "_") && !pkg {
+			if pkg {
+				// Package names are not checked.
+				pkg = false
+				return
+			}
+			if strings.Contains(n.Name, "_") && !strings.HasPrefix(n.Name, "_") {
 				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Name))
 			}
 		}

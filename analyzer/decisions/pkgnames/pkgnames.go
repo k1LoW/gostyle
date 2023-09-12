@@ -60,6 +60,7 @@ func run(pass *analysis.Pass) (any, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	i.Preorder(nodeFilter, func(n ast.Node) {
 		switch n := n.(type) {
 		case *ast.File:
@@ -67,16 +68,17 @@ func run(pass *analysis.Pass) (any, error) {
 			pkg = true
 			return
 		case *ast.Ident:
-			if pkg {
-				if strings.Contains(strings.TrimSuffix(n.Name, "_test"), "_") {
-					r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Name))
-				}
-				if strings.ToLower(n.Name) != n.Name {
-					r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Name))
-				}
-				if slices.Contains(uninformatives, strings.ToLower(n.Name)) {
-					r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg2, n.Name))
-				}
+			if !pkg {
+				return
+			}
+			if strings.Contains(strings.TrimSuffix(n.Name, "_test"), "_") {
+				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Name))
+			}
+			if strings.ToLower(n.Name) != n.Name {
+				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Name))
+			}
+			if slices.Contains(uninformatives, strings.ToLower(n.Name)) {
+				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg2, n.Name))
 			}
 		}
 		pkg = false
