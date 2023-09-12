@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.3.2](https://github.com/k1LoW/gostyle/compare/v0.3.1...v0.3.2) - 2023-09-12
+### New Features 🎉
+- Reporter can be used generally. by @k1LoW in https://github.com/k1LoW/gostyle/pull/15
+
 ## [v0.3.1](https://github.com/k1LoW/gostyle/compare/v0.3.0...v0.3.1) - 2023-09-12
 ### New Features 🎉
 - Add analyzer for receiver names by @k1LoW in https://github.com/k1LoW/gostyle/pull/13
