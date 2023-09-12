@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/gostaticanalysis/comment/passes/commentmap"
+	"github.com/k1LoW/gostyle/config"
 	"github.com/k1LoW/gostyle/detector"
 	"github.com/k1LoW/gostyle/reporter"
 	"golang.org/x/tools/go/analysis"
@@ -24,7 +25,7 @@ const (
 var (
 	disable          bool
 	includeGenerated bool
-	excludeWords     string
+	exclude          string
 )
 
 // Analyzer based on https://google.github.io/styleguide/go/guide#mixed-caps
@@ -33,12 +34,23 @@ var Analyzer = &analysis.Analyzer{
 	Doc:  doc,
 	Run:  run,
 	Requires: []*analysis.Analyzer{
+		config.Loader,
 		inspect.Analyzer,
 		commentmap.Analyzer,
 	},
 }
 
 func run(pass *analysis.Pass) (any, error) {
+	c, err := config.Load(pass)
+	if err != nil {
+		return nil, err
+	}
+	words := strings.Split(exclude, ",")
+	if c != nil {
+		disable = c.IsDisabled(name)
+		words = c.AnalyzerSettings.Underscores.Exclude
+		includeGenerated = c.AnalyzerSettings.Underscores.IncludeGenerated
+	}
 	if disable {
 		return nil, nil
 	}
@@ -46,7 +58,6 @@ func run(pass *analysis.Pass) (any, error) {
 	if !ok {
 		return nil, fmt.Errorf("unexpected result type from inspect: %T", pass.ResultOf[inspect.Analyzer])
 	}
-	words := strings.Split(excludeWords, ",")
 
 	nodeFilter := []ast.Node{
 		(*ast.File)(nil),
@@ -165,5 +176,5 @@ func run(pass *analysis.Pass) (any, error) {
 func init() {
 	Analyzer.Flags.BoolVar(&disable, "disable", false, "disable "+name+" analyzer")
 	Analyzer.Flags.BoolVar(&includeGenerated, "include-generated", false, "include generated codes")
-	Analyzer.Flags.StringVar(&excludeWords, "exclude-words", "", "exclude words (comma separated)")
+	Analyzer.Flags.StringVar(&exclude, "exclude-words", "", "exclude words (comma separated)")
 }

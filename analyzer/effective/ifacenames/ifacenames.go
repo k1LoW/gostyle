@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/gostaticanalysis/comment/passes/commentmap"
+	"github.com/k1LoW/gostyle/config"
 	"github.com/k1LoW/gostyle/reporter"
 	"golang.org/x/tools/go/analysis"
 	"golang.org/x/tools/go/analysis/passes/inspect"
@@ -32,12 +33,22 @@ var Analyzer = &analysis.Analyzer{
 	URL:  "https://github.com/k1LoW/gostyle/tree/main/analyzer/effective/ifacenames",
 	Run:  run,
 	Requires: []*analysis.Analyzer{
+		config.Loader,
 		inspect.Analyzer,
 		commentmap.Analyzer,
 	},
 }
 
 func run(pass *analysis.Pass) (any, error) {
+	c, err := config.Load(pass)
+	if err != nil {
+		return nil, err
+	}
+	if c != nil {
+		disable = c.IsDisabled(name)
+		includeGenerated = c.AnalyzerSettings.Ifacenames.IncludeGenerated
+		all = c.AnalyzerSettings.Ifacenames.All
+	}
 	if disable {
 		return nil, nil
 	}
