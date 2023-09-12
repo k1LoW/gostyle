@@ -3,6 +3,7 @@ package reporter
 import (
 	"fmt"
 	"go/token"
+	"regexp"
 	"strings"
 
 	"github.com/gostaticanalysis/comment"
@@ -19,6 +20,8 @@ const (
 	IgnoreAll                = "all"
 )
 
+var codegenRe = regexp.MustCompile(`^// Code generated .* DO NOT EDIT\.$`)
+
 // Reporter is a wrapper of analysis.Pass.Reportf.
 type Reporter struct {
 	name              string
@@ -29,6 +32,7 @@ type Reporter struct {
 	ignoreAnotation   string
 	disableLintIgnore bool
 	disableNoLint     bool
+	includeGenerated  bool
 }
 
 type report struct {
@@ -63,6 +67,13 @@ func DisableNoLint() Option {
 func Prefix(s string) Option {
 	return func(r *Reporter) {
 		r.prefix = s
+	}
+}
+
+// IncludeGenerated includes generated codes in the report.
+func IncludeGenerated() Option {
+	return func(r *Reporter) {
+		r.includeGenerated = true
 	}
 }
 
@@ -109,8 +120,17 @@ func (r *Reporter) ignoreReport(pos token.Pos) bool {
 				// different file
 				continue
 			}
-
 			for _, cg := range cgs {
+				if !r.includeGenerated {
+					for _, c := range cg.List {
+						t := c.Text
+						if codegenRe.MatchString(t) {
+							// ignore code generated
+							return true
+						}
+					}
+				}
+
 				if f1.Line(pos) != f2.Line(cg.Pos()) {
 					// different line
 					continue
