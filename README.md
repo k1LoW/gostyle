@@ -50,6 +50,70 @@ $ go vet -vettool=`which gostyle` -mixedcaps.disable # Disable mixedcaps analyze
 - `//nostyle:all`
 - `//nostyle:[analyzer name]` (e.g. `//nostyle:mixedcaps`)
 
+## Configuration
+
+`gostyle` can be configured by `-gostyle.config=$PWD/.gostyle.yml`.
+
+```yaml
+# All available settings of specific analyzers.
+analyzers-settings:
+  # See the dedicated "analyzers-settings" documentation section.
+  option: value
+analyzers:
+  disable:
+    # Disable specific analyzers.
+    - analyzer-name
+```
+
+### `analyzers-settings:`
+
+#### ifacenames
+
+```yaml
+analyzers-settings:
+  ifacenames:
+    include-generated: false # include generated codes (default: false)
+    all: true # default: false
+```
+
+#### mixedcaps
+
+```yaml
+analyzers-settings:
+  mixedcaps:
+    include-generated: false # include generated codes (default: false)
+    exclude: # exclude words
+      - DBTX
+      - EXPECT
+```
+
+#### pkgnames
+
+```yaml
+analyzers-settings:
+  pkgnames:
+    include-generated: false # include generated codes (default: false)
+```
+
+#### recvnames
+
+```yaml
+analyzers-settings:
+  recvnames:
+    include-generated: false # include generated codes (default: false)
+```
+
+#### underscores
+
+```yaml
+analyzers-settings:
+  underscores:
+    include-generated: false # include generated codes (default: false)
+    exclude: # exclude words
+      - DBTX
+      - EXPECT
+```
+
 ## Install
 
 **go install:**

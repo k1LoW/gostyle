@@ -45,6 +45,14 @@ var Analyzer = &analysis.Analyzer{
 }
 
 func run(pass *analysis.Pass) (any, error) {
+	c, err := config.Load(pass)
+	if err != nil {
+		return nil, err
+	}
+	if c != nil {
+		disable = c.IsDisabled(name)
+		includeGenerated = c.AnalyzerSettings.Pkgnames.IncludeGenerated
+	}
 	if disable {
 		return nil, nil
 	}

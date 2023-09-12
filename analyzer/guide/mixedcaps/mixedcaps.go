@@ -41,6 +41,16 @@ var Analyzer = &analysis.Analyzer{
 }
 
 func run(pass *analysis.Pass) (any, error) {
+	c, err := config.Load(pass)
+	if err != nil {
+		return nil, err
+	}
+	words := strings.Split(exclude, ",")
+	if c != nil {
+		disable = c.IsDisabled(name)
+		words = c.AnalyzerSettings.Mixedcaps.Exclude
+		includeGenerated = c.AnalyzerSettings.Mixedcaps.IncludeGenerated
+	}
 	if disable {
 		return nil, nil
 	}
@@ -48,7 +58,6 @@ func run(pass *analysis.Pass) (any, error) {
 	if !ok {
 		return nil, fmt.Errorf("unexpected result type from inspect: %T", pass.ResultOf[inspect.Analyzer])
 	}
-	words := strings.Split(exclude, ",")
 
 	nodeFilter := []ast.Node{
 		(*ast.File)(nil),
