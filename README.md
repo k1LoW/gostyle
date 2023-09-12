@@ -2,6 +2,14 @@
 
 **THIS IS A WORK IN PROGRESS AND PROOF OF CONCEPT AND STUDY WORK**
 
+`gostyle` is a set of analyzers for coding styles.
+
+## Disclaimer
+
+`gostyle` **IS NOT** [Go Style](https://google.github.io/styleguide/go/).
+
+"Go Style" is a great style and we will actively refer to it, but we cannot implement the same rules exactly, and we may extend the rules.
+
 ## Usage
 
 ```console
