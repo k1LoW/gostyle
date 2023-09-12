@@ -31,6 +31,7 @@ $ go vet -vettool=`which gostyle`
 - [**Decisions**](https://google.github.io/styleguide/go/decisions)
   - [pkgnames](analyzer/decisions/pkgnames) ... https://google.github.io/styleguide/go/decisions#package-names
   - [recvnames](analyzer/decisions/recvnames) ... https://google.github.io/styleguide/go/decisions#receiver-names
+  - [underscores](analyzer/decisions/underscores) ... https://google.github.io/styleguide/go/decisions#underscores
 
 ## Disabling and Ignoring
 
