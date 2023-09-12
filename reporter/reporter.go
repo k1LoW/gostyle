@@ -11,18 +11,23 @@ import (
 )
 
 const (
-	msgPrefix                = "gostyle"
-	NoLintCommentAnnotation  = "nolint:"
-	NoStyleCommentAnnotation = "nostyle:"
+	defaultPrefixKey         = "gostyle"
+	sep                      = ":"
+	NoLintCommentAnnotation  = "nolint"
+	NoStyleCommentAnnotation = "nostyle"
 	LintIgnore               = "lint:ignore"
 	IgnoreAll                = "all"
 )
 
 type Reporter struct {
-	name    string
-	pass    *analysis.Pass
-	cm      comment.Maps
-	reports []*report
+	name              string
+	pass              *analysis.Pass
+	cm                comment.Maps
+	reports           []*report
+	prefix            string
+	ignoreAnotation   string
+	disableLintIgnore bool
+	disableNoLint     bool
 }
 
 type report struct {
@@ -30,12 +35,48 @@ type report struct {
 	msg string
 }
 
-func New(name string, pass *analysis.Pass) (*Reporter, error) {
+type ReporterOption func(*Reporter)
+
+func IgnoreAnotation(s string) ReporterOption {
+	return func(r *Reporter) {
+		r.ignoreAnotation = s
+	}
+}
+
+func DisableLintIgnore() ReporterOption {
+	return func(r *Reporter) {
+		r.disableLintIgnore = true
+	}
+}
+
+func DisableNoLint() ReporterOption {
+	return func(r *Reporter) {
+		r.disableNoLint = true
+	}
+}
+
+func Prefix(s string) ReporterOption {
+	return func(r *Reporter) {
+		r.prefix = s
+	}
+}
+
+func New(name string, pass *analysis.Pass, opts ...ReporterOption) (*Reporter, error) {
 	cm, ok := pass.ResultOf[commentmap.Analyzer].(comment.Maps)
 	if !ok {
 		return nil, fmt.Errorf("unexpected result type from commentmap: %T", pass.ResultOf[commentmap.Analyzer])
 	}
-	return &Reporter{name: name, pass: pass, cm: cm}, nil
+	r := &Reporter{
+		name:            name,
+		pass:            pass,
+		cm:              cm,
+		prefix:          fmt.Sprintf("[%s.%s] ", defaultPrefixKey, name),
+		ignoreAnotation: NoStyleCommentAnnotation,
+	}
+	for _, opt := range opts {
+		opt(r)
+	}
+	return r, nil
 }
 
 func (r *Reporter) Append(pos token.Pos, msg string) {
@@ -47,7 +88,7 @@ func (r *Reporter) Report() {
 		if r.IgnoreReport(rr.pos) {
 			continue
 		}
-		r.pass.Reportf(rr.pos, fmt.Sprintf("[%s.%s] %s", msgPrefix, r.name, rr.msg))
+		r.pass.Reportf(rr.pos, fmt.Sprintf("%s%s", r.prefix, rr.msg))
 	}
 }
 
@@ -72,24 +113,24 @@ func (r *Reporter) IgnoreReport(pos token.Pos) bool {
 					if !strings.HasPrefix(t, "//") {
 						continue
 					}
-					// '//lint:ignore'
-					if strings.HasPrefix(t, fmt.Sprintf("//%s", LintIgnore)) {
-						return true
+					if !r.disableLintIgnore {
+						// '//lint:ignore'
+						if strings.HasPrefix(t, fmt.Sprintf("//%s", LintIgnore)) {
+							return true
+						}
 					}
-					// '//nolint:' or '//nostyle:'
-					if !strings.HasPrefix(t, fmt.Sprintf("//%s", NoLintCommentAnnotation)) && !strings.HasPrefix(t, fmt.Sprintf("//%s", NoStyleCommentAnnotation)) {
-						continue
-					}
-					// 'nolint:all'
-					if strings.Contains(t, fmt.Sprintf("%s%s", NoLintCommentAnnotation, IgnoreAll)) {
-						return true
+					if !r.disableNoLint {
+						// 'nolint:all'
+						if strings.Contains(t, fmt.Sprintf("%s%s%s", NoLintCommentAnnotation, sep, IgnoreAll)) {
+							return true
+						}
 					}
 					// 'nostyle:all'
-					if strings.Contains(t, fmt.Sprintf("%s%s", NoStyleCommentAnnotation, IgnoreAll)) {
+					if strings.Contains(t, fmt.Sprintf("%s%s%s", r.ignoreAnotation, sep, IgnoreAll)) {
 						return true
 					}
 					// 'nostyle:' and r.name
-					if strings.Contains(t, NoStyleCommentAnnotation) && strings.Contains(t, r.name) {
+					if strings.Contains(t, r.ignoreAnotation+sep) && strings.Contains(t, r.name) {
 						return true
 					}
 				}
