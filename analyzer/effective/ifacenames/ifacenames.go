@@ -58,7 +58,7 @@ func run(pass *analysis.Pass) (any, error) {
 	i.Preorder(nodeFilter, func(n ast.Node) {
 		switch n := n.(type) {
 		case *ast.InterfaceType:
-			if len(n.Methods.List) == 1 {
+			if len(n.Methods.List) == 1 && len(n.Methods.List[0].Names) > 0 {
 				mn := n.Methods.List[0].Names[0].Name
 				if !strings.HasPrefix(ii.Name, mn) || !strings.HasSuffix(ii.Name, "er") { // huristic
 					r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, ii.Name))
