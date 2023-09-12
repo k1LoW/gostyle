@@ -48,8 +48,11 @@ Usage of %[1]s:
 			_, _ = fmt.Fprintf(os.Stderr, "%s already exists\n", configPath)
 			os.Exit(1)
 		}
+		if err := os.WriteFile(configPath, defaultConfig, os.ModePerm); err != nil {
+			_, _ = fmt.Fprintln(os.Stderr, err)
+			os.Exit(1)
+		}
 		fmt.Printf("%s is generated\n", configPath)
-		os.WriteFile(configPath, defaultConfig, os.ModePerm)
 		os.Exit(0)
 	}
 
