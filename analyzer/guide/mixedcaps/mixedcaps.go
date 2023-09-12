@@ -52,6 +52,7 @@ func run(pass *analysis.Pass) (any, error) {
 		(*ast.ImportSpec)(nil),
 		(*ast.ValueSpec)(nil),
 		(*ast.TypeSpec)(nil),
+		(*ast.InterfaceType)(nil),
 		(*ast.FuncDecl)(nil),
 	}
 
@@ -98,6 +99,20 @@ func run(pass *analysis.Pass) (any, error) {
 			}
 			if !detector.IsMixedCaps(n.Name.Name) {
 				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Name.Name))
+			}
+		case *ast.InterfaceType:
+			if n.Methods == nil {
+				return
+			}
+			for _, field := range n.Methods.List {
+				for _, ident := range field.Names {
+					if slices.Contains(words, ident.Name) {
+						continue
+					}
+					if !detector.IsMixedCaps(ident.Name) {
+						r.Append(ident.Pos(), fmt.Sprintf("%s: %s", msg, ident.Name))
+					}
+				}
 			}
 		case *ast.FuncDecl:
 			if !slices.Contains(words, n.Name.Name) {
