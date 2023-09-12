@@ -5,3 +5,7 @@ import "testing"
 func TestA(t *testing.T) {
 	t.Error(1)
 }
+
+func Test_B(t *testing.T) { // want "gostyle.mixedcaps"
+	t.Error(1)
+}
