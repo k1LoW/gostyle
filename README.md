@@ -22,16 +22,16 @@ $ go vet -vettool=`which gostyle`
 
 ### [Effective Go](https://go.dev/doc/effective_go)
 
-- [ifacenames](analyzer/effective/ifacenames) ... https://go.dev/doc/effective_go#interface-names
+- [ifacenames](analyzer/effective/ifacenames) ... based on https://go.dev/doc/effective_go#interface-names
 
 ### [Go Style](https://google.github.io/styleguide/go/)
 
 - [**Guide**](https://google.github.io/styleguide/go/guide)
-  - [mixedcaps](analyzer/guide/mixedcaps) ... https://google.github.io/styleguide/go/guide#mixed-caps
+  - [mixedcaps](analyzer/guide/mixedcaps) ... based on https://google.github.io/styleguide/go/guide#mixed-caps
 - [**Decisions**](https://google.github.io/styleguide/go/decisions)
-  - [pkgnames](analyzer/decisions/pkgnames) ... https://google.github.io/styleguide/go/decisions#package-names
-  - [recvnames](analyzer/decisions/recvnames) ... https://google.github.io/styleguide/go/decisions#receiver-names
-  - [underscores](analyzer/decisions/underscores) ... https://google.github.io/styleguide/go/decisions#underscores
+  - [pkgnames](analyzer/decisions/pkgnames) ... based on https://google.github.io/styleguide/go/decisions#package-names
+  - [recvnames](analyzer/decisions/recvnames) ... based on https://google.github.io/styleguide/go/decisions#receiver-names
+  - [underscores](analyzer/decisions/underscores) ... based on https://google.github.io/styleguide/go/decisions#underscores
 
 ## Disabling and Ignoring
 
