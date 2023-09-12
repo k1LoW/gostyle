@@ -3,6 +3,7 @@ package mixedcaps
 import (
 	"fmt"
 	"go/ast"
+	"slices"
 	"strings"
 
 	"github.com/gostaticanalysis/comment/passes/commentmap"
@@ -22,6 +23,7 @@ const (
 var (
 	disable          bool
 	includeGenerated bool
+	excludeWords     string
 )
 
 // Analyzer based on https://google.github.io/styleguide/go/guide#mixed-caps
@@ -43,6 +45,7 @@ func run(pass *analysis.Pass) (any, error) {
 	if !ok {
 		return nil, fmt.Errorf("unexpected result type from inspect: %T", pass.ResultOf[inspect.Analyzer])
 	}
+	words := strings.Split(excludeWords, ",")
 
 	nodeFilter := []ast.Node{
 		(*ast.File)(nil),
@@ -62,6 +65,9 @@ func run(pass *analysis.Pass) (any, error) {
 		switch n := n.(type) {
 		case *ast.File:
 			pkgname := n.Name.Name
+			if slices.Contains(words, pkgname) {
+				return
+			}
 			if !detector.IsMixedCaps(strings.TrimSuffix(pkgname, "_test")) {
 				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, pkgname))
 			}
@@ -71,6 +77,9 @@ func run(pass *analysis.Pass) (any, error) {
 			if pkg {
 				// skip package name
 				pkg = false
+				return
+			}
+			if slices.Contains(words, n.Name) {
 				return
 			}
 			if !detector.IsMixedCaps(n.Name) {
@@ -86,4 +95,5 @@ func run(pass *analysis.Pass) (any, error) {
 func init() {
 	Analyzer.Flags.BoolVar(&disable, "disable", false, "disable "+name+" analyzer")
 	Analyzer.Flags.BoolVar(&includeGenerated, "include-generated", false, "include generated codes")
+	Analyzer.Flags.StringVar(&excludeWords, "exclude-words", "", "exclude words (comma separated)")
 }
