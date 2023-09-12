@@ -30,6 +30,7 @@ $ go vet -vettool=`which gostyle`
   - [mixedcaps](analyzer/guide/mixedcaps) ... https://google.github.io/styleguide/go/guide#mixed-caps
 - [**Decisions**](https://google.github.io/styleguide/go/decisions)
   - [pkgnames](analyzer/decisions/pkgnames) ... https://google.github.io/styleguide/go/decisions#package-names
+  - [recvnames](analyzer/decisions/recvnames) ... https://google.github.io/styleguide/go/decisions#receiver-names
 
 ## Ignore Directive
 
