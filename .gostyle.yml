@@ -1,0 +1,3 @@
+analyzers:
+  disable:
+    - mixedcaps # disable mixedcaps analyzer. because the underscores analyzer is more detailed.
