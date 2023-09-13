@@ -1,9 +1,9 @@
-package ifacenames
+package nilslices
 
 import (
 	"fmt"
 	"go/ast"
-	"strings"
+	"go/token"
 
 	"github.com/gostaticanalysis/comment/passes/commentmap"
 	"github.com/k1LoW/gostyle/config"
@@ -14,23 +14,20 @@ import (
 )
 
 const (
-	name = "ifacenames"
-	doc  = "Analyzer based on https://go.dev/doc/effective_go#interface-names."
-	msg  = "by convention, one-method interfaces are named by the method name plus an -er suffix or similar modification to construct an agent noun. (ref: https://go.dev/doc/effective_go#interface-names)"
-	msgc = "all interface names with the -er suffix are required. (THIS IS NOT IN Effective Go)"
+	name = "nilslices"
+	doc  = "Analyzer based on https://google.github.io/styleguide/go/decisions#nil-slices"
+	msg  = "if you declare an empty slice as a local variable (especially if it can be the source of a return value), prefer the nil initialization to reduce the risk of bugs by callers. (ref: https://google.github.io/styleguide/go/decisions#nil-slices)"
 )
 
 var (
 	disable          bool
 	includeGenerated bool
-	all              bool
 )
 
-// Analyzer based on https://go.dev/doc/effective_go#interface-names.
+// Analyzer based on https://google.github.io/styleguide/go/guide#nil-slices
 var Analyzer = &analysis.Analyzer{
 	Name: name,
 	Doc:  doc,
-	URL:  "https://github.com/k1LoW/gostyle/tree/main/analyzer/effective/ifacenames",
 	Run:  run,
 	Requires: []*analysis.Analyzer{
 		config.Loader,
@@ -46,8 +43,7 @@ func run(pass *analysis.Pass) (any, error) {
 	}
 	if c != nil {
 		disable = c.IsDisabled(name)
-		includeGenerated = c.AnalyzersSettings.Ifacenames.IncludeGenerated
-		all = c.AnalyzersSettings.Ifacenames.All
+		includeGenerated = c.AnalyzersSettings.Nilslices.IncludeGenerated
 	}
 	if disable {
 		return nil, nil
@@ -58,11 +54,10 @@ func run(pass *analysis.Pass) (any, error) {
 	}
 
 	nodeFilter := []ast.Node{
-		(*ast.Ident)(nil),
-		(*ast.InterfaceType)(nil),
+		(*ast.ValueSpec)(nil),
+		(*ast.AssignStmt)(nil),
 	}
 
-	var ii *ast.Ident
 	var opts []reporter.Option
 	if includeGenerated {
 		opts = append(opts, reporter.IncludeGenerated())
@@ -73,20 +68,41 @@ func run(pass *analysis.Pass) (any, error) {
 	}
 	i.Preorder(nodeFilter, func(n ast.Node) {
 		switch n := n.(type) {
-		case *ast.InterfaceType:
-			if len(n.Methods.List) == 1 && len(n.Methods.List[0].Names) > 0 {
-				mn := n.Methods.List[0].Names[0].Name
-				if !strings.HasPrefix(ii.Name, mn) || !strings.HasSuffix(ii.Name, "er") { // huristic
-					r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, ii.Name))
-					return
+		case *ast.ValueSpec:
+			for i, v := range n.Values {
+				c, ok := v.(*ast.CompositeLit)
+				if !ok {
+					continue
 				}
+				if c.Elts != nil {
+					continue
+				}
+				if _, ok := c.Type.(*ast.ArrayType); !ok {
+					continue
+				}
+				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Names[i].Name))
 			}
-			if all && !strings.HasSuffix(ii.Name, "er") {
-				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msgc, ii.Name))
+		case *ast.AssignStmt:
+			if n.Tok != token.DEFINE {
 				return
 			}
-		case *ast.Ident:
-			ii = n
+			for i, e := range n.Rhs {
+				c, ok := e.(*ast.CompositeLit)
+				if !ok {
+					continue
+				}
+				if c.Elts != nil {
+					continue
+				}
+				if _, ok := c.Type.(*ast.ArrayType); !ok {
+					continue
+				}
+				id, ok := n.Lhs[i].(*ast.Ident)
+				if !ok {
+					continue
+				}
+				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, id.Name))
+			}
 		}
 	})
 	r.Report()
@@ -96,5 +112,4 @@ func run(pass *analysis.Pass) (any, error) {
 func init() {
 	Analyzer.Flags.BoolVar(&disable, "disable", false, "disable "+name+" analyzer")
 	Analyzer.Flags.BoolVar(&includeGenerated, "include-generated", false, "include generated codes")
-	Analyzer.Flags.BoolVar(&all, "all", false, "all interface names with the -er suffix are required")
 }

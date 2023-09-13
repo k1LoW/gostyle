@@ -38,6 +38,7 @@ type Analyzers struct {
 type AnalyzersSettings struct {
 	Ifacenames  Ifacenames  `yaml:"ifacenames"`
 	Mixedcaps   Mixedcaps   `yaml:"mixedcaps"`
+	Nilslices   Nilslices   `yaml:"nilslices"`
 	Pkgnames    Pkgnames    `yaml:"pkgnames"`
 	Recvnames   Recvnames   `yaml:"recvnames"`
 	Repetition  Repetition  `yaml:"repetition"`
@@ -53,6 +54,10 @@ type Ifacenames struct {
 type Mixedcaps struct {
 	Exclude          []string `yaml:"exclude"`
 	IncludeGenerated bool     `yaml:"include-generated"`
+}
+
+type Nilslices struct {
+	IncludeGenerated bool `yaml:"include-generated"`
 }
 
 type Pkgnames struct {

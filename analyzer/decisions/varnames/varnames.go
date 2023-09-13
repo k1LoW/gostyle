@@ -85,7 +85,7 @@ func run(pass *analysis.Pass) (any, error) {
 		(*ast.RangeStmt)(nil),
 	}
 
-	opts := []reporter.Option{}
+	var opts []reporter.Option
 	if includeGenerated {
 		opts = append(opts, reporter.IncludeGenerated())
 	}
