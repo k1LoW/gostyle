@@ -2,4 +2,4 @@ package version
 
 const Name string = "gostyle"
 
-var Version = "0.7.0"
+var Version = "0.7.1"
