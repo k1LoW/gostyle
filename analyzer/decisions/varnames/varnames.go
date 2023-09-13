@@ -3,7 +3,6 @@ package varnames
 import (
 	"fmt"
 	"go/ast"
-	"go/importer"
 	"go/token"
 	"go/types"
 
@@ -18,7 +17,6 @@ import (
 const (
 	name = "varnames"
 	doc  = "Analyzer based on https://google.github.io/styleguide/go/decisions#variable-names"
-	msg  = ""
 )
 
 const (
@@ -96,8 +94,10 @@ func run(pass *analysis.Pass) (any, error) {
 		return nil, err
 	}
 
-	compiler := "source"
-	conf := types.Config{Importer: importer.ForCompiler(pass.Fset, compiler, nil)}
+	conf, err := config.NewTypesConfig(pass)
+	if err != nil {
+		return nil, err
+	}
 	pkg, err := conf.Check("varnames", pass.Fset, pass.Files, nil)
 	if err != nil {
 		return nil, err
