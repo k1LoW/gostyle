@@ -45,26 +45,26 @@ func run(pass *analysis.Pass) (any, error) {
 		return c, nil
 	}
 	// Set default value
-	if c.AnalyzerSettings.Varnames.SmallScopeMax == 0 {
-		c.AnalyzerSettings.Varnames.SmallScopeMax = DefaultSmallScopeMax
+	if c.AnalyzersSettings.Varnames.SmallScopeMax == 0 {
+		c.AnalyzersSettings.Varnames.SmallScopeMax = DefaultSmallScopeMax
 	}
-	if c.AnalyzerSettings.Varnames.SmallVarnameMax == 0 {
-		c.AnalyzerSettings.Varnames.SmallVarnameMax = DefaultSmallVarnameMax
+	if c.AnalyzersSettings.Varnames.SmallVarnameMax == 0 {
+		c.AnalyzersSettings.Varnames.SmallVarnameMax = DefaultSmallVarnameMax
 	}
-	if c.AnalyzerSettings.Varnames.MediumScopeMax == 0 {
-		c.AnalyzerSettings.Varnames.MediumScopeMax = DefaultMediumScopeMax
+	if c.AnalyzersSettings.Varnames.MediumScopeMax == 0 {
+		c.AnalyzersSettings.Varnames.MediumScopeMax = DefaultMediumScopeMax
 	}
-	if c.AnalyzerSettings.Varnames.MediumVarnameMax == 0 {
-		c.AnalyzerSettings.Varnames.MediumVarnameMax = DefaultMediumVarnameMax
+	if c.AnalyzersSettings.Varnames.MediumVarnameMax == 0 {
+		c.AnalyzersSettings.Varnames.MediumVarnameMax = DefaultMediumVarnameMax
 	}
-	if c.AnalyzerSettings.Varnames.LargeScopeMax == 0 {
-		c.AnalyzerSettings.Varnames.LargeScopeMax = DefaultLargeScopeMax
+	if c.AnalyzersSettings.Varnames.LargeScopeMax == 0 {
+		c.AnalyzersSettings.Varnames.LargeScopeMax = DefaultLargeScopeMax
 	}
-	if c.AnalyzerSettings.Varnames.LargeVarnameMax == 0 {
-		c.AnalyzerSettings.Varnames.LargeVarnameMax = DefaultLargeVarnameMax
+	if c.AnalyzersSettings.Varnames.LargeVarnameMax == 0 {
+		c.AnalyzersSettings.Varnames.LargeVarnameMax = DefaultLargeVarnameMax
 	}
-	if c.AnalyzerSettings.Varnames.VeryLargeVarnameMax == 0 {
-		c.AnalyzerSettings.Varnames.VeryLargeVarnameMax = DefaultVeryLargeVarnameMax
+	if c.AnalyzersSettings.Varnames.VeryLargeVarnameMax == 0 {
+		c.AnalyzersSettings.Varnames.VeryLargeVarnameMax = DefaultVeryLargeVarnameMax
 	}
 
 	c.loaded = true

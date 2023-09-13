@@ -48,8 +48,8 @@ func run(pass *analysis.Pass) (any, error) {
 	words := strings.Split(exclude, ",")
 	if c != nil {
 		disable = c.IsDisabled(name)
-		words = c.AnalyzerSettings.Mixedcaps.Exclude
-		includeGenerated = c.AnalyzerSettings.Mixedcaps.IncludeGenerated
+		words = c.AnalyzersSettings.Mixedcaps.Exclude
+		includeGenerated = c.AnalyzersSettings.Mixedcaps.IncludeGenerated
 	}
 	if disable {
 		return nil, nil

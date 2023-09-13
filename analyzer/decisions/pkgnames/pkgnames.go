@@ -51,7 +51,7 @@ func run(pass *analysis.Pass) (any, error) {
 	}
 	if c != nil {
 		disable = c.IsDisabled(name)
-		includeGenerated = c.AnalyzerSettings.Pkgnames.IncludeGenerated
+		includeGenerated = c.AnalyzersSettings.Pkgnames.IncludeGenerated
 	}
 	if disable {
 		return nil, nil

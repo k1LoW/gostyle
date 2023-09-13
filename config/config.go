@@ -25,17 +25,17 @@ const (
 )
 
 type Config struct {
-	Analyzers        Analyzers        `yaml:"analyzers"`
-	AnalyzerSettings AnalyzerSettings `yaml:"analyzer-settings"`
-	loaded           bool
-	err              error
+	Analyzers         Analyzers         `yaml:"analyzers"`
+	AnalyzersSettings AnalyzersSettings `yaml:"analyzers-settings"`
+	loaded            bool
+	err               error
 }
 
 type Analyzers struct {
 	Disable []string `yaml:"disable"`
 }
 
-type AnalyzerSettings struct {
+type AnalyzersSettings struct {
 	Ifacenames  Ifacenames  `yaml:"ifacenames"`
 	Mixedcaps   Mixedcaps   `yaml:"mixedcaps"`
 	Pkgnames    Pkgnames    `yaml:"pkgnames"`
