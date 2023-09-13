@@ -20,7 +20,8 @@ import (
 const (
 	name = "repetition"
 	doc  = "Analyzer based on https://google.github.io/styleguide/go/decisions#repetition"
-	msg  = "a piece of Go source code should avoid unnecessary repetition. (ref: https://google.github.io/styleguide/go/decisions#repetition)"
+	msgp = "when naming exported symbols, the name of the package is always visible outside your package, so redundant information between the two should be reduced or eliminated. (ref: https://google.github.io/styleguide/go/decisions#package-vs-exported-symbol-name)"
+	msgt = "the compiler always knows the type of a variable, and in most cases it is also clear to the reader what type a variable is by how it is used. It is only necessary to clarify the type of a variable if its value appears twice in the same scope. (ref: https://google.github.io/styleguide/go/decisions#variable-name-vs-type)"
 )
 
 var (
@@ -110,7 +111,7 @@ func run(pass *analysis.Pass) (any, error) {
 						continue
 					}
 					if strings.Contains(pkgn, strings.ToLower(s)) {
-						r.Append(n.Pos(), fmt.Sprintf("%s: %s<-[%s]->%s", msg, pkgn, s, id.Name))
+						r.Append(n.Pos(), fmt.Sprintf("%s: %s<-[%s]->%s", msgp, pkgn, s, id.Name))
 					}
 				}
 			}
@@ -158,7 +159,7 @@ func run(pass *analysis.Pass) (any, error) {
 					continue
 				}
 				if strings.Contains(pkgn, strings.ToLower(s)) {
-					r.Append(n.Pos(), fmt.Sprintf("%s: %s<-[%s]->%s", msg, pkgn, s, n.Name.Name))
+					r.Append(n.Pos(), fmt.Sprintf("%s: %s<-[%s]->%s", msgp, pkgn, s, n.Name.Name))
 				}
 			}
 		}
@@ -194,35 +195,35 @@ func (tr *typeVarReporter) report(pos token.Pos, varname string) {
 		switch o.Type() {
 		case types.Typ[types.Int], types.Typ[types.Int8], types.Typ[types.Int16], types.Typ[types.Int32], types.Typ[types.Int64]:
 			if strings.Contains(strings.ToLower(varname), "int") {
-				tr.r.Append(pos, fmt.Sprintf("%s: %s<-[%s]->%s", msg, varname, "int", o.Type().String()))
+				tr.r.Append(pos, fmt.Sprintf("%s: %s<-[%s]->%s", msgt, varname, "int", o.Type().String()))
 			} else if strings.Contains(strings.ToLower(varname), "num") {
-				tr.r.Append(pos, fmt.Sprintf("%s: %s<-[%s]->%s", msg, varname, "num", o.Type().String()))
+				tr.r.Append(pos, fmt.Sprintf("%s: %s<-[%s]->%s", msgt, varname, "num", o.Type().String()))
 			}
 		case types.Typ[types.Uint], types.Typ[types.Uint8], types.Typ[types.Uint16], types.Typ[types.Uint32], types.Typ[types.Uint64]:
 			if strings.Contains(strings.ToLower(varname), "uint") {
-				tr.r.Append(pos, fmt.Sprintf("%s: %s<-[%s]->%s", msg, varname, "uint", o.Type().String()))
+				tr.r.Append(pos, fmt.Sprintf("%s: %s<-[%s]->%s", msgt, varname, "uint", o.Type().String()))
 			} else if strings.Contains(strings.ToLower(varname), "num") {
-				tr.r.Append(pos, fmt.Sprintf("%s: %s<-[%s]->%s", msg, varname, "num", o.Type().String()))
+				tr.r.Append(pos, fmt.Sprintf("%s: %s<-[%s]->%s", msgt, varname, "num", o.Type().String()))
 			}
 		case types.Typ[types.Float32], types.Typ[types.Float64]:
 			if strings.Contains(strings.ToLower(varname), "float") {
-				tr.r.Append(pos, fmt.Sprintf("%s: %s<-[%s]->%s", msg, varname, "float", o.Type().String()))
+				tr.r.Append(pos, fmt.Sprintf("%s: %s<-[%s]->%s", msgt, varname, "float", o.Type().String()))
 			} else if strings.Contains(strings.ToLower(varname), "num") {
-				tr.r.Append(pos, fmt.Sprintf("%s: %s<-[%s]->%s", msg, varname, "num", o.Type().String()))
+				tr.r.Append(pos, fmt.Sprintf("%s: %s<-[%s]->%s", msgt, varname, "num", o.Type().String()))
 			}
 		case types.Typ[types.String]:
 			if strings.Contains(strings.ToLower(varname), "string") {
-				tr.r.Append(pos, fmt.Sprintf("%s: %s<-[%s]->%s", msg, varname, "string", o.Type().String()))
+				tr.r.Append(pos, fmt.Sprintf("%s: %s<-[%s]->%s", msgt, varname, "string", o.Type().String()))
 			} else if strings.Contains(strings.ToLower(varname), "str") {
-				tr.r.Append(pos, fmt.Sprintf("%s: %s<-[%s]->%s", msg, varname, "str", o.Type().String()))
+				tr.r.Append(pos, fmt.Sprintf("%s: %s<-[%s]->%s", msgt, varname, "str", o.Type().String()))
 			}
 		case types.Typ[types.Bool]:
 			if strings.Contains(strings.ToLower(varname), "bool") {
-				tr.r.Append(pos, fmt.Sprintf("%s: %s<-[%s]->%s", msg, varname, "bool", o.Type().String()))
+				tr.r.Append(pos, fmt.Sprintf("%s: %s<-[%s]->%s", msgt, varname, "bool", o.Type().String()))
 			}
 		default:
 			if strings.Contains(strings.ToLower(varname), strings.ToLower(o.Type().String())) {
-				tr.r.Append(pos, fmt.Sprintf("%s: %s<-[%s]->%s", msg, tr.pkg.Name(), o.Type().String(), varname))
+				tr.r.Append(pos, fmt.Sprintf("%s: %s<-[%s]->%s", msgt, tr.pkg.Name(), o.Type().String(), varname))
 			}
 		}
 	}
