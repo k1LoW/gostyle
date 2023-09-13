@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/k1LoW/gostyle/analyzer/decisions/nilslices"
 	"github.com/k1LoW/gostyle/analyzer/decisions/pkgnames"
 	"github.com/k1LoW/gostyle/analyzer/decisions/recvnames"
 	"github.com/k1LoW/gostyle/analyzer/decisions/repetition"
@@ -18,6 +19,7 @@ func main() {
 		ifacenames.Analyzer,
 		pkgnames.Analyzer,
 		mixedcaps.Analyzer,
+		nilslices.Analyzer,
 		recvnames.Analyzer,
 		repetition.Analyzer,
 		underscores.Analyzer,
