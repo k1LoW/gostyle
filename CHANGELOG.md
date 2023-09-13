@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.8.0](https://github.com/k1LoW/gostyle/compare/v0.7.1...v0.8.0) - 2023-09-13
+### New Features 🎉
+- Add repetition analyzer by @k1LoW in https://github.com/k1LoW/gostyle/pull/35
+
 ## [v0.7.1](https://github.com/k1LoW/gostyle/compare/v0.7.0...v0.7.1) - 2023-09-13
 ### New Features 🎉
 - Add .gostyle.yml by @k1LoW in https://github.com/k1LoW/gostyle/pull/34
