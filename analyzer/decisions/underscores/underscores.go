@@ -28,7 +28,7 @@ var (
 	exclude          string
 )
 
-// Analyzer based on https://google.github.io/styleguide/go/guide#mixed-caps
+// Analyzer based on https://google.github.io/styleguide/go/guide#underscores
 var Analyzer = &analysis.Analyzer{
 	Name: name,
 	Doc:  doc,
@@ -186,5 +186,5 @@ func run(pass *analysis.Pass) (any, error) {
 func init() {
 	Analyzer.Flags.BoolVar(&disable, "disable", false, "disable "+name+" analyzer")
 	Analyzer.Flags.BoolVar(&includeGenerated, "include-generated", false, "include generated codes")
-	Analyzer.Flags.StringVar(&exclude, "exclude-words", "", "exclude words (comma separated)")
+	Analyzer.Flags.StringVar(&exclude, "exclude", "", "exclude words (comma separated)")
 }
