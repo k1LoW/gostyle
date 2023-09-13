@@ -63,7 +63,7 @@ func run(pass *analysis.Pass) (any, error) {
 	}
 
 	var ii *ast.Ident
-	opts := []reporter.Option{}
+	var opts []reporter.Option
 	if includeGenerated {
 		opts = append(opts, reporter.IncludeGenerated())
 	}

@@ -16,13 +16,12 @@ import (
 const (
 	name = "nilslices"
 	doc  = "Analyzer based on https://google.github.io/styleguide/go/decisions#nil-slices"
-	msg  = "if you declare an empty slice as a local variable (especially if it can be the source of a return value), prefer the nil initialization to reduce the risk of bugs by callers."
+	msg  = "if you declare an empty slice as a local variable (especially if it can be the source of a return value), prefer the nil initialization to reduce the risk of bugs by callers. (ref: https://google.github.io/styleguide/go/decisions#nil-slices)"
 )
 
 var (
 	disable          bool
 	includeGenerated bool
-	exclude          string
 )
 
 // Analyzer based on https://google.github.io/styleguide/go/guide#nil-slices
@@ -59,7 +58,7 @@ func run(pass *analysis.Pass) (any, error) {
 		(*ast.AssignStmt)(nil),
 	}
 
-	opts := []reporter.Option{}
+	var opts []reporter.Option
 	if includeGenerated {
 		opts = append(opts, reporter.IncludeGenerated())
 	}

@@ -66,7 +66,7 @@ func run(pass *analysis.Pass) (any, error) {
 		(*ast.ImportSpec)(nil),
 	}
 
-	opts := []reporter.Option{}
+	var opts []reporter.Option
 	if includeGenerated {
 		opts = append(opts, reporter.IncludeGenerated())
 	}
