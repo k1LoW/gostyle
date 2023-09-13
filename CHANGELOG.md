@@ -1,5 +1,12 @@
 # Changelog
 
+## [v0.7.1](https://github.com/k1LoW/gostyle/compare/v0.7.0...v0.7.1) - 2023-09-13
+### New Features 🎉
+- Add .gostyle.yml by @k1LoW in https://github.com/k1LoW/gostyle/pull/34
+### Fix bug 🐛
+- Fix lookup func of types.Config by @k1LoW in https://github.com/k1LoW/gostyle/pull/32
+- Fix typo by @k1LoW in https://github.com/k1LoW/gostyle/pull/33
+
 ## [v0.7.0](https://github.com/k1LoW/gostyle/compare/v0.6.0...v0.7.0) - 2023-09-13
 ### New Features 🎉
 - Add varnames analyzer by @k1LoW in https://github.com/k1LoW/gostyle/pull/27
