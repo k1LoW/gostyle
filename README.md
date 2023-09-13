@@ -54,7 +54,7 @@ $ go vet -vettool=`which gostyle` -mixedcaps.disable # Disable mixedcaps analyze
 
 ## Configuration
 
-`gostyle` can be configured by `-gostyle.config=$PWD/.gostyle.yml`.
+`gostyle` can be configured by `-gostyle.config=$PWD/.gostyle.yml` like [golangci-lint](https://golangci-lint.run/usage/configuration/).
 
 ``` console
 $ go vet -vettool=`which gostyle` -gostyle.config=$PWD/.gostyle.yml ./...
@@ -79,7 +79,7 @@ analyzers:
 analyzers-settings:
   ifacenames:
     include-generated: false # include generated codes (default: false)
-    all: true # all interface names with the -er suffix are required (default: false)
+    all: true                # all interface names with the -er suffix are required (default: false)
 ```
 
 #### mixedcaps
@@ -88,7 +88,7 @@ analyzers-settings:
 analyzers-settings:
   mixedcaps:
     include-generated: false # include generated codes (default: false)
-    exclude: # exclude words
+    exclude:                 # exclude words
       - DBTX
       - EXPECT
 ```
@@ -115,7 +115,7 @@ analyzers-settings:
 analyzers-settings:
   repetition:
     include-generated: false # include generated codes (default: false)
-    exclude: # exclude words
+    exclude:                 # exclude words
       - limitStr
 ```
 
@@ -125,7 +125,7 @@ analyzers-settings:
 analyzers-settings:
   underscores:
     include-generated: false # include generated codes (default: false)
-    exclude: # exclude words
+    exclude:                 # exclude words
       - DBTX
       - EXPECT
 ```
