@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.7.0](https://github.com/k1LoW/gostyle/compare/v0.6.0...v0.7.0) - 2023-09-13
+### New Features 🎉
+- Add varnames analyzer by @k1LoW in https://github.com/k1LoW/gostyle/pull/27
+### Fix bug 🐛
+- Support *ast.RangeStmt (underscores, mixedcaps) by @k1LoW in https://github.com/k1LoW/gostyle/pull/28
+- Revert "Add `init` command to generate .gostyle.yml" by @k1LoW in https://github.com/k1LoW/gostyle/pull/29
+- Use source by @k1LoW in https://github.com/k1LoW/gostyle/pull/30
+
 ## [v0.6.0](https://github.com/k1LoW/gostyle/compare/v0.5.0...v0.6.0) - 2023-09-12
 ### Breaking Changes 🛠
 - Support config file by @k1LoW in https://github.com/k1LoW/gostyle/pull/23
