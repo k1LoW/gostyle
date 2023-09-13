@@ -93,7 +93,8 @@ func run(pass *analysis.Pass) (any, error) {
 		return nil, err
 	}
 
-	conf := types.Config{Importer: importer.Default()}
+	compiler := "source"
+	conf := types.Config{Importer: importer.ForCompiler(pass.Fset, compiler, nil)}
 	pkg, err := conf.Check("varnames", pass.Fset, pass.Files, nil)
 	if err != nil {
 		return nil, err
