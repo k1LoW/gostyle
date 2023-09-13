@@ -99,12 +99,12 @@ func run(pass *analysis.Pass) (any, error) {
 				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Name.Name))
 			}
 		case *ast.ValueSpec:
-			for _, ident := range n.Names {
-				if slices.Contains(words, ident.Name) {
+			for _, id := range n.Names {
+				if slices.Contains(words, id.Name) {
 					continue
 				}
-				if !detector.IsMixedCaps(ident.Name) {
-					r.Append(ident.Pos(), fmt.Sprintf("%s: %s", msg, ident.Name))
+				if !detector.IsMixedCaps(id.Name) {
+					r.Append(id.Pos(), fmt.Sprintf("%s: %s", msg, id.Name))
 				}
 			}
 		case *ast.TypeSpec:
@@ -119,12 +119,12 @@ func run(pass *analysis.Pass) (any, error) {
 				return
 			}
 			for _, field := range n.Methods.List {
-				for _, ident := range field.Names {
-					if slices.Contains(words, ident.Name) {
+				for _, id := range field.Names {
+					if slices.Contains(words, id.Name) {
 						continue
 					}
-					if !detector.IsMixedCaps(ident.Name) {
-						r.Append(ident.Pos(), fmt.Sprintf("%s: %s", msg, ident.Name))
+					if !detector.IsMixedCaps(id.Name) {
+						r.Append(id.Pos(), fmt.Sprintf("%s: %s", msg, id.Name))
 					}
 				}
 			}
@@ -138,12 +138,12 @@ func run(pass *analysis.Pass) (any, error) {
 				return
 			}
 			for _, field := range n.Recv.List {
-				for _, ident := range field.Names {
-					if slices.Contains(words, ident.Name) {
+				for _, id := range field.Names {
+					if slices.Contains(words, id.Name) {
 						continue
 					}
-					if !detector.IsMixedCaps(ident.Name) {
-						r.Append(ident.Pos(), fmt.Sprintf("%s: %s", msg, ident.Name))
+					if !detector.IsMixedCaps(id.Name) {
+						r.Append(id.Pos(), fmt.Sprintf("%s: %s", msg, id.Name))
 					}
 				}
 			}
@@ -151,16 +151,16 @@ func run(pass *analysis.Pass) (any, error) {
 			if n.Tok != token.DEFINE {
 				return
 			}
-			for _, expr := range n.Lhs {
-				ident, ok := expr.(*ast.Ident)
+			for _, e := range n.Lhs {
+				id, ok := e.(*ast.Ident)
 				if !ok {
 					continue
 				}
-				if slices.Contains(words, ident.Name) {
+				if slices.Contains(words, id.Name) {
 					continue
 				}
-				if !detector.IsMixedCaps(ident.Name) {
-					r.Append(ident.Pos(), fmt.Sprintf("%s: %s", msg, ident.Name))
+				if !detector.IsMixedCaps(id.Name) {
+					r.Append(id.Pos(), fmt.Sprintf("%s: %s", msg, id.Name))
 				}
 			}
 		case *ast.RangeStmt:
