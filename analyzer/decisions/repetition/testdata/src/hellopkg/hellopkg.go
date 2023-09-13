@@ -1,10 +1,12 @@
 package hellopkg
 
+import "fmt"
+
 const HelloTitle = "HELLO" // want "gostyle.repetition"
 
 var GoHello = "Go" // want "gostyle.repetition"
 
-var helloStr = "Hello, World!"
+var helloStr = "Hello, World!" // want "gostyle.repetition"
 
 func HelloWorld() string { // want "gostyle.repetition"
 	return helloStr
@@ -15,5 +17,6 @@ func MyHello() string { // want "gostyle.repetition"
 }
 
 func HelloMe() string { //nostyle:repetition
-	return helloStr
+	var tenInt = 10 // want "gostyle.repetition"
+	return fmt.Sprintf("Hello %d", tenInt)
 }
