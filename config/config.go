@@ -125,7 +125,7 @@ func readConfig(filename string) (*unitchecker.Config, error) {
 	}
 	cfg := new(unitchecker.Config)
 	if err := json.Unmarshal(b, cfg); err != nil {
-		return nil, fmt.Errorf("cannot decode JSON config file %s: %v", filename, err)
+		return nil, fmt.Errorf("cannot decode JSON config file %s: %w", filename, err)
 	}
 	if len(cfg.GoFiles) == 0 {
 		return nil, fmt.Errorf("package has no files: %s", cfg.ImportPath)
