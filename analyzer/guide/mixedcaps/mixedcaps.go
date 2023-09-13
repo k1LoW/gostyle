@@ -67,6 +67,7 @@ func run(pass *analysis.Pass) (any, error) {
 		(*ast.InterfaceType)(nil),
 		(*ast.FuncDecl)(nil),
 		(*ast.AssignStmt)(nil),
+		(*ast.RangeStmt)(nil),
 	}
 
 	opts := []reporter.Option{}
@@ -161,6 +162,15 @@ func run(pass *analysis.Pass) (any, error) {
 				if !detector.IsMixedCaps(ident.Name) {
 					r.Append(ident.Pos(), fmt.Sprintf("%s: %s", msg, ident.Name))
 				}
+			}
+		case *ast.RangeStmt:
+			idk, ok := n.Key.(*ast.Ident)
+			if ok && !slices.Contains(words, idk.Name) && !detector.IsMixedCaps(idk.Name) {
+				r.Append(idk.Pos(), fmt.Sprintf("%s: %s", msg, idk.Name))
+			}
+			idv, ok := n.Value.(*ast.Ident)
+			if ok && !slices.Contains(words, idv.Name) && !detector.IsMixedCaps(idv.Name) {
+				r.Append(idv.Pos(), fmt.Sprintf("%s: %s", msg, idv.Name))
 			}
 		}
 	})

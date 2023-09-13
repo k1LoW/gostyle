@@ -16,6 +16,14 @@ func f_a(i i_a) { // want "gostyle.mixedcaps"
 	d_d, _ := os.ReadDir("tmp") // want "gostyle.mixedcaps"
 	d_d, _ = os.ReadDir("tmp")
 	log.Println(d_d)
+
+	m := map[string]int{"a": 1, "b": 2, "c": 3}
+	for k_k, v := range m { // want "gostyle.mixedcaps"
+		print(k_k, v)
+	}
+	for k, v_v := range m { // want "gostyle.mixedcaps"
+		print(k, v_v)
+	}
 }
 
 type T_a struct { // want "gostyle.mixedcaps"
