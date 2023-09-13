@@ -7,6 +7,16 @@ import (
 	"golang.org/x/tools/go/analysis"
 )
 
+const (
+	DefaultSmallScopeMax       = 7
+	DefaultSmallVarnameMax     = -1
+	DefaultMediumScopeMax      = 15
+	DefaultMediumVarnameMax    = -1
+	DefaultLargeScopeMax       = 25
+	DefaultLargeVarnameMax     = -1
+	DefaultVeryLargeVarnameMax = -1
+)
+
 type Config struct {
 	Analyzers        Analyzers        `yaml:"analyzers"`
 	AnalyzerSettings AnalyzerSettings `yaml:"analyzer-settings"`
@@ -24,6 +34,7 @@ type AnalyzerSettings struct {
 	Pkgnames    Pkgnames    `yaml:"pkgnames"`
 	Recvnames   Recvnames   `yaml:"recvnames"`
 	Underscores Underscores `yaml:"underscores"`
+	Varnames    Varnames    `yaml:"varnames"`
 }
 
 type Ifacenames struct {
@@ -47,6 +58,17 @@ type Recvnames struct {
 type Underscores struct {
 	Exclude          []string `yaml:"exclude"`
 	IncludeGenerated bool     `yaml:"include-generated"`
+}
+
+type Varnames struct {
+	IncludeGenerated    bool `yaml:"include-generated"`
+	SmallScopeMax       int  `yaml:"small-scope-max"`
+	SmallVarnameMax     int  `yaml:"small-varname-max"`
+	MediumScopeMax      int  `yaml:"medium-scope-max"`
+	MediumVarnameMax    int  `yaml:"medium-varname-max"`
+	LargeScopeMax       int  `yaml:"large-scope-max"`
+	LargeVarnameMax     int  `yaml:"large-varname-max"`
+	VeryLargeVarnameMax int  `yaml:"very-large-varname-max"`
 }
 
 func (c *Config) IsDisabled(name string) bool {
