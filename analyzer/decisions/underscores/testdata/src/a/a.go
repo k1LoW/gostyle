@@ -15,6 +15,18 @@ func f_a(i i_a) { // want "gostyle.underscores"
 	d_d, _ := os.ReadDir("tmp") // want "gostyle.underscores"
 	d_d, _ = os.ReadDir("tmp")
 	log.Println(d_d)
+
+	for i_i := 0; i_i < 10; i_i++ { // want "gostyle.underscores"
+		print(i_i)
+	}
+
+	m := map[string]int{"a": 1, "b": 2, "c": 3}
+	for k_k, v := range m { // want "gostyle.underscores"
+		print(k_k, v)
+	}
+	for k, v_v := range m { // want "gostyle.underscores"
+		print(k, v_v)
+	}
 }
 
 type T_a struct { // want "gostyle.underscores"
