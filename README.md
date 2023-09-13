@@ -116,7 +116,7 @@ analyzers-settings:
   repetition:
     include-generated: false # include generated codes (default: false)
     exclude: # exclude words
-      - Count
+      - limitStr
 ```
 
 #### underscores
