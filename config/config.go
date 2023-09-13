@@ -40,6 +40,7 @@ type AnalyzersSettings struct {
 	Mixedcaps   Mixedcaps   `yaml:"mixedcaps"`
 	Pkgnames    Pkgnames    `yaml:"pkgnames"`
 	Recvnames   Recvnames   `yaml:"recvnames"`
+	Repetition  Repetition  `yaml:"repetition"`
 	Underscores Underscores `yaml:"underscores"`
 	Varnames    Varnames    `yaml:"varnames"`
 }
@@ -60,6 +61,11 @@ type Pkgnames struct {
 
 type Recvnames struct {
 	IncludeGenerated bool `yaml:"include-generated"`
+}
+
+type Repetition struct {
+	Exclude          []string `yaml:"exclude"`
+	IncludeGenerated bool     `yaml:"include-generated"`
 }
 
 type Underscores struct {
@@ -96,7 +102,7 @@ func Load(pass *analysis.Pass) (*Config, error) {
 	return c, nil
 }
 
-func NewTypesConfig(pass *analysis.Pass) (types.Config, error) {
+func NewTypesConfig(pass *analysis.Pass) (types.Config, error) { //nostyle:repetition
 	args := flag.Args()
 	if len(args) == 0 {
 		return types.Config{Importer: importer.Default()}, nil
