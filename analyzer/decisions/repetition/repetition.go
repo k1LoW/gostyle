@@ -174,7 +174,6 @@ func init() {
 	Analyzer.Flags.StringVar(&exclude, "exclude", "", "exclude words (comma separated)")
 }
 
-// Variable name vs. type
 type typeVarReporter struct {
 	pkg  *types.Package
 	r    *reporter.Reporter
@@ -182,6 +181,7 @@ type typeVarReporter struct {
 }
 
 func (tr *typeVarReporter) report(pos token.Pos, varname string) {
+	// Variable name vs. type.
 	s := tr.pkg.Scope().Innermost(pos)
 	o := s.Lookup(varname)
 	if o == nil {
