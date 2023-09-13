@@ -22,6 +22,9 @@ lint:
 	golangci-lint run ./...
 	govulncheck ./...
 
+gostyle: build
+	go vet -vettool=./gostyle -gostyle.config=$(PWD)/.gostyle.yml ./...
+
 build:
 	go build -ldflags="$(BUILD_LDFLAGS)" -o gostyle
 

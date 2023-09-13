@@ -55,6 +55,10 @@ $ go vet -vettool=`which gostyle` -mixedcaps.disable # Disable mixedcaps analyze
 
 `gostyle` can be configured by `-gostyle.config=$PWD/.gostyle.yml`.
 
+``` console
+$ go vet -vettool=`which gostyle` -gostyle.config=$PWD/.gostyle.yml ./...
+```
+
 ```yaml
 # All available settings of specific analyzers.
 analyzers-settings:
