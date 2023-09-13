@@ -32,6 +32,7 @@ $ go vet -vettool=`which gostyle`
   - [pkgnames](analyzer/decisions/pkgnames) ... based on https://google.github.io/styleguide/go/decisions#package-names
   - [recvnames](analyzer/decisions/recvnames) ... based on https://google.github.io/styleguide/go/decisions#receiver-names
   - [underscores](analyzer/decisions/underscores) ... based on https://google.github.io/styleguide/go/decisions#underscores
+  - [varnames](analyzer/decisions/varnames) ... based on https://google.github.io/styleguide/go/decisions#variable-names
 
 ## Disabling and Ignoring
 
@@ -112,6 +113,21 @@ analyzers-settings:
     exclude: # exclude words
       - DBTX
       - EXPECT
+```
+
+#### varnames
+
+```yaml
+analyzers-settings:
+  varnames:
+    include-generated: false  # include generated codes (default: false)
+    small-scope-max: 5        # max lines for small scope (default: 7)
+    small-varname-max: 3      # max length of variable name for small scope (default: -1)
+    medium-scope-max: 10      # max lines for medium scope (default: 15)
+    medium-varname-max: 5     # max length of variable name for medium scope (default: -1)
+    large-scope-max: 15       # max lines for large scope (default: 25)
+    large-varname-max: 7      # max length of variable name for large scope (default: -1)
+    very-large-varname-max: 9 # max length of variable name for very large scope (default: -1)
 ```
 
 ## Install
