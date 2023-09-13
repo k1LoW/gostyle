@@ -68,10 +68,13 @@ func run(pass *analysis.Pass) (any, error) {
 		largeVarnameMax = c.AnalyzerSettings.Varnames.LargeVarnameMax
 		veryLargeVarnameMax = c.AnalyzerSettings.Varnames.VeryLargeVarnameMax
 	}
-
 	if disable {
 		return nil, nil
 	}
+	if smallVarnameMax <= 0 && mediumVarnameMax <= 0 && largeVarnameMax <= 0 && veryLargeVarnameMax <= 0 {
+		return nil, nil
+	}
+
 	i, ok := pass.ResultOf[inspect.Analyzer].(*inspector.Inspector)
 	if !ok {
 		return nil, fmt.Errorf("unexpected result type from inspect: %T", pass.ResultOf[inspect.Analyzer])
