@@ -57,14 +57,14 @@ func run(pass *analysis.Pass) (any, error) {
 	}
 	if c != nil {
 		disable = c.IsDisabled(name)
-		includeGenerated = c.AnalyzerSettings.Varnames.IncludeGenerated
-		smallScopeMax = c.AnalyzerSettings.Varnames.SmallScopeMax
-		smallVarnameMax = c.AnalyzerSettings.Varnames.SmallVarnameMax
-		mediumScopeMax = c.AnalyzerSettings.Varnames.MediumScopeMax
-		mediumVarnameMax = c.AnalyzerSettings.Varnames.MediumVarnameMax
-		largeScopeMax = c.AnalyzerSettings.Varnames.LargeScopeMax
-		largeVarnameMax = c.AnalyzerSettings.Varnames.LargeVarnameMax
-		veryLargeVarnameMax = c.AnalyzerSettings.Varnames.VeryLargeVarnameMax
+		includeGenerated = c.AnalyzersSettings.Varnames.IncludeGenerated
+		smallScopeMax = c.AnalyzersSettings.Varnames.SmallScopeMax
+		smallVarnameMax = c.AnalyzersSettings.Varnames.SmallVarnameMax
+		mediumScopeMax = c.AnalyzersSettings.Varnames.MediumScopeMax
+		mediumVarnameMax = c.AnalyzersSettings.Varnames.MediumVarnameMax
+		largeScopeMax = c.AnalyzersSettings.Varnames.LargeScopeMax
+		largeVarnameMax = c.AnalyzersSettings.Varnames.LargeVarnameMax
+		veryLargeVarnameMax = c.AnalyzersSettings.Varnames.VeryLargeVarnameMax
 	}
 	if disable {
 		return nil, nil

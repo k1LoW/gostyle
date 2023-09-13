@@ -46,8 +46,8 @@ func run(pass *analysis.Pass) (any, error) {
 	}
 	if c != nil {
 		disable = c.IsDisabled(name)
-		includeGenerated = c.AnalyzerSettings.Ifacenames.IncludeGenerated
-		all = c.AnalyzerSettings.Ifacenames.All
+		includeGenerated = c.AnalyzersSettings.Ifacenames.IncludeGenerated
+		all = c.AnalyzersSettings.Ifacenames.All
 	}
 	if disable {
 		return nil, nil
