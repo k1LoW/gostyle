@@ -33,6 +33,9 @@ jobs:
            check-latest: true
            go-package: ./...
 
+      - name: Run gostyle
+        run: make gostyle
+
       - name: Run tests
         run: make ci
 
