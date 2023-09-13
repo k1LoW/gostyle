@@ -81,12 +81,12 @@ func run(pass *analysis.Pass) (any, error) {
 	i.Preorder(nodeFilter, func(n ast.Node) {
 		switch n := n.(type) {
 		case *ast.File:
-			pkgname := n.Name.Name
-			if slices.Contains(words, pkgname) {
+			pkg := n.Name.Name
+			if slices.Contains(words, pkg) {
 				return
 			}
-			if !detector.NoUnderscore(strings.TrimSuffix(pkgname, "_test")) {
-				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, pkgname))
+			if !detector.NoUnderscore(strings.TrimSuffix(pkg, "_test")) {
+				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, pkg))
 			}
 		case *ast.ImportSpec:
 			if n.Name == nil {

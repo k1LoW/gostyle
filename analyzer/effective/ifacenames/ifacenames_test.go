@@ -18,7 +18,7 @@ func TestAnalyzer(t *testing.T) {
 	}
 	for _, tt := range tests {
 		all = tt.all
-		testdata := testutil.WithModules(t, analysistest.TestData(), nil)
-		analysistest.Run(t, testdata, Analyzer, tt.pkg)
+		td := testutil.WithModules(t, analysistest.TestData(), nil)
+		analysistest.Run(t, td, Analyzer, tt.pkg)
 	}
 }
