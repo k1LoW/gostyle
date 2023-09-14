@@ -78,7 +78,15 @@ func run(pass *analysis.Pass) (any, error) {
 			for _, l := range n.Recv.List {
 				switch t := l.Type.(type) {
 				case *ast.StarExpr:
-					sn = t.X.(*ast.Ident).Name
+					switch tt := t.X.(type) {
+					case *ast.Ident:
+						sn = tt.Name
+					case *ast.IndexExpr:
+						switch ttt := tt.X.(type) {
+						case *ast.Ident:
+							sn = ttt.Name
+						}
+					}
 				case *ast.Ident:
 					sn = t.Name
 				}
