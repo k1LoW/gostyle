@@ -1,5 +1,7 @@
 # Changelog
 
+## [v0.10.1](https://github.com/k1LoW/gostyle/compare/v0.10.0...v0.10.1) - 2023-09-14
+
 ## [v0.10.0](https://github.com/k1LoW/gostyle/compare/v0.9.0...v0.10.0) - 2023-09-14
 ### New Features 🎉
 - Add getter analyzer by @k1LoW in https://github.com/k1LoW/gostyle/pull/40
