@@ -40,3 +40,7 @@ func NoUnderscore(s string) bool {
 	}
 	return !strings.Contains(s, "_")
 }
+
+func HasGetPrefix(s string) bool {
+	return strings.HasPrefix(strings.ToLower(s), "get")
+}

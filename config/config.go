@@ -36,6 +36,7 @@ type Analyzers struct {
 }
 
 type AnalyzersSettings struct {
+	Getters     Getters     `yaml:"getters"`
 	Ifacenames  Ifacenames  `yaml:"ifacenames"`
 	Mixedcaps   Mixedcaps   `yaml:"mixedcaps"`
 	Nilslices   Nilslices   `yaml:"nilslices"`
@@ -44,6 +45,11 @@ type AnalyzersSettings struct {
 	Repetition  Repetition  `yaml:"repetition"`
 	Underscores Underscores `yaml:"underscores"`
 	Varnames    Varnames    `yaml:"varnames"`
+}
+
+type Getters struct {
+	Exclude          []string `yaml:"exclude"`
+	IncludeGenerated bool     `yaml:"include-generated"`
 }
 
 type Ifacenames struct {

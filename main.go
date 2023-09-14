@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/k1LoW/gostyle/analyzer/decisions/getters"
 	"github.com/k1LoW/gostyle/analyzer/decisions/nilslices"
 	"github.com/k1LoW/gostyle/analyzer/decisions/pkgnames"
 	"github.com/k1LoW/gostyle/analyzer/decisions/recvnames"
@@ -16,6 +17,7 @@ import (
 func main() {
 	unitchecker.Main(
 		config.Loader,
+		getters.Analyzer,
 		ifacenames.Analyzer,
 		pkgnames.Analyzer,
 		mixedcaps.Analyzer,
