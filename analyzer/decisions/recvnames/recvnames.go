@@ -16,8 +16,8 @@ import (
 const (
 	name = "recvnames"
 	doc  = "Analyzer based on https://google.github.io/styleguide/go/decisions#receiver-names"
-	msg  = "receiver variable names must be short (usually one or two letters in length)"
-	msga = "receiver variable names must be abbreviations for the type itself"
+	msg  = "Receiver variable names must be short (usually one or two letters in length)"
+	msga = "Receiver variable names must be abbreviations for the type itself"
 )
 
 var (
