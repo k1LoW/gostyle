@@ -28,7 +28,7 @@ var (
 	exclude          string
 )
 
-// Analyzer based on https://google.github.io/styleguide/go/guide#underscores
+// Analyzer based on https://google.github.io/styleguide/go/decisions#underscores
 var Analyzer = &analysis.Analyzer{
 	Name: name,
 	Doc:  doc,
