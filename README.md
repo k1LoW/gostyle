@@ -29,6 +29,7 @@ $ go vet -vettool=`which gostyle`
 - [**Guide**](https://google.github.io/styleguide/go/guide)
   - [mixedcaps](analyzer/guide/mixedcaps) ... based on https://google.github.io/styleguide/go/guide#mixed-caps
 - [**Decisions**](https://google.github.io/styleguide/go/decisions)
+  - [getters](analyzer/decisions/getters) ... based on https://google.github.io/styleguide/go/decisions#getters
   - [nilslices](analyzer/decisions/nilslices) ... based on https://google.github.io/styleguide/go/decisions#nil-slices
   - [pkgnames](analyzer/decisions/pkgnames) ... based on https://google.github.io/styleguide/go/decisions#package-names
   - [recvnames](analyzer/decisions/recvnames) ... based on https://google.github.io/styleguide/go/decisions#receiver-names
@@ -73,6 +74,16 @@ analyzers:
 ```
 
 ### `analyzers-settings:`
+
+#### getters
+
+```yaml
+analyzers-settings:
+  getters:
+    include-generated: false # include generated codes (default: false)
+    exclude:                 # exclude words
+      - GetViaHTTP
+```
 
 #### ifacenames
 
