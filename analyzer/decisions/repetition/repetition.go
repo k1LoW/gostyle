@@ -161,6 +161,9 @@ func run(pass *analysis.Pass) (any, error) {
 				if len(s) == 1 {
 					continue
 				}
+				if strings.HasSuffix(pkgn, "_test") && strings.ToLower(s) == "test" {
+					continue
+				}
 				if strings.Contains(pkgn, strings.ToLower(s)) {
 					r.Append(n.Pos(), fmt.Sprintf("%s: %s<-[%s]->%s", msgp, pkgn, s, n.Name.Name))
 				}
