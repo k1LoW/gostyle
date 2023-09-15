@@ -103,11 +103,14 @@ func run(pass *analysis.Pass) (any, error) {
 					continue
 				}
 				splitted := camelcase.Split(id.Name)
+				if slices.Contains(words, id.Name) {
+					continue
+				}
 				for _, s := range splitted {
 					if len(s) == 1 {
 						continue
 					}
-					if slices.Contains(words, s) {
+					if strings.HasSuffix(pkgn, "_test") && strings.ToLower(s) == "test" {
 						continue
 					}
 					if strings.Contains(pkgn, strings.ToLower(s)) {
