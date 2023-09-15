@@ -77,7 +77,7 @@ func run(pass *analysis.Pass) (any, error) {
 				if !ok {
 					continue
 				}
-				if c.Elts != nil {
+				if len(c.Elts) > 0 {
 					continue
 				}
 				if _, ok := c.Type.(*ast.ArrayType); !ok {
@@ -94,7 +94,7 @@ func run(pass *analysis.Pass) (any, error) {
 				if !ok {
 					continue
 				}
-				if c.Elts != nil {
+				if len(c.Elts) > 0 {
 					continue
 				}
 				if _, ok := c.Type.(*ast.ArrayType); !ok {
