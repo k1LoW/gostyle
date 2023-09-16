@@ -5,6 +5,8 @@ import (
 	"go/ast"
 	"go/token"
 	"go/types"
+	"slices"
+	"strings"
 
 	"github.com/gostaticanalysis/comment/passes/commentmap"
 	"github.com/k1LoW/gostyle/config"
@@ -28,6 +30,7 @@ const (
 
 var (
 	disable             bool
+	exclude             string
 	includeGenerated    bool
 	smallScopeMax       int
 	smallVarnameMax     int
@@ -66,8 +69,10 @@ func run(pass *analysis.Pass) (any, error) {
 	if err != nil {
 		return nil, err
 	}
+	words := strings.Split(exclude, ",")
 	if c != nil {
 		disable = c.IsDisabled(name)
+		words = c.AnalyzersSettings.Varnames.Exclude
 		includeGenerated = c.AnalyzersSettings.Varnames.IncludeGenerated
 		smallScopeMax = c.AnalyzersSettings.Varnames.SmallScopeMax
 		smallVarnameMax = c.AnalyzersSettings.Varnames.SmallVarnameMax
@@ -114,9 +119,10 @@ func run(pass *analysis.Pass) (any, error) {
 		return nil, err
 	}
 	sr := &scopeReporter{
-		pkg:  pkg,
-		r:    r,
-		pass: pass,
+		pkg:     pkg,
+		r:       r,
+		pass:    pass,
+		exclude: words,
 	}
 	i.Preorder(nodeFilter, func(n ast.Node) {
 		switch n := n.(type) {
@@ -151,12 +157,16 @@ func run(pass *analysis.Pass) (any, error) {
 }
 
 type scopeReporter struct {
-	pkg  *types.Package
-	r    *reporter.Reporter
-	pass *analysis.Pass
+	pkg     *types.Package
+	r       *reporter.Reporter
+	pass    *analysis.Pass
+	exclude []string
 }
 
 func (sr *scopeReporter) report(pos token.Pos, varname string) {
+	if slices.Contains(sr.exclude, varname) {
+		return
+	}
 	s := sr.pkg.Scope().Innermost(pos)
 	o := s.Lookup(varname)
 	if o == nil {
@@ -210,6 +220,7 @@ func (sr *scopeReporter) scope(s *types.Scope) int {
 func init() {
 	Analyzer.Flags.BoolVar(&disable, "disable", false, "disable "+name+" analyzer")
 	Analyzer.Flags.BoolVar(&includeGenerated, "include-generated", false, "include generated codes")
+	Analyzer.Flags.StringVar(&exclude, "exclude", "", "exclude words (comma separated)")
 	Analyzer.Flags.IntVar(&smallScopeMax, "small-scope-max", config.DefaultSmallScopeMax, "max lines for small scope")
 	Analyzer.Flags.IntVar(&smallVarnameMax, "small-varname-max", config.DefaultSmallVarnameMax, "max length of variable name for small scope")
 	Analyzer.Flags.IntVar(&mediumScopeMax, "medium-scope-max", config.DefaultMediumScopeMax, "max lines for medium scope")

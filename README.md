@@ -163,6 +163,8 @@ analyzers-settings:
     large-scope-max: 15       # max lines for large scope (default: 25)
     large-varname-max: 7      # max length of variable name for large scope (default: -1)
     very-large-varname-max: 9 # max length of variable name for very large scope (default: -1)
+    exclude:                  # exclude words
+      - hostname
 ```
 
 ## Install
