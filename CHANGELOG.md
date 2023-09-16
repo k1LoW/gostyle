@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.10.4](https://github.com/k1LoW/gostyle/compare/v0.10.3...v0.10.4) - 2023-09-16
+### New Features 🎉
+- Update nilslices ( Check distinction between a nil slice and a non-nil ) by @k1LoW in https://github.com/k1LoW/gostyle/pull/45
+
 ## [v0.10.3](https://github.com/k1LoW/gostyle/compare/v0.10.2...v0.10.3) - 2023-09-15
 
 ## [v0.10.2](https://github.com/k1LoW/gostyle/compare/v0.10.1...v0.10.2) - 2023-09-15
