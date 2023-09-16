@@ -102,7 +102,7 @@ func (c *Config) IsDisabled(name string) bool {
 func Load(pass *analysis.Pass) (*Config, error) {
 	c, ok := pass.ResultOf[Loader].(*Config)
 	if !ok {
-		return nil, fmt.Errorf("unexpected result type from config.Loader: %T", pass.ResultOf[Loader])
+		return nil, nil
 	}
 	if c.err != nil {
 		return nil, c.err

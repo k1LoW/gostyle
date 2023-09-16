@@ -36,6 +36,17 @@ var Analyzer = &analysis.Analyzer{
 	Doc:  doc,
 	Run:  run,
 	Requires: []*analysis.Analyzer{
+		inspect.Analyzer,
+		commentmap.Analyzer,
+	},
+}
+
+// AnalyzerWithConfig based on https://google.github.io/styleguide/go/decisions#repetition
+var AnalyzerWithConfig = &analysis.Analyzer{
+	Name: name,
+	Doc:  doc,
+	Run:  run,
+	Requires: []*analysis.Analyzer{
 		config.Loader,
 		inspect.Analyzer,
 		commentmap.Analyzer,

@@ -17,14 +17,14 @@ import (
 func main() {
 	unitchecker.Main(
 		config.Loader,
-		getters.Analyzer,
-		ifacenames.Analyzer,
-		pkgnames.Analyzer,
-		mixedcaps.Analyzer,
-		nilslices.Analyzer,
-		recvnames.Analyzer,
-		repetition.Analyzer,
-		underscores.Analyzer,
-		varnames.Analyzer,
+		getters.AnalyzerWithConfig,
+		ifacenames.AnalyzerWithConfig,
+		pkgnames.AnalyzerWithConfig,
+		mixedcaps.AnalyzerWithConfig,
+		nilslices.AnalyzerWithConfig,
+		recvnames.AnalyzerWithConfig,
+		repetition.AnalyzerWithConfig,
+		underscores.AnalyzerWithConfig,
+		varnames.AnalyzerWithConfig,
 	)
 }

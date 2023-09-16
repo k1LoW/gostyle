@@ -33,6 +33,18 @@ var Analyzer = &analysis.Analyzer{
 	URL:  "https://github.com/k1LoW/gostyle/tree/main/analyzer/effective/ifacenames",
 	Run:  run,
 	Requires: []*analysis.Analyzer{
+		inspect.Analyzer,
+		commentmap.Analyzer,
+	},
+}
+
+// AnalyzerWithConfig based on https://go.dev/doc/effective_go#interface-names.
+var AnalyzerWithConfig = &analysis.Analyzer{
+	Name: name,
+	Doc:  doc,
+	URL:  "https://github.com/k1LoW/gostyle/tree/main/analyzer/effective/ifacenames",
+	Run:  run,
+	Requires: []*analysis.Analyzer{
 		config.Loader,
 		inspect.Analyzer,
 		commentmap.Analyzer,
