@@ -10,5 +10,5 @@ import (
 // TestAnalyzer is a test for Analyzer.
 func TestAnalyzer(t *testing.T) {
 	td := testutil.WithModules(t, analysistest.TestData(), nil)
-	analysistest.Run(t, td, Analyzer, "hellopkg")
+	analysistest.Run(t, td, Analyzer, "hellopkg", "testutil")
 }
