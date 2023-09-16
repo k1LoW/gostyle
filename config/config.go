@@ -85,14 +85,15 @@ type Underscores struct {
 }
 
 type Varnames struct {
-	IncludeGenerated    bool `yaml:"include-generated"`
-	SmallScopeMax       int  `yaml:"small-scope-max"`
-	SmallVarnameMax     int  `yaml:"small-varname-max"`
-	MediumScopeMax      int  `yaml:"medium-scope-max"`
-	MediumVarnameMax    int  `yaml:"medium-varname-max"`
-	LargeScopeMax       int  `yaml:"large-scope-max"`
-	LargeVarnameMax     int  `yaml:"large-varname-max"`
-	VeryLargeVarnameMax int  `yaml:"very-large-varname-max"`
+	Exclude             []string `yaml:"exclude"`
+	IncludeGenerated    bool     `yaml:"include-generated"`
+	SmallScopeMax       int      `yaml:"small-scope-max"`
+	SmallVarnameMax     int      `yaml:"small-varname-max"`
+	MediumScopeMax      int      `yaml:"medium-scope-max"`
+	MediumVarnameMax    int      `yaml:"medium-varname-max"`
+	LargeScopeMax       int      `yaml:"large-scope-max"`
+	LargeVarnameMax     int      `yaml:"large-varname-max"`
+	VeryLargeVarnameMax int      `yaml:"very-large-varname-max"`
 }
 
 func (c *Config) IsDisabled(name string) bool {

@@ -27,3 +27,8 @@ func medium() {
 	print(3)
 	print(gopher)
 }
+
+func exlude() {
+	var thisIsExludeVar int
+	print(thisIsExludeVar)
+}
