@@ -54,6 +54,7 @@ jobs:
   - [nilslices](analyzer/decisions/nilslices) ... based on https://google.github.io/styleguide/go/decisions#nil-slices
   - [pkgnames](analyzer/decisions/pkgnames) ... based on https://google.github.io/styleguide/go/decisions#package-names
   - [recvnames](analyzer/decisions/recvnames) ... based on https://google.github.io/styleguide/go/decisions#receiver-names
+  - [recvtype](analyzer/decisions/recvtype) ... based on https://google.github.io/styleguide/go/decisions#receiver-type
   - [repetition](analyzer/decisions/repetition) ... based on https://google.github.io/styleguide/go/decisions#repetition
   - [underscores](analyzer/decisions/underscores) ... based on https://google.github.io/styleguide/go/decisions#underscores
   - [varnames](analyzer/decisions/varnames) ... based on https://google.github.io/styleguide/go/decisions#variable-names
@@ -143,6 +144,14 @@ analyzers-settings:
 ```
 
 #### recvnames
+
+```yaml
+analyzers-settings:
+  recvnames:
+    include-generated: false # include generated codes (default: false)
+```
+
+#### recvtype
 
 ```yaml
 analyzers-settings:

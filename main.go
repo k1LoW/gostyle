@@ -5,6 +5,7 @@ import (
 	"github.com/k1LoW/gostyle/analyzer/decisions/nilslices"
 	"github.com/k1LoW/gostyle/analyzer/decisions/pkgnames"
 	"github.com/k1LoW/gostyle/analyzer/decisions/recvnames"
+	"github.com/k1LoW/gostyle/analyzer/decisions/recvtype"
 	"github.com/k1LoW/gostyle/analyzer/decisions/repetition"
 	"github.com/k1LoW/gostyle/analyzer/decisions/underscores"
 	"github.com/k1LoW/gostyle/analyzer/decisions/varnames"
@@ -23,6 +24,7 @@ func main() {
 		mixedcaps.AnalyzerWithConfig,
 		nilslices.AnalyzerWithConfig,
 		recvnames.AnalyzerWithConfig,
+		recvtype.AnalyzerWithConfig,
 		repetition.AnalyzerWithConfig,
 		underscores.AnalyzerWithConfig,
 		varnames.AnalyzerWithConfig,
