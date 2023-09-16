@@ -75,6 +75,8 @@ func run(pass *analysis.Pass) (any, error) {
 
 	nodeFilter := []ast.Node{
 		(*ast.ValueSpec)(nil),
+		(*ast.AssignStmt)(nil),
+		(*ast.RangeStmt)(nil),
 		(*ast.FuncDecl)(nil),
 	}
 
