@@ -42,6 +42,7 @@ type AnalyzersSettings struct {
 	Nilslices   Nilslices   `yaml:"nilslices"`
 	Pkgnames    Pkgnames    `yaml:"pkgnames"`
 	Recvnames   Recvnames   `yaml:"recvnames"`
+	Recvtype    Recvtype    `yaml:"recvtype"`
 	Repetition  Repetition  `yaml:"repetition"`
 	Underscores Underscores `yaml:"underscores"`
 	Varnames    Varnames    `yaml:"varnames"`
@@ -71,6 +72,10 @@ type Pkgnames struct {
 }
 
 type Recvnames struct {
+	IncludeGenerated bool `yaml:"include-generated"`
+}
+
+type Recvtype struct {
 	IncludeGenerated bool `yaml:"include-generated"`
 }
 
