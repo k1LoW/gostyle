@@ -13,6 +13,7 @@ func TestAnalyzer(t *testing.T) {
 	mediumVarnameMax = 5
 	largeVarnameMax = 10
 	veryLargeVarnameMax = 15
+	exclude = "thisIsExludeVar"
 
 	testdata := testutil.WithModules(t, analysistest.TestData(), nil)
 	analysistest.Run(t, testdata, Analyzer, "a")
