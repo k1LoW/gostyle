@@ -168,6 +168,26 @@ func run(pass *analysis.Pass) (any, error) {
 			if slices.Contains(words, n.Name.Name) {
 				return
 			}
+			if strings.HasPrefix(n.Name.Name, "Test") {
+				if n.Type != nil && n.Type.Params != nil && len(n.Type.Params.List) > 0 {
+					switch t := n.Type.Params.List[0].Type.(type) {
+					case *ast.StarExpr:
+						s, ok := t.X.(*ast.SelectorExpr)
+						if ok {
+							id, ok := s.X.(*ast.Ident)
+							if ok && id.Name == "testing" {
+								return
+							}
+						}
+					case *ast.SelectorExpr:
+						id, ok := t.X.(*ast.Ident)
+						if ok && id.Name == "testing" {
+							return
+						}
+					}
+				}
+			}
+
 			// Package vs. exported symbol name
 			splitted := camelcase.Split(n.Name.Name)
 			for _, s := range splitted {
