@@ -16,6 +16,10 @@
 $ go vet -vettool=`which gostyle`
 ```
 
+### On GitHub Actions
+
+**:octocat: GitHub Actions for gostyle is [here](https://github.com/k1LoW/gostyle-action) !!**
+
 ## Analyzers
 
 **Although not perfect**, it provides analyzers based on helpful styles.
