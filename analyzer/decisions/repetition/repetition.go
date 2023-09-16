@@ -93,7 +93,7 @@ func run(pass *analysis.Pass) (any, error) {
 	i.Preorder(nodeFilter, func(n ast.Node) {
 		switch n := n.(type) {
 		case *ast.ValueSpec:
-			if n.Names == nil {
+			if len(n.Names) == 0 {
 				return
 			}
 			// Package vs. exported symbol name

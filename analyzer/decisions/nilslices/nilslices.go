@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"go/ast"
 	"go/token"
+	"go/types"
 
 	"github.com/gostaticanalysis/comment/passes/commentmap"
 	"github.com/k1LoW/gostyle/config"
@@ -17,6 +18,7 @@ const (
 	name = "nilslices"
 	doc  = "Analyzer based on https://google.github.io/styleguide/go/decisions#nil-slices"
 	msg  = "If you declare an empty slice as a local variable (especially if it can be the source of a return value), prefer the nil initialization to reduce the risk of bugs by callers. (ref: https://google.github.io/styleguide/go/decisions#nil-slices)"
+	msgc = "When designing interfaces, avoid making a distinction between a nil slice and a non-nil, zero-length slice, as this can lead to subtle programming errors. This is typically accomplished by using len to check for emptiness, rather than == nil. (ref: https://google.github.io/styleguide/go/decisions#nil-slices)"
 )
 
 var (
@@ -56,6 +58,7 @@ func run(pass *analysis.Pass) (any, error) {
 	nodeFilter := []ast.Node{
 		(*ast.ValueSpec)(nil),
 		(*ast.AssignStmt)(nil),
+		(*ast.BinaryExpr)(nil),
 	}
 
 	var opts []reporter.Option
@@ -74,7 +77,7 @@ func run(pass *analysis.Pass) (any, error) {
 				if !ok {
 					continue
 				}
-				if c.Elts != nil {
+				if len(c.Elts) > 0 {
 					continue
 				}
 				if _, ok := c.Type.(*ast.ArrayType); !ok {
@@ -91,7 +94,7 @@ func run(pass *analysis.Pass) (any, error) {
 				if !ok {
 					continue
 				}
-				if c.Elts != nil {
+				if len(c.Elts) > 0 {
 					continue
 				}
 				if _, ok := c.Type.(*ast.ArrayType); !ok {
@@ -103,6 +106,34 @@ func run(pass *analysis.Pass) (any, error) {
 				}
 				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, id.Name))
 			}
+		case *ast.BinaryExpr:
+			if n.Op != token.EQL && n.Op != token.NEQ {
+				return
+			}
+			if !isNil(pass, n.X) && !isNil(pass, n.Y) {
+				return
+			}
+			if isNil(pass, n.X) && isNil(pass, n.Y) {
+				return
+			}
+			if isSlice(pass, n.X) && isNil(pass, n.Y) {
+				idx, okx := n.X.(*ast.Ident)
+				idy, oky := n.Y.(*ast.Ident)
+				if okx && oky {
+					r.Append(n.Pos(), fmt.Sprintf("%s: %s %s %s", msgc, idx.Name, n.Op.String(), idy.Name))
+				} else {
+					r.Append(n.Pos(), msgc)
+				}
+			}
+			if isNil(pass, n.X) && isSlice(pass, n.Y) {
+				idx, okx := n.X.(*ast.Ident)
+				idy, oky := n.Y.(*ast.Ident)
+				if okx && oky {
+					r.Append(n.Pos(), fmt.Sprintf("%s: %s %s %s", msgc, idx.Name, n.Op.String(), idy.Name))
+				} else {
+					r.Append(n.Pos(), msgc)
+				}
+			}
 		}
 	})
 	r.Report()
@@ -112,4 +143,27 @@ func run(pass *analysis.Pass) (any, error) {
 func init() {
 	Analyzer.Flags.BoolVar(&disable, "disable", false, "disable "+name+" analyzer")
 	Analyzer.Flags.BoolVar(&includeGenerated, "include-generated", false, "include generated codes")
+}
+
+func isSlice(pass *analysis.Pass, e ast.Expr) bool {
+	typ := pass.TypesInfo.TypeOf(e)
+	if typ == nil {
+		return false
+	}
+	if _, ok := typ.(*types.Slice); ok {
+		return true
+	}
+	return false
+}
+
+func isNil(pass *analysis.Pass, e ast.Expr) bool {
+	nilTyp := types.Typ[types.UntypedNil]
+	typ := pass.TypesInfo.TypeOf(e)
+	if typ == nil {
+		return false
+	}
+	if types.Identical(typ, nilTyp) {
+		return true
+	}
+	return false
 }
