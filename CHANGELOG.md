@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.10.5](https://github.com/k1LoW/gostyle/compare/v0.10.4...v0.10.5) - 2023-09-16
+### New Features 🎉
+- Separate each analyzer for stand-alone use by @k1LoW in https://github.com/k1LoW/gostyle/pull/47
+
 ## [v0.10.4](https://github.com/k1LoW/gostyle/compare/v0.10.3...v0.10.4) - 2023-09-16
 ### New Features 🎉
 - Update nilslices ( Check distinction between a nil slice and a non-nil ) by @k1LoW in https://github.com/k1LoW/gostyle/pull/45
