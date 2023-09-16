@@ -1,5 +1,10 @@
 # Changelog
 
+## [v0.10.6](https://github.com/k1LoW/gostyle/compare/v0.10.5...v0.10.6) - 2023-09-16
+### Fix bug 🐛
+- Fix repetition bug by @k1LoW in https://github.com/k1LoW/gostyle/pull/49
+- Skip test function by @k1LoW in https://github.com/k1LoW/gostyle/pull/50
+
 ## [v0.10.5](https://github.com/k1LoW/gostyle/compare/v0.10.4...v0.10.5) - 2023-09-16
 ### New Features 🎉
 - Separate each analyzer for stand-alone use by @k1LoW in https://github.com/k1LoW/gostyle/pull/47
