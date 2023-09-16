@@ -1,5 +1,10 @@
 # Changelog
 
+## [v0.11.0](https://github.com/k1LoW/gostyle/compare/v0.10.6...v0.11.0) - 2023-09-16
+### New Features 🎉
+- varnames analyzer supports excluding variables from analysis. by @k1LoW in https://github.com/k1LoW/gostyle/pull/52
+- Add recvtype analyzer by @k1LoW in https://github.com/k1LoW/gostyle/pull/54
+
 ## [v0.10.6](https://github.com/k1LoW/gostyle/compare/v0.10.5...v0.10.6) - 2023-09-16
 ### Fix bug 🐛
 - Fix repetition bug by @k1LoW in https://github.com/k1LoW/gostyle/pull/49
