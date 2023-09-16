@@ -20,6 +20,23 @@ $ go vet -vettool=`which gostyle`
 
 **:octocat: GitHub Actions for gostyle is [here](https://github.com/k1LoW/gostyle-action) !!**
 
+``` yaml
+# .github/workflows/ci.yml
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+[...]
+      -
+        uses: k1LoW/gostyle-action@v1
+        with:
+          config-file: .gostyle.yml
+[...]
+```
+
 ## Analyzers
 
 **Although not perfect**, it provides analyzers based on helpful styles.
