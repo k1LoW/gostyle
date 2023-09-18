@@ -1,5 +1,12 @@
 # Changelog
 
+## [v0.12.0](https://github.com/k1LoW/gostyle/compare/v0.11.0...v0.12.0) - 2023-09-18
+### New Features 🎉
+- Add typealiases analyzer by @k1LoW in https://github.com/k1LoW/gostyle/pull/56
+- Add useq analyzer by @k1LoW in https://github.com/k1LoW/gostyle/pull/58
+### Other Changes
+- Add reference style credits by @k1LoW in https://github.com/k1LoW/gostyle/pull/57
+
 ## [v0.11.0](https://github.com/k1LoW/gostyle/compare/v0.10.6...v0.11.0) - 2023-09-16
 ### New Features 🎉
 - varnames analyzer supports excluding variables from analysis. by @k1LoW in https://github.com/k1LoW/gostyle/pull/52
