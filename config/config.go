@@ -46,6 +46,7 @@ type AnalyzersSettings struct {
 	Repetition  Repetition  `yaml:"repetition"`
 	Typealiases Typealiases `yaml:"typealiases"`
 	Underscores Underscores `yaml:"underscores"`
+	Useq        Useq        `yaml:"useq"`
 	Varnames    Varnames    `yaml:"varnames"`
 }
 
@@ -93,6 +94,10 @@ type Typealiases struct {
 type Underscores struct {
 	Exclude          []string `yaml:"exclude"`
 	IncludeGenerated bool     `yaml:"include-generated"`
+}
+
+type Useq struct {
+	IncludeGenerated bool `yaml:"include-generated"`
 }
 
 type Varnames struct {

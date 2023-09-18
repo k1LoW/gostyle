@@ -60,6 +60,7 @@ jobs:
   - [repetition](analyzer/decisions/repetition) ... based on https://google.github.io/styleguide/go/decisions#repetition
   - [typealiases](analyzer/decisions/typealiases) ... based on https://google.github.io/styleguide/go/decisions#type-aliases
   - [underscores](analyzer/decisions/underscores) ... based on https://google.github.io/styleguide/go/decisions#underscores
+  - [useq](analyzer/decisions/useq) ... based on https://google.github.io/styleguide/go/decisions#use-q
   - [varnames](analyzer/decisions/varnames) ... based on https://google.github.io/styleguide/go/decisions#variable-names
 
 > ["Google Style Guides"](https://google.github.io/styleguide/) by Google is licensed under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
@@ -193,6 +194,14 @@ analyzers-settings:
     exclude:                 # exclude words
       - DBTX
       - EXPECT
+```
+
+#### useq
+
+```yaml
+analyzers-settings:
+  useq:
+    include-generated: false # include generated codes (default: false)
 ```
 
 #### varnames
