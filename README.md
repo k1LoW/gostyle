@@ -8,7 +8,7 @@
 
 `gostyle` **IS NOT** [Go Style](https://google.github.io/styleguide/go/).
 
-"Go Style" of [Google Style Guides](https://google.github.io/styleguide) is a great style and we will actively refer to it, but we cannot implement the same rules perfectly, and we may extend the rules.
+"Go Style" in [Google Style Guides](https://google.github.io/styleguide) is a great style and we will actively refer to it, but we cannot implement the same rules perfectly, and we may extend the rules.
 
 ## Usage
 
@@ -47,7 +47,7 @@ jobs:
 
 > ["Effective Go"](https://go.dev/doc/effective_go) by The Go Authors is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
-### [Go Style](https://google.github.io/styleguide/go/)
+### [Go Style](https://google.github.io/styleguide/go/) in Google Style Guides
 
 - [**Guide**](https://google.github.io/styleguide/go/guide)
   - [mixedcaps](analyzer/guide/mixedcaps) ... based on https://google.github.io/styleguide/go/guide#mixed-caps
