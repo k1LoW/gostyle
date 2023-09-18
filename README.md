@@ -8,7 +8,7 @@
 
 `gostyle` **IS NOT** [Go Style](https://google.github.io/styleguide/go/).
 
-"Go Style" in [Google Style Guide](https://google.github.io/styleguide) is a great style and we will actively refer to it, but we cannot implement the same rules exactly, and we may extend the rules.
+"Go Style" of [Google Style Guides](https://google.github.io/styleguide) is a great style and we will actively refer to it, but we cannot implement the same rules perfectly, and we may extend the rules.
 
 ## Usage
 
