@@ -58,6 +58,7 @@ jobs:
   - [recvnames](analyzer/decisions/recvnames) ... based on https://google.github.io/styleguide/go/decisions#receiver-names
   - [recvtype](analyzer/decisions/recvtype) ... based on https://google.github.io/styleguide/go/decisions#receiver-type
   - [repetition](analyzer/decisions/repetition) ... based on https://google.github.io/styleguide/go/decisions#repetition
+  - [typealiases](analyzer/decisions/typealiases) ... based on https://google.github.io/styleguide/go/decisions#type-aliases
   - [underscores](analyzer/decisions/underscores) ... based on https://google.github.io/styleguide/go/decisions#underscores
   - [varnames](analyzer/decisions/varnames) ... based on https://google.github.io/styleguide/go/decisions#variable-names
 
@@ -171,6 +172,16 @@ analyzers-settings:
     include-generated: false # include generated codes (default: false)
     exclude:                 # exclude words
       - limitStr
+```
+
+#### typealiases
+
+```yaml
+analyzers-settings:
+  typealiases:
+    include-generated: false # include generated codes (default: false)
+    exclude:                 # exclude words
+      - TmpAliasHeader
 ```
 
 #### underscores

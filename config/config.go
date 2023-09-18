@@ -44,6 +44,7 @@ type AnalyzersSettings struct {
 	Recvnames   Recvnames   `yaml:"recvnames"`
 	Recvtype    Recvtype    `yaml:"recvtype"`
 	Repetition  Repetition  `yaml:"repetition"`
+	Typealiases Typealiases `yaml:"typealiases"`
 	Underscores Underscores `yaml:"underscores"`
 	Varnames    Varnames    `yaml:"varnames"`
 }
@@ -80,6 +81,11 @@ type Recvtype struct {
 }
 
 type Repetition struct {
+	Exclude          []string `yaml:"exclude"`
+	IncludeGenerated bool     `yaml:"include-generated"`
+}
+
+type Typealiases struct {
 	Exclude          []string `yaml:"exclude"`
 	IncludeGenerated bool     `yaml:"include-generated"`
 }
