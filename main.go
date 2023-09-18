@@ -8,6 +8,7 @@ import (
 	"github.com/k1LoW/gostyle/analyzer/decisions/recvtype"
 	"github.com/k1LoW/gostyle/analyzer/decisions/repetition"
 	"github.com/k1LoW/gostyle/analyzer/decisions/underscores"
+	"github.com/k1LoW/gostyle/analyzer/decisions/useq"
 	"github.com/k1LoW/gostyle/analyzer/decisions/varnames"
 	"github.com/k1LoW/gostyle/analyzer/effective/ifacenames"
 	"github.com/k1LoW/gostyle/analyzer/guide/mixedcaps"
@@ -27,6 +28,7 @@ func main() {
 		recvtype.AnalyzerWithConfig,
 		repetition.AnalyzerWithConfig,
 		underscores.AnalyzerWithConfig,
+		useq.AnalyzerWithConfig,
 		varnames.AnalyzerWithConfig,
 	)
 }
