@@ -45,7 +45,7 @@ jobs:
 
 - [ifacenames](analyzer/effective/ifacenames) ... based on https://go.dev/doc/effective_go#interface-names
 
-> ["Effective Go"](https://go.dev/doc/effective_go) by The Go Authors is licensed underCC BY 4.0
+> ["Effective Go"](https://go.dev/doc/effective_go) by The Go Authors is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
 ### [Go Style](https://google.github.io/styleguide/go/)
 
@@ -62,7 +62,7 @@ jobs:
   - [underscores](analyzer/decisions/underscores) ... based on https://google.github.io/styleguide/go/decisions#underscores
   - [varnames](analyzer/decisions/varnames) ... based on https://google.github.io/styleguide/go/decisions#variable-names
 
-> ["Google Style Guides"](https://google.github.io/styleguide/) by Google is licensed underCC BY 3.0
+> ["Google Style Guides"](https://google.github.io/styleguide/) by Google is licensed under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
 
 ## Disabling and Ignoring
 
