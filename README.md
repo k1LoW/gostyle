@@ -2,8 +2,6 @@
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/k1LoW/gostyle.svg)](https://pkg.go.dev/github.com/k1LoW/gostyle) [![build](https://github.com/k1LoW/gostyle/actions/workflows/ci.yml/badge.svg)](https://github.com/k1LoW/gostyle/actions/workflows/ci.yml) ![Coverage](https://raw.githubusercontent.com/k1LoW/octocovs/main/badges/k1LoW/gostyle/coverage.svg) ![Code to Test Ratio](https://raw.githubusercontent.com/k1LoW/octocovs/main/badges/k1LoW/gostyle/ratio.svg) ![Test Execution Time](https://raw.githubusercontent.com/k1LoW/octocovs/main/badges/k1LoW/gostyle/time.svg)
 
-**THIS IS A WORK IN PROGRESS AND PROOF OF CONCEPT AND STUDY WORK**
-
 `gostyle` is a set of analyzers for coding styles.
 
 ## Disclaimer
@@ -11,6 +9,8 @@
 `gostyle` **IS NOT** [Go Style](https://google.github.io/styleguide/go/).
 
 "Go Style" in [Google Style Guides](https://google.github.io/styleguide) is a great style and we will actively refer to it, but we cannot implement the same rules perfectly, and we may extend the rules.
+
+`gostyle` **IS NOT STANDARD**. This is to help you maintain **YOUR** Go project coding style.
 
 ## Usage
 
