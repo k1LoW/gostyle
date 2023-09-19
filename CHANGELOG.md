@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.13.2](https://github.com/k1LoW/gostyle/compare/v0.13.1...v0.13.2) - 2023-09-19
+### New Features 🎉
+- Add `init` command by @k1LoW in https://github.com/k1LoW/gostyle/pull/65
+
 ## [v0.13.1](https://github.com/k1LoW/gostyle/compare/v0.13.0...v0.13.1) - 2023-09-19
 ### Fix bug 🐛
 - Fix repetition exclude by @k1LoW in https://github.com/k1LoW/gostyle/pull/63
