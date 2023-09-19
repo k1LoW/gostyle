@@ -98,9 +98,10 @@ func run(pass *analysis.Pass) (any, error) {
 		return nil, err
 	}
 	tr := &typeVarReporter{
-		pkg:  pkg,
-		r:    r,
-		pass: pass,
+		pkg:     pkg,
+		r:       r,
+		pass:    pass,
+		exclude: words,
 	}
 	pkgn := pass.Pkg.Name()
 	i.Preorder(nodeFilter, func(n ast.Node) {
@@ -140,23 +141,16 @@ func run(pass *analysis.Pass) (any, error) {
 				if !ok {
 					continue
 				}
-				if slices.Contains(words, id.Name) {
-					continue
-				}
 				tr.report(id.Pos(), id.Name)
 			}
 		case *ast.RangeStmt:
 			idk, ok := n.Key.(*ast.Ident)
 			if ok {
-				if !slices.Contains(words, idk.Name) {
-					tr.report(idk.Pos(), idk.Name)
-				}
+				tr.report(idk.Pos(), idk.Name)
 			}
 			idv, ok := n.Value.(*ast.Ident)
 			if ok {
-				if !slices.Contains(words, idv.Name) {
-					tr.report(idv.Pos(), idv.Name)
-				}
+				tr.report(idv.Pos(), idv.Name)
 			}
 		case *ast.FuncDecl:
 			if n.Recv != nil {
@@ -214,12 +208,16 @@ func init() {
 }
 
 type typeVarReporter struct {
-	pkg  *types.Package
-	r    *reporter.Reporter
-	pass *analysis.Pass
+	pkg     *types.Package
+	r       *reporter.Reporter
+	pass    *analysis.Pass
+	exclude []string
 }
 
 func (tr *typeVarReporter) report(pos token.Pos, varname string) {
+	if slices.Contains(tr.exclude, varname) {
+		return
+	}
 	// Variable name vs. type.
 	s := tr.pkg.Scope().Innermost(pos)
 	o := s.Lookup(varname)
