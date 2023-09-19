@@ -1,6 +1,11 @@
 package main
 
 import (
+	_ "embed"
+	"fmt"
+	"os"
+	"path/filepath"
+
 	"github.com/k1LoW/gostyle/analyzer/decisions/getters"
 	"github.com/k1LoW/gostyle/analyzer/decisions/nilslices"
 	"github.com/k1LoW/gostyle/analyzer/decisions/pkgnames"
@@ -17,7 +22,22 @@ import (
 	"golang.org/x/tools/go/analysis/unitchecker"
 )
 
+//go:embed .gostyle.yml.init
+var defaultConfig []byte
+
 func main() {
+	if len(os.Args) == 1 {
+		usage()
+		os.Exit(0)
+	}
+	if len(os.Args) == 2 && os.Args[1] == "init" {
+		if err := generateConfig(); err != nil {
+			_, _ = fmt.Fprintf(os.Stderr, "%s\n", err)
+			os.Exit(1)
+		}
+		os.Exit(0)
+	}
+
 	unitchecker.Main(
 		config.Loader,
 		getters.AnalyzerWithConfig,
@@ -33,4 +53,28 @@ func main() {
 		useq.AnalyzerWithConfig,
 		varnames.AnalyzerWithConfig,
 	)
+}
+
+func usage() {
+	progname := filepath.Base(os.Args[0])
+	fmt.Fprintf(os.Stderr, `%[1]s is a set of analyzers for coding styles.
+
+Usage of %[1]s:
+	%.16[1]s init    	# generate .gostyle.yml
+	%.16[1]s unit.cfg	# execute analysis specified by config file
+	%.16[1]s help    	# general help, including listing analyzers and flags
+	%.16[1]s help name	# help on specific analyzer and its flags
+`, progname)
+}
+
+func generateConfig() error {
+	const name = ".gostyle.yml"
+	if _, err := os.Stat(name); err == nil {
+		return fmt.Errorf("%s already exists", name)
+	}
+	if err := os.WriteFile(name, defaultConfig, os.ModePerm); err != nil {
+		return err
+	}
+	_, _ = fmt.Fprintf(os.Stderr, "%s is generated\n", name)
+	return nil
 }
