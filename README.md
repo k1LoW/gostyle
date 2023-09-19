@@ -1,4 +1,4 @@
-# gostyle
+# gostyle [![Go Reference](https://pkg.go.dev/badge/github.com/k1LoW/gostyle.svg)](https://pkg.go.dev/github.com/k1LoW/gostyle) [![build](https://github.com/k1LoW/gostyle/actions/workflows/ci.yml/badge.svg)](https://github.com/k1LoW/gostyle/actions/workflows/ci.yml) 
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/k1LoW/gostyle.svg)](https://pkg.go.dev/github.com/k1LoW/gostyle) [![build](https://github.com/k1LoW/gostyle/actions/workflows/ci.yml/badge.svg)](https://github.com/k1LoW/gostyle/actions/workflows/ci.yml) ![Coverage](https://raw.githubusercontent.com/k1LoW/octocovs/main/badges/k1LoW/gostyle/coverage.svg) ![Code to Test Ratio](https://raw.githubusercontent.com/k1LoW/octocovs/main/badges/k1LoW/gostyle/ratio.svg) ![Test Execution Time](https://raw.githubusercontent.com/k1LoW/octocovs/main/badges/k1LoW/gostyle/time.svg)
 

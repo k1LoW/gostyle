@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.13.0](https://github.com/k1LoW/gostyle/compare/v0.12.1...v0.13.0) - 2023-09-19
+### New Features 🎉
+- Add useany analyzer by @k1LoW in https://github.com/k1LoW/gostyle/pull/60
+
 ## [v0.12.1](https://github.com/k1LoW/gostyle/compare/v0.12.0...v0.12.1) - 2023-09-18
 
 ## [v0.12.0](https://github.com/k1LoW/gostyle/compare/v0.11.0...v0.12.0) - 2023-09-18
