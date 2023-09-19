@@ -180,19 +180,19 @@ func (sr *scopeReporter) report(pos token.Pos, varname string) {
 		switch sr.scope(s) {
 		case scopeSmall:
 			if smallVarnameMax > 0 && len(varname) > smallVarnameMax {
-				sr.r.Append(pos, fmt.Sprintf("'%s' is small scope. Variable name length of small scope should be less than or equal to %d. (THIS IS NOT IN Go Style)", varname, smallVarnameMax))
+				sr.r.Append(pos, fmt.Sprintf("%q is small scope. Variable name length of small scope should be less than or equal to %d. (THIS IS NOT IN Go Style)", varname, smallVarnameMax))
 			}
 		case scopeMedium:
 			if mediumVarnameMax > 0 && len(varname) > mediumVarnameMax {
-				sr.r.Append(pos, fmt.Sprintf("'%s' is medium scope. Variable name length of medium scope should be less than or equal to %d. (THIS IS NOT IN Go Style)", varname, mediumVarnameMax))
+				sr.r.Append(pos, fmt.Sprintf("%q is medium scope. Variable name length of medium scope should be less than or equal to %d. (THIS IS NOT IN Go Style)", varname, mediumVarnameMax))
 			}
 		case scopeLarge:
 			if largeVarnameMax > 0 && len(varname) > largeVarnameMax {
-				sr.r.Append(pos, fmt.Sprintf("'%s' is large scope. Variable name length of large scope should be less than or equal to %d. (THIS IS NOT IN Go Style)", varname, largeVarnameMax))
+				sr.r.Append(pos, fmt.Sprintf("%q is large scope. Variable name length of large scope should be less than or equal to %d. (THIS IS NOT IN Go Style)", varname, largeVarnameMax))
 			}
 		case scopeVeryLarge:
 			if veryLargeVarnameMax > 0 && len(varname) > veryLargeVarnameMax {
-				sr.r.Append(pos, fmt.Sprintf("'%s' is very large scope. Variable name length of very large scope should be less than or equal to %d. (THIS IS NOT IN Go Style)", varname, veryLargeVarnameMax))
+				sr.r.Append(pos, fmt.Sprintf("%q is very large scope. Variable name length of very large scope should be less than or equal to %d. (THIS IS NOT IN Go Style)", varname, veryLargeVarnameMax))
 			}
 		}
 	}
