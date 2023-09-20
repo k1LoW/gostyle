@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.14.0](https://github.com/k1LoW/gostyle/compare/v0.13.4...v0.14.0) - 2023-09-20
+### New Features 🎉
+- Add errorstrings analyzer by @k1LoW in https://github.com/k1LoW/gostyle/pull/71
+
 ## [v0.13.4](https://github.com/k1LoW/gostyle/compare/v0.13.3...v0.13.4) - 2023-09-20
 ### New Features 🎉
 - Add `-recvnames.max` option by @k1LoW in https://github.com/k1LoW/gostyle/pull/68
