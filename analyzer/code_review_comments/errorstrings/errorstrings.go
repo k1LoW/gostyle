@@ -117,8 +117,8 @@ func run(pass *analysis.Pass) (any, error) {
 }
 
 func isNG(in string) bool {
-	format := strings.Trim(in, "\"'`")
-	return unicode.IsUpper(rune(format[0])) || strings.HasSuffix(format, ".")
+	f := strings.Trim(in, "\"'`")
+	return unicode.IsUpper(rune(f[0])) || strings.HasSuffix(f, ".")
 }
 
 func init() {
