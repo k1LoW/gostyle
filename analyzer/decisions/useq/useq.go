@@ -99,7 +99,7 @@ func run(pass *analysis.Pass) (any, error) {
 			}
 
 			format := bl.Value
-			if strings.Contains(format, badDQ) || strings.Contains(format, badDQ2) || strings.Contains(format, badSQ) {
+			if (strings.Contains(format, badDQ) && format != badDQ) || strings.Contains(format, badDQ2) || strings.Contains(format, badSQ) {
 				format = strings.ReplaceAll(format, "%", "%%")
 				r.Append(e.Pos(), fmt.Sprintf("%s: %s", msg, format))
 			}

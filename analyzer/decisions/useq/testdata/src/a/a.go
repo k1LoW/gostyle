@@ -11,4 +11,6 @@ func f() {
 	print(s3)
 	var s4 = fmt.Sprintf("this is \"%s\"", "world") // want "gostyle.useq"
 	print(s4)
+	var s5 = fmt.Sprintf("%s", "world")
+	print(s5)
 }
