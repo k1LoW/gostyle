@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.13.4](https://github.com/k1LoW/gostyle/compare/v0.13.3...v0.13.4) - 2023-09-20
+### New Features 🎉
+- Add `-recvnames.max` option by @k1LoW in https://github.com/k1LoW/gostyle/pull/68
+
 ## [v0.13.3](https://github.com/k1LoW/gostyle/compare/v0.13.2...v0.13.3) - 2023-09-20
 ### Fix bug 🐛
 - Fix useq detection by @k1LoW in https://github.com/k1LoW/gostyle/pull/66
