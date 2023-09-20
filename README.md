@@ -10,7 +10,9 @@
 
 "Go Style" in [Google Style Guides](https://google.github.io/styleguide) is a great style and we will actively refer to it, but we cannot implement the same rules perfectly, and we may extend the rules.
 
-`gostyle` **IS NOT STANDARD**. This is to help you maintain **YOUR** Go project coding style.
+`gostyle` **IS NOT STANDARD**.
+
+`gostyle` **IS** to help you maintain **YOUR** Go project coding **STYLE**.
 
 ## Usage
 
