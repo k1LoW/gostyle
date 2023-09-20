@@ -38,4 +38,8 @@ prerelease_for_tagpr: depsdev
 	cat _REFERENCE_STYLE_CREDITS >> CREDITS
 	git add CHANGELOG.md CREDITS go.mod go.sum
 
+release:
+	git push origin main --tag
+	goreleaser --clean
+
 .PHONY: default test
