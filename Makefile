@@ -33,22 +33,9 @@ depsdev:
 	go install github.com/Songmu/gocredits/cmd/gocredits@latest
 	go install golang.org/x/vuln/cmd/govulncheck@latest
 
-prerelease:
-	git pull origin main --tag
-	go mod tidy
-	ghch -w -N ${VER}
-	gocredits -skip-missing -w .
-	git add CHANGELOG.md CREDITS go.mod go.sum
-	git commit -m'Bump up version number'
-	git tag ${VER}
-
-prerelease_for_tagpr:
+prerelease_for_tagpr: depsdev
 	gocredits -skip-missing -w .
 	cat _REFERENCE_STYLE_CREDITS >> CREDITS
 	git add CHANGELOG.md CREDITS go.mod go.sum
-
-release:
-	git push origin main --tag
-	goreleaser --clean
 
 .PHONY: default test
