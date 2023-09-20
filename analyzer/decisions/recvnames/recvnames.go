@@ -17,12 +17,14 @@ const (
 	name = "recvnames"
 	doc  = "Analyzer based on https://google.github.io/styleguide/go/decisions#receiver-names"
 	msg  = "Receiver variable names must be short (usually one or two letters in length)"
+	msgm = "Receiver variable name length should be less than or equal to %d. (THIS IS NOT IN Go Style): %s"
 	msga = "Receiver variable names must be abbreviations for the type itself"
 )
 
 var (
 	disable          bool
 	includeGenerated bool
+	max              int
 )
 
 // Analyzer based on https://google.github.io/styleguide/go/decisions#receiver-names
@@ -56,6 +58,7 @@ func run(pass *analysis.Pass) (any, error) {
 	if c != nil {
 		disable = c.IsDisabled(name)
 		includeGenerated = c.AnalyzersSettings.Recvnames.IncludeGenerated
+		max = c.AnalyzersSettings.Recvnames.Max
 	}
 
 	if disable {
@@ -103,8 +106,12 @@ func run(pass *analysis.Pass) (any, error) {
 				}
 				sn = strings.ToLower(sn)
 				for _, n := range l.Names {
-					if len(n.Name) > 2 {
-						r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Name))
+					if len(n.Name) > max {
+						if max == config.DefaultReceiverNameMax {
+							r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Name))
+						} else {
+							r.Append(n.Pos(), fmt.Sprintf(msgm, max, n.Name))
+						}
 					}
 					for _, c := range n.Name {
 						if !strings.ContainsRune(sn, c) {
@@ -123,4 +130,5 @@ func run(pass *analysis.Pass) (any, error) {
 func init() {
 	Analyzer.Flags.BoolVar(&disable, "disable", false, "disable "+name+" analyzer")
 	Analyzer.Flags.BoolVar(&includeGenerated, "include-generated", false, "include generated codes")
+	Analyzer.Flags.IntVar(&max, "max", config.DefaultReceiverNameMax, "max receiver name length")
 }
