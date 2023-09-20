@@ -1,5 +1,7 @@
 # Changelog
 
+## [v0.14.2](https://github.com/k1LoW/gostyle/compare/v0.14.1...v0.14.2) - 2023-09-20
+
 ## [v0.14.1](https://github.com/k1LoW/gostyle/compare/v0.14.0...v0.14.1) - 2023-09-20
 
 ## [v0.14.0](https://github.com/k1LoW/gostyle/compare/v0.13.4...v0.14.0) - 2023-09-20
