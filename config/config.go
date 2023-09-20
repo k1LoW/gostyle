@@ -22,6 +22,7 @@ const (
 	DefaultLargeScopeMax       = 25
 	DefaultLargeVarnameMax     = -1
 	DefaultVeryLargeVarnameMax = -1
+	DefaultReceiverNameMax     = 2
 )
 
 type Config struct {
@@ -76,6 +77,7 @@ type Pkgnames struct {
 
 type Recvnames struct {
 	IncludeGenerated bool `yaml:"include-generated"`
+	Max              int  `yaml:"max"`
 }
 
 type Recvtype struct {

@@ -158,6 +158,7 @@ analyzers-settings:
 analyzers-settings:
   recvnames:
     include-generated: false # include generated codes (default: false)
+    max: 3                   # max length of receiver name (default: 2)
 ```
 
 #### recvtype
