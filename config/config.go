@@ -37,19 +37,24 @@ type Analyzers struct {
 }
 
 type AnalyzersSettings struct {
-	Getters     Getters     `yaml:"getters"`
-	Ifacenames  Ifacenames  `yaml:"ifacenames"`
-	Mixedcaps   Mixedcaps   `yaml:"mixedcaps"`
-	Nilslices   Nilslices   `yaml:"nilslices"`
-	Pkgnames    Pkgnames    `yaml:"pkgnames"`
-	Recvnames   Recvnames   `yaml:"recvnames"`
-	Recvtype    Recvtype    `yaml:"recvtype"`
-	Repetition  Repetition  `yaml:"repetition"`
-	Typealiases Typealiases `yaml:"typealiases"`
-	Underscores Underscores `yaml:"underscores"`
-	Useany      Useany      `yaml:"useany"`
-	Useq        Useq        `yaml:"useq"`
-	Varnames    Varnames    `yaml:"varnames"`
+	Errorstrings Errorstrings `yaml:"errorstrings"`
+	Getters      Getters      `yaml:"getters"`
+	Ifacenames   Ifacenames   `yaml:"ifacenames"`
+	Mixedcaps    Mixedcaps    `yaml:"mixedcaps"`
+	Nilslices    Nilslices    `yaml:"nilslices"`
+	Pkgnames     Pkgnames     `yaml:"pkgnames"`
+	Recvnames    Recvnames    `yaml:"recvnames"`
+	Recvtype     Recvtype     `yaml:"recvtype"`
+	Repetition   Repetition   `yaml:"repetition"`
+	Typealiases  Typealiases  `yaml:"typealiases"`
+	Underscores  Underscores  `yaml:"underscores"`
+	Useany       Useany       `yaml:"useany"`
+	Useq         Useq         `yaml:"useq"`
+	Varnames     Varnames     `yaml:"varnames"`
+}
+
+type Errorstrings struct {
+	IncludeGenerated bool `yaml:"include-generated"`
 }
 
 type Getters struct {
