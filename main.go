@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/k1LoW/gostyle/analyzer/code_review_comments/errorstrings"
 	"github.com/k1LoW/gostyle/analyzer/decisions/getters"
 	"github.com/k1LoW/gostyle/analyzer/decisions/nilslices"
 	"github.com/k1LoW/gostyle/analyzer/decisions/pkgnames"
@@ -40,6 +41,7 @@ func main() {
 
 	unitchecker.Main(
 		config.Loader,
+		errorstrings.AnalyzerWithConfig,
 		getters.AnalyzerWithConfig,
 		ifacenames.AnalyzerWithConfig,
 		pkgnames.AnalyzerWithConfig,
