@@ -45,6 +45,9 @@ func run(pass *analysis.Pass) (any, error) {
 		return c, nil
 	}
 	// Set default value
+	if c.AnalyzersSettings.Recvnames.Max == 0 {
+		c.AnalyzersSettings.Recvnames.Max = DefaultReceiverNameMax
+	}
 	if c.AnalyzersSettings.Varnames.SmallScopeMax == 0 {
 		c.AnalyzersSettings.Varnames.SmallScopeMax = DefaultSmallScopeMax
 	}
