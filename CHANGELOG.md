@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.13.3](https://github.com/k1LoW/gostyle/compare/v0.13.2...v0.13.3) - 2023-09-20
+### Fix bug 🐛
+- Fix useq detection by @k1LoW in https://github.com/k1LoW/gostyle/pull/66
+
 ## [v0.13.2](https://github.com/k1LoW/gostyle/compare/v0.13.1...v0.13.2) - 2023-09-19
 ### New Features 🎉
 - Add `init` command by @k1LoW in https://github.com/k1LoW/gostyle/pull/65
