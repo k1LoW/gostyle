@@ -70,6 +70,10 @@ jobs:
 
 > ["Google Style Guides"](https://google.github.io/styleguide/) by Google is licensed under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
 
+### [Go Code Review Comments](https://github.com/golang/go/wiki/CodeReviewComments) in Go wiki
+
+- [errorstrings](analyzer/comments/errorstrings) ... based on https://github.com/golang/go/wiki/CodeReviewComments#error-strings
+
 ## Disabling and Ignoring
 
 ### Disable analyzer
@@ -107,6 +111,14 @@ analyzers:
 ```
 
 ### `analyzers-settings:`
+
+#### errorstrings
+
+```yaml
+analyzers-settings:
+  errorstrings:
+    include-generated: false # include generated codes (default: false)
+```
 
 #### getters
 
