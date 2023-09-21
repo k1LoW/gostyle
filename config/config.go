@@ -37,6 +37,7 @@ type Analyzers struct {
 }
 
 type AnalyzersSettings struct {
+	Dontpanic    Dontpanic    `yaml:"dontpanic"`
 	Errorstrings Errorstrings `yaml:"errorstrings"`
 	Getters      Getters      `yaml:"getters"`
 	Ifacenames   Ifacenames   `yaml:"ifacenames"`
@@ -51,6 +52,11 @@ type AnalyzersSettings struct {
 	Useany       Useany       `yaml:"useany"`
 	Useq         Useq         `yaml:"useq"`
 	Varnames     Varnames     `yaml:"varnames"`
+}
+
+type Dontpanic struct {
+	IncludeGenerated bool `yaml:"include-generated"`
+	ExcludeTest      bool `yaml:"exclude-test"`
 }
 
 type Errorstrings struct {
