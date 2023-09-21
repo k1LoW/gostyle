@@ -72,6 +72,7 @@ jobs:
 
 ### [Go Code Review Comments](https://github.com/golang/go/wiki/CodeReviewComments) in Go wiki
 
+- [dontpanic](analyzer/comments/dontpanic) ... based on https://github.com/golang/go/wiki/CodeReviewComments#dont-panic
 - [errorstrings](analyzer/comments/errorstrings) ... based on https://github.com/golang/go/wiki/CodeReviewComments#error-strings
 
 ## Disabling and Ignoring
@@ -111,6 +112,15 @@ analyzers:
 ```
 
 ### `analyzers-settings:`
+
+#### dontpanic
+
+```yaml
+analyzers-settings:
+  dontpanic:
+    include-generated: false # include generated codes (default: false)
+    exclude-test: true       # exclude test files (default: false)
+```
 
 #### errorstrings
 

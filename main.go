@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/k1LoW/gostyle/analyzer/code_review_comments/dontpanic"
 	"github.com/k1LoW/gostyle/analyzer/code_review_comments/errorstrings"
 	"github.com/k1LoW/gostyle/analyzer/decisions/getters"
 	"github.com/k1LoW/gostyle/analyzer/decisions/nilslices"
@@ -41,6 +42,7 @@ func main() {
 
 	unitchecker.Main(
 		config.Loader,
+		dontpanic.AnalyzerWithConfig,
 		errorstrings.AnalyzerWithConfig,
 		getters.AnalyzerWithConfig,
 		ifacenames.AnalyzerWithConfig,
