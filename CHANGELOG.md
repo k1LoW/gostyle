@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.15.0](https://github.com/k1LoW/gostyle/compare/v0.14.2...v0.15.0) - 2023-09-21
+### New Features 🎉
+- Add dontpanic analyzer by @k1LoW in https://github.com/k1LoW/gostyle/pull/74
+
 ## [v0.14.2](https://github.com/k1LoW/gostyle/compare/v0.14.1...v0.14.2) - 2023-09-20
 
 ## [v0.14.1](https://github.com/k1LoW/gostyle/compare/v0.14.0...v0.14.1) - 2023-09-20
