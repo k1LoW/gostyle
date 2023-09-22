@@ -22,6 +22,7 @@ import (
 	"github.com/k1LoW/gostyle/analyzer/effective/ifacenames"
 	"github.com/k1LoW/gostyle/analyzer/guide/mixedcaps"
 	"github.com/k1LoW/gostyle/config"
+	"github.com/k1LoW/gostyle/version"
 	"golang.org/x/tools/go/analysis/unitchecker"
 )
 
@@ -36,12 +37,18 @@ func main() {
 		}
 		os.Exit(0)
 	}
-	if len(os.Args) == 2 && os.Args[1] == "init" {
-		if err := generateConfig(); err != nil {
-			_, _ = fmt.Fprintf(os.Stderr, "%s\n", err) //nostyle:handlerrors
-			os.Exit(1)
+	if len(os.Args) == 2 {
+		switch os.Args[1] {
+		case "init":
+			if err := generateConfig(); err != nil {
+				_, _ = fmt.Fprintf(os.Stderr, "%s\n", err) //nostyle:handlerrors
+				os.Exit(1)
+			}
+			os.Exit(0)
+		case "-v":
+			fmt.Printf("%s version %s\n", version.Name, version.Version)
+			os.Exit(0)
 		}
-		os.Exit(0)
 	}
 
 	unitchecker.Main(
