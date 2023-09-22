@@ -2,6 +2,10 @@ analyzers:
   disable:
     - mixedcaps # disable mixedcaps analyzer. because the underscores analyzer is more detailed.
 # analyzers-settings:
+#  dontpanic:
+#    exclude-test: true         # exclude test files (default: false)
+#  handlerrors:
+#    exclude-test: true         # exclude test files (default: false)
 #  ifacenames:
 #    all: true                  # all interface names with the -er suffix are required (default: false)
 #  recvnames:
