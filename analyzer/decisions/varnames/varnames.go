@@ -110,16 +110,7 @@ func run(pass *analysis.Pass) (any, error) {
 		return nil, err
 	}
 
-	conf, err := config.NewTypesConfig(pass)
-	if err != nil {
-		return nil, err
-	}
-	pkg, err := conf.Check("varnames", pass.Fset, pass.Files, nil)
-	if err != nil {
-		return nil, err
-	}
 	sr := &scopeReporter{
-		pkg:     pkg,
 		r:       r,
 		pass:    pass,
 		exclude: words,
@@ -157,7 +148,6 @@ func run(pass *analysis.Pass) (any, error) {
 }
 
 type scopeReporter struct {
-	pkg     *types.Package
 	r       *reporter.Reporter
 	pass    *analysis.Pass
 	exclude []string
@@ -167,7 +157,7 @@ func (sr *scopeReporter) report(pos token.Pos, varname string) {
 	if slices.Contains(sr.exclude, varname) {
 		return
 	}
-	s := sr.pkg.Scope().Innermost(pos)
+	s := sr.pass.Pkg.Scope().Innermost(pos)
 	o := s.Lookup(varname)
 	if o == nil {
 		s, o = s.LookupParent(varname, pos)

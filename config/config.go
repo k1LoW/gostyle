@@ -1,18 +1,9 @@
 package config
 
 import (
-	"encoding/json"
-	"flag"
-	"fmt"
-	"go/importer"
-	"go/types"
-	"io"
-	"os"
-	"runtime"
 	"slices"
 
 	"golang.org/x/tools/go/analysis"
-	"golang.org/x/tools/go/analysis/unitchecker"
 )
 
 const (
@@ -153,41 +144,4 @@ func Load(pass *analysis.Pass) (*Config, error) {
 		return nil, nil
 	}
 	return c, nil
-}
-
-func NewTypesConfig(pass *analysis.Pass) (types.Config, error) { //nostyle:repetition
-	args := flag.Args()
-	if len(args) == 0 {
-		return types.Config{Importer: importer.ForCompiler(pass.Fset, runtime.Compiler, nil)}, nil
-	}
-	filename := args[0]
-	cfg, err := readConfig(filename)
-	if err != nil {
-		return types.Config{}, err
-	}
-	return types.Config{Importer: importer.ForCompiler(pass.Fset, cfg.Compiler, func(path string) (io.ReadCloser, error) {
-		file, ok := cfg.PackageFile[path]
-		if !ok {
-			if cfg.Compiler == "gccgo" && cfg.Standard[path] {
-				return nil, nil // fall back to default gccgo lookup
-			}
-			return nil, fmt.Errorf("no package file for %q", path)
-		}
-		return os.Open(file)
-	})}, nil
-}
-
-func readConfig(filename string) (*unitchecker.Config, error) {
-	b, err := os.ReadFile(filename)
-	if err != nil {
-		return nil, err
-	}
-	cfg := new(unitchecker.Config)
-	if err := json.Unmarshal(b, cfg); err != nil {
-		return nil, fmt.Errorf("cannot decode JSON config file %s: %w", filename, err)
-	}
-	if len(cfg.GoFiles) == 0 {
-		return nil, fmt.Errorf("package has no files: %s", cfg.ImportPath)
-	}
-	return cfg, nil
 }
