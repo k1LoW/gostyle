@@ -30,12 +30,15 @@ var defaultConfig []byte
 
 func main() {
 	if len(os.Args) == 1 {
-		usage()
+		if err := usage(); err != nil {
+			_, _ = fmt.Fprintf(os.Stderr, "%s\n", err) //nostyle:handlerrors
+			os.Exit(1)
+		}
 		os.Exit(0)
 	}
 	if len(os.Args) == 2 && os.Args[1] == "init" {
 		if err := generateConfig(); err != nil {
-			_, _ = fmt.Fprintf(os.Stderr, "%s\n", err)
+			_, _ = fmt.Fprintf(os.Stderr, "%s\n", err) //nostyle:handlerrors
 			os.Exit(1)
 		}
 		os.Exit(0)
@@ -61,16 +64,20 @@ func main() {
 	)
 }
 
-func usage() {
+func usage() error {
 	progname := filepath.Base(os.Args[0])
-	fmt.Fprintf(os.Stderr, `%[1]s is a set of analyzers for coding styles.
+	u := `%[1]s is a set of analyzers for coding styles.
 
 Usage of %[1]s:
 	%.16[1]s init    	# generate .gostyle.yml
 	%.16[1]s unit.cfg	# execute analysis specified by config file
 	%.16[1]s help    	# general help, including listing analyzers and flags
 	%.16[1]s help name	# help on specific analyzer and its flags
-`, progname)
+`
+	if _, err := fmt.Fprintf(os.Stderr, u, progname); err != nil {
+		return err
+	}
+	return nil
 }
 
 func generateConfig() error {
@@ -81,6 +88,8 @@ func generateConfig() error {
 	if err := os.WriteFile(name, defaultConfig, os.ModePerm); err != nil {
 		return err
 	}
-	_, _ = fmt.Fprintf(os.Stderr, "%s is generated\n", name)
+	if _, err := fmt.Fprintf(os.Stderr, "%s is generated\n", name); err != nil {
+		return err
+	}
 	return nil
 }
