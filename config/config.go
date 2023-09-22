@@ -8,6 +8,7 @@ import (
 	"go/types"
 	"io"
 	"os"
+	"runtime"
 	"slices"
 
 	"golang.org/x/tools/go/analysis"
@@ -40,6 +41,7 @@ type AnalyzersSettings struct {
 	Dontpanic    Dontpanic    `yaml:"dontpanic"`
 	Errorstrings Errorstrings `yaml:"errorstrings"`
 	Getters      Getters      `yaml:"getters"`
+	Handlerrors  Handlerrors  `yaml:"handlerrors"`
 	Ifacenames   Ifacenames   `yaml:"ifacenames"`
 	Mixedcaps    Mixedcaps    `yaml:"mixedcaps"`
 	Nilslices    Nilslices    `yaml:"nilslices"`
@@ -66,6 +68,11 @@ type Errorstrings struct {
 type Getters struct {
 	Exclude          []string `yaml:"exclude"`
 	IncludeGenerated bool     `yaml:"include-generated"`
+}
+
+type Handlerrors struct {
+	IncludeGenerated bool `yaml:"include-generated"`
+	ExcludeTest      bool `yaml:"exclude-test"`
 }
 
 type Ifacenames struct {
@@ -151,7 +158,7 @@ func Load(pass *analysis.Pass) (*Config, error) {
 func NewTypesConfig(pass *analysis.Pass) (types.Config, error) { //nostyle:repetition
 	args := flag.Args()
 	if len(args) == 0 {
-		return types.Config{Importer: importer.Default()}, nil
+		return types.Config{Importer: importer.ForCompiler(pass.Fset, runtime.Compiler, nil)}, nil
 	}
 	filename := args[0]
 	cfg, err := readConfig(filename)
