@@ -1,5 +1,11 @@
 # Changelog
 
+## [v0.16.0](https://github.com/k1LoW/gostyle/compare/v0.15.0...v0.16.0) - 2023-09-22
+### New Features 🎉
+- Add handlerrors analyzer by @k1LoW in https://github.com/k1LoW/gostyle/pull/76
+### Other Changes
+- Fix loading types.Config by @k1LoW in https://github.com/k1LoW/gostyle/pull/78
+
 ## [v0.15.0](https://github.com/k1LoW/gostyle/compare/v0.14.2...v0.15.0) - 2023-09-21
 ### New Features 🎉
 - Add dontpanic analyzer by @k1LoW in https://github.com/k1LoW/gostyle/pull/74
