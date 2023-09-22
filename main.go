@@ -8,6 +8,7 @@ import (
 
 	"github.com/k1LoW/gostyle/analyzer/code_review_comments/dontpanic"
 	"github.com/k1LoW/gostyle/analyzer/code_review_comments/errorstrings"
+	"github.com/k1LoW/gostyle/analyzer/code_review_comments/handlerrors"
 	"github.com/k1LoW/gostyle/analyzer/decisions/getters"
 	"github.com/k1LoW/gostyle/analyzer/decisions/nilslices"
 	"github.com/k1LoW/gostyle/analyzer/decisions/pkgnames"
@@ -45,6 +46,7 @@ func main() {
 		dontpanic.AnalyzerWithConfig,
 		errorstrings.AnalyzerWithConfig,
 		getters.AnalyzerWithConfig,
+		handlerrors.AnalyzerWithConfig,
 		ifacenames.AnalyzerWithConfig,
 		pkgnames.AnalyzerWithConfig,
 		mixedcaps.AnalyzerWithConfig,
