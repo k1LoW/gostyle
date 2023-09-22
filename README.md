@@ -98,6 +98,8 @@ $ go vet -vettool=`which gostyle` -mixedcaps.disable # Disable mixedcaps analyze
 `gostyle` can be configured by `-gostyle.config=$PWD/.gostyle.yml` like [golangci-lint](https://golangci-lint.run/usage/configuration/).
 
 ``` console
+$ gostyle init
+.gostyle.yml is generated
 $ go vet -vettool=`which gostyle` -gostyle.config=$PWD/.gostyle.yml ./...
 ```
 
