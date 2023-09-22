@@ -74,6 +74,7 @@ jobs:
 
 - [dontpanic](analyzer/comments/dontpanic) ... based on https://github.com/golang/go/wiki/CodeReviewComments#dont-panic
 - [errorstrings](analyzer/comments/errorstrings) ... based on https://github.com/golang/go/wiki/CodeReviewComments#error-strings
+- [handlerrors](analyzer/comments/handlerrors) ... based on https://github.com/golang/go/wiki/CodeReviewComments#handle-errors
 
 ## Disabling and Ignoring
 
@@ -138,6 +139,17 @@ analyzers-settings:
     include-generated: false # include generated codes (default: false)
     exclude:                 # exclude words
       - GetViaHTTP
+```
+
+#### handlerrors
+
+( **NOT** handl**ee**rrors )
+
+```yaml
+analyzers-settings:
+  handlerrors:
+    include-generated: false # include generated codes (default: false)
+    exclude-test: true       # exclude test files (default: false)
 ```
 
 #### ifacenames
