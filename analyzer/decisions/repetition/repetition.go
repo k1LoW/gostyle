@@ -89,16 +89,7 @@ func run(pass *analysis.Pass) (any, error) {
 		return nil, err
 	}
 
-	conf, err := config.NewTypesConfig(pass)
-	if err != nil {
-		return nil, err
-	}
-	pkg, err := conf.Check("varnames", pass.Fset, pass.Files, nil)
-	if err != nil {
-		return nil, err
-	}
 	tr := &typeVarReporter{
-		pkg:     pkg,
 		r:       r,
 		pass:    pass,
 		exclude: words,
@@ -208,7 +199,6 @@ func init() {
 }
 
 type typeVarReporter struct {
-	pkg     *types.Package
 	r       *reporter.Reporter
 	pass    *analysis.Pass
 	exclude []string
@@ -219,7 +209,7 @@ func (tr *typeVarReporter) report(pos token.Pos, varname string) {
 		return
 	}
 	// Variable name vs. type.
-	s := tr.pkg.Scope().Innermost(pos)
+	s := tr.pass.Pkg.Scope().Innermost(pos)
 	o := s.Lookup(varname)
 	if o == nil {
 		s, o = s.LookupParent(varname, pos)
@@ -260,7 +250,7 @@ func (tr *typeVarReporter) report(pos token.Pos, varname string) {
 			}
 		default:
 			if strings.Contains(strings.ToLower(varname), strings.ToLower(o.Type().String())) {
-				tr.r.Append(pos, fmt.Sprintf("%s: %s<-[%s]->%s", msgt, tr.pkg.Name(), o.Type().String(), varname))
+				tr.r.Append(pos, fmt.Sprintf("%s: %s<-[%s]->%s", msgt, tr.pass.Pkg.Name(), o.Type().String(), varname))
 			}
 		}
 	}
