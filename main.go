@@ -10,6 +10,7 @@ import (
 	"github.com/k1LoW/gostyle/analyzer/code_review_comments/dontpanic"
 	"github.com/k1LoW/gostyle/analyzer/code_review_comments/errorstrings"
 	"github.com/k1LoW/gostyle/analyzer/code_review_comments/handlerrors"
+	"github.com/k1LoW/gostyle/analyzer/decisions/funcfmt"
 	"github.com/k1LoW/gostyle/analyzer/decisions/getters"
 	"github.com/k1LoW/gostyle/analyzer/decisions/nilslices"
 	"github.com/k1LoW/gostyle/analyzer/decisions/pkgnames"
@@ -57,6 +58,7 @@ func main() {
 		contexts.AnalyzerWithConfig,
 		dontpanic.AnalyzerWithConfig,
 		errorstrings.AnalyzerWithConfig,
+		funcfmt.AnalyzerWithConfig,
 		getters.AnalyzerWithConfig,
 		handlerrors.AnalyzerWithConfig,
 		ifacenames.AnalyzerWithConfig,
