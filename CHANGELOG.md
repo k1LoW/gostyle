@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.18.0](https://github.com/k1LoW/gostyle/compare/v0.17.0...v0.18.0) - 2023-09-26
+### New Features 🎉
+- Add funcfmt analyzer by @k1LoW in https://github.com/k1LoW/gostyle/pull/82
+
 ## [v0.17.0](https://github.com/k1LoW/gostyle/compare/v0.16.0...v0.17.0) - 2023-09-26
 ### New Features 🎉
 - Add `-v` for show version by @k1LoW in https://github.com/k1LoW/gostyle/pull/79
