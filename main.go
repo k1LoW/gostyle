@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/k1LoW/gostyle/analyzer/code_review_comments/contexts"
 	"github.com/k1LoW/gostyle/analyzer/code_review_comments/dontpanic"
 	"github.com/k1LoW/gostyle/analyzer/code_review_comments/errorstrings"
 	"github.com/k1LoW/gostyle/analyzer/code_review_comments/handlerrors"
@@ -53,6 +54,7 @@ func main() {
 
 	unitchecker.Main(
 		config.Loader,
+		contexts.AnalyzerWithConfig,
 		dontpanic.AnalyzerWithConfig,
 		errorstrings.AnalyzerWithConfig,
 		getters.AnalyzerWithConfig,
