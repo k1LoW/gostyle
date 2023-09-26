@@ -56,6 +56,7 @@ jobs:
 - [**Guide**](https://google.github.io/styleguide/go/guide)
   - [mixedcaps](analyzer/guide/mixedcaps) ... based on https://google.github.io/styleguide/go/guide#mixed-caps
 - [**Decisions**](https://google.github.io/styleguide/go/decisions)
+  - [funcfmt](analyzer/decisions/funcfmt) ... based on https://google.github.io/styleguide/go/decisions#function-formatting
   - [getters](analyzer/decisions/getters) ... based on https://google.github.io/styleguide/go/decisions#getters
   - [nilslices](analyzer/decisions/nilslices) ... based on https://google.github.io/styleguide/go/decisions#nil-slices
   - [pkgnames](analyzer/decisions/pkgnames) ... based on https://google.github.io/styleguide/go/decisions#package-names
@@ -140,6 +141,14 @@ analyzers-settings:
 ```yaml
 analyzers-settings:
   errorstrings:
+    include-generated: false # include generated codes (default: false)
+```
+
+#### funcfmt
+
+```yaml
+analyzers-settings:
+  funcfmt:
     include-generated: false # include generated codes (default: false)
 ```
 

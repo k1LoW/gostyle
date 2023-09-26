@@ -32,6 +32,7 @@ type AnalyzersSettings struct {
 	Contexts     Contexts     `yaml:"contexts"`
 	Dontpanic    Dontpanic    `yaml:"dontpanic"`
 	Errorstrings Errorstrings `yaml:"errorstrings"`
+	Funcfmt      Funcfmt      `yaml:"funcfmt"`
 	Getters      Getters      `yaml:"getters"`
 	Handlerrors  Handlerrors  `yaml:"handlerrors"`
 	Ifacenames   Ifacenames   `yaml:"ifacenames"`
@@ -59,6 +60,10 @@ type Dontpanic struct {
 }
 
 type Errorstrings struct {
+	IncludeGenerated bool `yaml:"include-generated"`
+}
+
+type Funcfmt struct {
 	IncludeGenerated bool `yaml:"include-generated"`
 }
 
