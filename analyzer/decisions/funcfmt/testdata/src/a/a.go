@@ -1,6 +1,7 @@
 package a
 
-func b(a, b, c, d int, // want "gostyle.funcfmt"
+func b( // want "gostyle.funcfmt"
+	a, b, c, d int,
 	e, f,
 	g string) error {
 	return nil

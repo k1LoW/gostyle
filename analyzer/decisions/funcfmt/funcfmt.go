@@ -85,14 +85,13 @@ func run(pass *analysis.Pass) (any, error) {
 			if len(nn.Type.Params.List) == 0 {
 				return
 			}
-			base := nn.Type.Params.List[0].Names[0].Pos()
 			for _, f := range nn.Type.Params.List {
 				if len(f.Names) == 0 {
 					continue
 				}
 				for _, id := range f.Names {
-					if pass.Fset.Position(id.Pos()).Line != pass.Fset.Position(base).Line {
-						r.Append(base, msgs)
+					if pass.Fset.Position(id.Pos()).Line != pass.Fset.Position(nn.Pos()).Line {
+						r.Append(nn.Pos(), msgs)
 						return
 					}
 				}
@@ -101,10 +100,9 @@ func run(pass *analysis.Pass) (any, error) {
 			if len(nn.Args) == 0 {
 				return
 			}
-			base := nn.Args[0].Pos()
 			for _, arg := range nn.Args {
-				if pass.Fset.Position(arg.Pos()).Line != pass.Fset.Position(base).Line {
-					r.Append(base, msgc)
+				if pass.Fset.Position(arg.Pos()).Line != pass.Fset.Position(nn.Pos()).Line {
+					r.Append(nn.Pos(), msgc)
 					return
 				}
 			}

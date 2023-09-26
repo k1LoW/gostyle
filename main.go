@@ -53,7 +53,7 @@ func main() {
 		}
 	}
 
-	unitchecker.Main(
+	unitchecker.Main( //nostyle:funcfmt
 		config.Loader,
 		contexts.AnalyzerWithConfig,
 		dontpanic.AnalyzerWithConfig,
