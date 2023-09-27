@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.18.1](https://github.com/k1LoW/gostyle/compare/v0.18.0...v0.18.1) - 2023-09-27
+### Fix bug 🐛
+- Fix inconsistencies within the same rule by @k1LoW in https://github.com/k1LoW/gostyle/pull/84
+
 ## [v0.18.0](https://github.com/k1LoW/gostyle/compare/v0.17.0...v0.18.0) - 2023-09-26
 ### New Features 🎉
 - Add funcfmt analyzer by @k1LoW in https://github.com/k1LoW/gostyle/pull/82
