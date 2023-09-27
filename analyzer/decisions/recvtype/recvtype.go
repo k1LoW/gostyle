@@ -102,6 +102,18 @@ func run(pass *analysis.Pass) (any, error) {
 						r.Append(n.Pos(), fmt.Sprintf("%s: %s", msgm, f.Names[0].Name))
 					}
 				case *ast.Ident:
+					typ := pass.TypesInfo.TypeOf(f.Type)
+					if typ != nil {
+						if _, ok := typ.Underlying().(*types.Map); ok {
+							return
+						}
+						if _, ok := typ.Underlying().(*types.Signature); ok {
+							return
+						}
+						if _, ok := typ.Underlying().(*types.Chan); ok {
+							return
+						}
+					}
 					r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, n.Name.Name))
 				}
 			}
