@@ -17,7 +17,7 @@ import (
 const (
 	name = "useq"
 	doc  = "Analyzer based on https://google.github.io/styleguide/go/decisions#use-q"
-	msg  = "Using %%q is recommended in output intended for humans where the input value could possibly be empty or contain control characters. (ref: https://google.github.io/styleguide/go/decisions#use-q)"
+	msg  = "Using %%q is recommended in output intended for humans where the input value could possibly be empty or contain control characters. (ref: https://google.github.io/styleguide/go/decisions#use-q )"
 
 	badDQ  = "\"%s\""
 	badDQ2 = "\\\"%s\\\""

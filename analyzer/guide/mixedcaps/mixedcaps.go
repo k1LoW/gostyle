@@ -19,7 +19,7 @@ import (
 const (
 	name = "mixedcaps"
 	doc  = "Analyzer based on https://google.github.io/styleguide/go/guide#mixed-caps"
-	msg  = "Go source code uses MixedCaps or mixedCaps (camel case) rather than underscores (snake case) when writing multi-word names. (ref: https://google.github.io/styleguide/go/guide#mixed-caps)"
+	msg  = "Go source code uses MixedCaps or mixedCaps (camel case) rather than underscores (snake case) when writing multi-word names. (ref: https://google.github.io/styleguide/go/guide#mixed-caps )"
 )
 
 var (

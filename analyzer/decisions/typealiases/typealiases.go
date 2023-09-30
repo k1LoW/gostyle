@@ -17,7 +17,7 @@ import (
 const (
 	name = "typealiases"
 	doc  = "Analyzer based on https://google.github.io/styleguide/go/decisions#type-aliases"
-	msg  = "Type aliases are rare; their primary use is to aid migrating packages to new source code locations. Don’t use type aliasing when it is not needed (ref: https://google.github.io/styleguide/go/decisions#type-aliases)"
+	msg  = "Type aliases are rare; their primary use is to aid migrating packages to new source code locations. Don’t use type aliasing when it is not needed (ref: https://google.github.io/styleguide/go/decisions#type-aliases )"
 )
 
 var (

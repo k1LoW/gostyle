@@ -16,8 +16,8 @@ import (
 const (
 	name = "recvtype"
 	doc  = "Analyzer based on https://google.github.io/styleguide/go/decisions#receiver-type"
-	msg  = "When in doubt, use a pointer receiver. (GOSTYLE MEMO: It's a strong check, so read Go Style and decide if it should be ignored or not proactively) (ref: https://google.github.io/styleguide/go/decisions#receiver-type)"
-	msgm = "If the receiver is a map, function, or channel, use a value rather than a pointer. (ref: https://google.github.io/styleguide/go/decisions#receiver-type)"
+	msg  = "When in doubt, use a pointer receiver. (GOSTYLE MEMO: It's a strong check, so read Go Style and decide if it should be ignored or not proactively) (ref: https://google.github.io/styleguide/go/decisions#receiver-type )"
+	msgm = "If the receiver is a map, function, or channel, use a value rather than a pointer. (ref: https://google.github.io/styleguide/go/decisions#receiver-type )"
 )
 
 var (

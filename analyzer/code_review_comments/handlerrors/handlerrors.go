@@ -17,7 +17,7 @@ import (
 const (
 	name = "handlerrors"
 	doc  = "Analyzer based on https://github.com/golang/go/wiki/CodeReviewComments#handle-errors"
-	msg  = "Do not discard errors using `_` variables. If a function returns an error, check it to make sure the function succeeded. Handle the error, return it, or, in truly exceptional situations, panic. (ref: https://github.com/golang/go/wiki/CodeReviewComments#handle-errors)"
+	msg  = "Do not discard errors using `_` variables. If a function returns an error, check it to make sure the function succeeded. Handle the error, return it, or, in truly exceptional situations, panic. (ref: https://github.com/golang/go/wiki/CodeReviewComments#handle-errors )"
 )
 
 var (

@@ -17,8 +17,8 @@ import (
 const (
 	name = "pkgnames"
 	doc  = "Analyzer based on https://google.github.io/styleguide/go/decisions#package-names"
-	msg  = "Go package names should be short and contain only lowercase letters. A package name composed of multiple words should be left unbroken in all lowercase. (ref: https://google.github.io/styleguide/go/decisions#package-names)"
-	msg2 = "Avoid uninformative package names like util, utility, common, helper, and so on. (ref: https://google.github.io/styleguide/go/decisions#package-names)"
+	msg  = "Go package names should be short and contain only lowercase letters. A package name composed of multiple words should be left unbroken in all lowercase. (ref: https://google.github.io/styleguide/go/decisions#package-names )"
+	msg2 = "Avoid uninformative package names like util, utility, common, helper, and so on. (ref: https://google.github.io/styleguide/go/decisions#package-names )"
 )
 
 var (
