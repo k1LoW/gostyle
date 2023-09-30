@@ -1,5 +1,11 @@
 # Changelog
 
+## [v0.18.2](https://github.com/k1LoW/gostyle/compare/v0.18.1...v0.18.2) - 2023-09-30
+### New Features 🎉
+- Add space acound URL for clickable links in GitHub by @k1LoW in https://github.com/k1LoW/gostyle/pull/86
+### Other Changes
+- For funcfmt analyzer, allow exclusion with a comment at the end too. by @k1LoW in https://github.com/k1LoW/gostyle/pull/88
+
 ## [v0.18.1](https://github.com/k1LoW/gostyle/compare/v0.18.0...v0.18.1) - 2023-09-27
 ### Fix bug 🐛
 - Fix inconsistencies within the same rule by @k1LoW in https://github.com/k1LoW/gostyle/pull/84
