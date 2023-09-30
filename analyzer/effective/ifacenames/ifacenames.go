@@ -16,7 +16,7 @@ import (
 const (
 	name = "ifacenames"
 	doc  = "Analyzer based on https://go.dev/doc/effective_go#interface-names."
-	msg  = "By convention, one-method interfaces are named by the method name plus an -er suffix or similar modification to construct an agent noun. (ref: https://go.dev/doc/effective_go#interface-names)"
+	msg  = "By convention, one-method interfaces are named by the method name plus an -er suffix or similar modification to construct an agent noun. (ref: https://go.dev/doc/effective_go#interface-names )"
 	msgc = "All interface names with the -er suffix are required. (THIS IS NOT IN Effective Go)"
 )
 

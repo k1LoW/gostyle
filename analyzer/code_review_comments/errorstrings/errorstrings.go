@@ -17,7 +17,7 @@ import (
 const (
 	name = "errorstrings"
 	doc  = "Analyzer based on https://github.com/golang/go/wiki/CodeReviewComments#error-strings"
-	msg  = "Error strings should not be capitalized (unless beginning with proper nouns or acronyms) or end with punctuation, since they are usually printed following other context. (ref: https://github.com/golang/go/wiki/CodeReviewComments#error-strings)"
+	msg  = "Error strings should not be capitalized (unless beginning with proper nouns or acronyms) or end with punctuation, since they are usually printed following other context. (ref: https://github.com/golang/go/wiki/CodeReviewComments#error-strings )"
 )
 
 var (

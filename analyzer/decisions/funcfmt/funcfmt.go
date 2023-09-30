@@ -15,8 +15,8 @@ import (
 const (
 	name = "funcfmt"
 	doc  = "Analyzer based on https://google.github.io/styleguide/go/decisions#function-formatting"
-	msgs = "The signature of a function or method declaration should remain on a single line to avoid indentation confusion. (ref: https://google.github.io/styleguide/go/decisions#function-formatting)"
-	msgc = "Function and method calls should not be separated based solely on line length. (ref: https://google.github.io/styleguide/go/decisions#function-formatting)"
+	msgs = "The signature of a function or method declaration should remain on a single line to avoid indentation confusion. (ref: https://google.github.io/styleguide/go/decisions#function-formatting )"
+	msgc = "Function and method calls should not be separated based solely on line length. (ref: https://google.github.io/styleguide/go/decisions#function-formatting )"
 )
 
 var (

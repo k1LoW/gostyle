@@ -15,7 +15,7 @@ import (
 const (
 	name = "useany"
 	doc  = "Analyzer based on https://google.github.io/styleguide/go/decisions#use-any"
-	msg  = "Because it is an alias, `any` is equivalent to `interface{}` in many situations and in others it is easily interchangeable via an explicit conversion. Prefer to use `any` in new code. (ref: https://google.github.io/styleguide/go/decisions#use-any)"
+	msg  = "Because it is an alias, `any` is equivalent to `interface{}` in many situations and in others it is easily interchangeable via an explicit conversion. Prefer to use `any` in new code. (ref: https://google.github.io/styleguide/go/decisions#use-any )"
 	iff  = "interface{}"
 )
 

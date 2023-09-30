@@ -20,8 +20,8 @@ import (
 const (
 	name = "repetition"
 	doc  = "Analyzer based on https://google.github.io/styleguide/go/decisions#repetition"
-	msgp = "When naming exported symbols, the name of the package is always visible outside your package, so redundant information between the two should be reduced or eliminated. (ref: https://google.github.io/styleguide/go/decisions#package-vs-exported-symbol-name)"
-	msgt = "The compiler always knows the type of a variable, and in most cases it is also clear to the reader what type a variable is by how it is used. It is only necessary to clarify the type of a variable if its value appears twice in the same scope. (ref: https://google.github.io/styleguide/go/decisions#variable-name-vs-type)"
+	msgp = "When naming exported symbols, the name of the package is always visible outside your package, so redundant information between the two should be reduced or eliminated. (ref: https://google.github.io/styleguide/go/decisions#package-vs-exported-symbol-name )"
+	msgt = "The compiler always knows the type of a variable, and in most cases it is also clear to the reader what type a variable is by how it is used. It is only necessary to clarify the type of a variable if its value appears twice in the same scope. (ref: https://google.github.io/styleguide/go/decisions#variable-name-vs-type )"
 )
 
 var (

@@ -16,8 +16,8 @@ import (
 const (
 	name = "contexts"
 	doc  = "Analyzer based on https://github.com/golang/go/wiki/CodeReviewComments#contexts"
-	msgp = "Most functions that use a Context should accept it as their first parameter. (ref: https://github.com/golang/go/wiki/CodeReviewComments#contexts)"
-	msgs = "Don't add a Context member to a struct type; instead add a ctx parameter to each method on that type that needs to pass it along. The one exception is for methods whose signature must match an interface in the standard library or in a third party library. (ref: https://github.com/golang/go/wiki/CodeReviewComments#contexts)"
+	msgp = "Most functions that use a Context should accept it as their first parameter. (ref: https://github.com/golang/go/wiki/CodeReviewComments#contexts )"
+	msgs = "Don't add a Context member to a struct type; instead add a ctx parameter to each method on that type that needs to pass it along. The one exception is for methods whose signature must match an interface in the standard library or in a third party library. (ref: https://github.com/golang/go/wiki/CodeReviewComments#contexts )"
 )
 
 var (

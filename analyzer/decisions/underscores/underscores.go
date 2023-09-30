@@ -19,7 +19,7 @@ import (
 const (
 	name = "underscores"
 	doc  = "Analyzer based on https://google.github.io/styleguide/go/decisions#underscores"
-	msg  = "Names in Go should in general not contain underscores. (however) there are three exceptions to this principle. (ref: https://google.github.io/styleguide/go/decisions#underscores)"
+	msg  = "Names in Go should in general not contain underscores. (however) there are three exceptions to this principle. (ref: https://google.github.io/styleguide/go/decisions#underscores )"
 )
 
 var (

@@ -19,7 +19,7 @@ import (
 const (
 	name = "getters"
 	doc  = "Analyzer based on https://google.github.io/styleguide/go/decisions#getters"
-	msg  = "Function and method names should not use a Get or get prefix, unless the underlying concept uses the word “get” (e.g. an HTTP GET). Prefer starting the name with the noun directly, for example use Counts over GetCounts. (ref: https://google.github.io/styleguide/go/decisions#getters)"
+	msg  = "Function and method names should not use a \"Get\" or \"get\" prefix, unless the underlying concept uses the word \"get\" (e.g. an HTTP GET). Prefer starting the name with the noun directly, for example use \"Counts\" over \"GetCounts\". (ref: https://google.github.io/styleguide/go/decisions#getters )"
 )
 
 var (

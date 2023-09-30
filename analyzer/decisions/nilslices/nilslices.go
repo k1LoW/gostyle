@@ -17,8 +17,8 @@ import (
 const (
 	name = "nilslices"
 	doc  = "Analyzer based on https://google.github.io/styleguide/go/decisions#nil-slices"
-	msg  = "If you declare an empty slice as a local variable (especially if it can be the source of a return value), prefer the nil initialization to reduce the risk of bugs by callers. (ref: https://google.github.io/styleguide/go/decisions#nil-slices)"
-	msgc = "When designing interfaces, avoid making a distinction between a nil slice and a non-nil, zero-length slice, as this can lead to subtle programming errors. This is typically accomplished by using len to check for emptiness, rather than == nil. (ref: https://google.github.io/styleguide/go/decisions#nil-slices)"
+	msg  = "If you declare an empty slice as a local variable (especially if it can be the source of a return value), prefer the nil initialization to reduce the risk of bugs by callers. (ref: https://google.github.io/styleguide/go/decisions#nil-slices )"
+	msgc = "When designing interfaces, avoid making a distinction between a nil slice and a non-nil, zero-length slice, as this can lead to subtle programming errors. This is typically accomplished by using len to check for emptiness, rather than == nil. (ref: https://google.github.io/styleguide/go/decisions#nil-slices )"
 )
 
 var (

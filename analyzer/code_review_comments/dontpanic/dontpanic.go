@@ -16,7 +16,7 @@ import (
 const (
 	name = "dontpanic"
 	doc  = "Analyzer based on https://github.com/golang/go/wiki/CodeReviewComments#dont-panic"
-	msg  = "Don't use panic for normal error handling. Use error and multiple return values. (ref: https://github.com/golang/go/wiki/CodeReviewComments#dont-panic)"
+	msg  = "Don't use panic for normal error handling. Use error and multiple return values. (ref: https://github.com/golang/go/wiki/CodeReviewComments#dont-panic )"
 )
 
 var (
