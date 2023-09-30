@@ -11,3 +11,10 @@ func c() error {
 	return b(1, 2, 3, 4, // want "gostyle.funcfmt"
 		"", "", "")
 }
+
+func d() error {
+	return b(1, 2, 3, 4, `A
+B
+C
+D`, "", "") //nostyle:funcfmt
+}
