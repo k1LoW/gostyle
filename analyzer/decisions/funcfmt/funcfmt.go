@@ -91,7 +91,7 @@ func run(pass *analysis.Pass) (any, error) {
 				}
 				for _, id := range f.Names {
 					if pass.Fset.Position(id.Pos()).Line != pass.Fset.Position(nn.Pos()).Line {
-						r.Append(nn.Pos(), msgs)
+						r.AppendOr(nn.Pos(), nn.End(), msgs)
 						return
 					}
 				}
@@ -102,7 +102,7 @@ func run(pass *analysis.Pass) (any, error) {
 			}
 			for _, arg := range nn.Args {
 				if pass.Fset.Position(arg.Pos()).Line != pass.Fset.Position(nn.Pos()).Line {
-					r.Append(nn.Pos(), msgc)
+					r.AppendOr(nn.Pos(), nn.End(), msgc)
 					return
 				}
 			}

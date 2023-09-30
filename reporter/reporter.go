@@ -37,6 +37,7 @@ type Reporter struct {
 
 type report struct {
 	pos token.Pos
+	end token.Pos
 	msg string
 }
 
@@ -101,10 +102,15 @@ func (r *Reporter) Append(pos token.Pos, msg string) {
 	r.reports = append(r.reports, &report{pos: pos, msg: msg})
 }
 
+// AppendOr appends posititons (start, end) and message to the report.
+func (r *Reporter) AppendOr(pos token.Pos, end token.Pos, msg string) {
+	r.reports = append(r.reports, &report{pos: pos, end: end, msg: msg})
+}
+
 // Report reports all reports.
 func (r *Reporter) Report() {
 	for _, rr := range r.reports {
-		if r.ignoreReport(rr.pos) {
+		if r.ignoreReport(rr.pos) || r.ignoreReport(rr.end) {
 			continue
 		}
 		r.pass.Reportf(rr.pos, fmt.Sprintf("%s%s", r.prefix, rr.msg))
@@ -112,6 +118,9 @@ func (r *Reporter) Report() {
 }
 
 func (r *Reporter) ignoreReport(pos token.Pos) bool {
+	if !pos.IsValid() {
+		return false
+	}
 	f1 := r.pass.Fset.File(pos)
 	for i := range r.cm {
 		for n, cgs := range r.cm[i] {
@@ -138,6 +147,7 @@ func (r *Reporter) ignoreReport(pos token.Pos) bool {
 
 				for _, c := range cg.List {
 					t := c.Text
+
 					if !strings.HasPrefix(t, "//") {
 						continue
 					}
