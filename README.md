@@ -54,29 +54,29 @@ jobs:
 ### [Go Style](https://google.github.io/styleguide/go/) in Google Style Guides
 
 - [**Guide**](https://google.github.io/styleguide/go/guide)
-  - [mixedcaps](analyzer/guide/mixedcaps) ... based on https://google.github.io/styleguide/go/guide#mixed-caps
+  - [mixedcaps](#mixedcaps) ... based on https://google.github.io/styleguide/go/guide#mixed-caps
 - [**Decisions**](https://google.github.io/styleguide/go/decisions)
-  - [funcfmt](analyzer/decisions/funcfmt) ... based on https://google.github.io/styleguide/go/decisions#function-formatting
-  - [getters](analyzer/decisions/getters) ... based on https://google.github.io/styleguide/go/decisions#getters
-  - [nilslices](analyzer/decisions/nilslices) ... based on https://google.github.io/styleguide/go/decisions#nil-slices
-  - [pkgnames](analyzer/decisions/pkgnames) ... based on https://google.github.io/styleguide/go/decisions#package-names
-  - [recvnames](analyzer/decisions/recvnames) ... based on https://google.github.io/styleguide/go/decisions#receiver-names
-  - [recvtype](analyzer/decisions/recvtype) ... based on https://google.github.io/styleguide/go/decisions#receiver-type
-  - [repetition](analyzer/decisions/repetition) ... based on https://google.github.io/styleguide/go/decisions#repetition
-  - [typealiases](analyzer/decisions/typealiases) ... based on https://google.github.io/styleguide/go/decisions#type-aliases
-  - [underscores](analyzer/decisions/underscores) ... based on https://google.github.io/styleguide/go/decisions#underscores
-  - [useany](analyzer/decisions/useany) ... based on https://google.github.io/styleguide/go/decisions#use-any
-  - [useq](analyzer/decisions/useq) ... based on https://google.github.io/styleguide/go/decisions#use-q
-  - [varnames](analyzer/decisions/varnames) ... based on https://google.github.io/styleguide/go/decisions#variable-names
+  - [funcfmt](#funcfmt) ... based on https://google.github.io/styleguide/go/decisions#function-formatting
+  - [getters](#getters) ... based on https://google.github.io/styleguide/go/decisions#getters
+  - [nilslices](#nilslices) ... based on https://google.github.io/styleguide/go/decisions#nil-slices
+  - [pkgnames](#pkgnames) ... based on https://google.github.io/styleguide/go/decisions#package-names
+  - [recvnames](#recvnames) ... based on https://google.github.io/styleguide/go/decisions#receiver-names
+  - [recvtype](#recvtype) ... based on https://google.github.io/styleguide/go/decisions#receiver-type
+  - [repetition](#repetition) ... based on https://google.github.io/styleguide/go/decisions#repetition
+  - [typealiases](#typealiases) ... based on https://google.github.io/styleguide/go/decisions#type-aliases
+  - [underscores](#underscores) ... based on https://google.github.io/styleguide/go/decisions#underscores
+  - [useany](#useany) ... based on https://google.github.io/styleguide/go/decisions#use-any
+  - [useq](#useq) ... based on https://google.github.io/styleguide/go/decisions#use-q
+  - [varnames](#varnames) ... based on https://google.github.io/styleguide/go/decisions#variable-names
 
 > ["Google Style Guides"](https://google.github.io/styleguide/) by Google is licensed under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
 
 ### [Go Code Review Comments](https://github.com/golang/go/wiki/CodeReviewComments) in Go wiki
 
-- [contexts](analyzer/code_review_comments/contexts) ... based on https://github.com/golang/go/wiki/CodeReviewComments#contexts
-- [dontpanic](analyzer/code_review_comments/dontpanic) ... based on https://github.com/golang/go/wiki/CodeReviewComments#dont-panic
-- [errorstrings](analyzer/code_review_comments/errorstrings) ... based on https://github.com/golang/go/wiki/CodeReviewComments#error-strings
-- [handlerrors](analyzer/code_review_comments/handlerrors) ... based on https://github.com/golang/go/wiki/CodeReviewComments#handle-errors
+- [contexts](#contexts) ... based on https://github.com/golang/go/wiki/CodeReviewComments#contexts
+- [dontpanic](#dontpanic) ... based on https://github.com/golang/go/wiki/CodeReviewComments#dont-panic
+- [errorstrings](#errorstrings) ... based on https://github.com/golang/go/wiki/CodeReviewComments#error-strings
+- [handlerrors](#handlerrors) ... based on https://github.com/golang/go/wiki/CodeReviewComments#handle-errors
 
 ## Disabling and Ignoring
 
