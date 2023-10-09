@@ -327,6 +327,12 @@ $ apk add gostyle.apk
 $ brew install k1LoW/tap/gostyle
 ```
 
+**[aqua](https://aquaproj.github.io/):**
+
+```console
+$ aqua g -i k1LoW/gostyle
+```
+
 **manually:**
 
 Download binary from [releases page](https://github.com/k1LoW/gostyle/releases)
