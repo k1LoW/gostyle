@@ -1,6 +1,6 @@
 module github.com/k1LoW/gostyle
 
-go 1.21.4
+go 1.21.5
 
 require (
 	github.com/fatih/camelcase v1.0.0
