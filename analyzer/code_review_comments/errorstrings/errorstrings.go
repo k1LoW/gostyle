@@ -23,6 +23,7 @@ const (
 var (
 	disable          bool
 	includeGenerated bool
+	excludeTest      bool
 )
 
 // Analyzer based on https://github.com/golang/go/wiki/CodeReviewComments#error-strings
@@ -56,6 +57,7 @@ func run(pass *analysis.Pass) (any, error) {
 	if c != nil {
 		disable = c.IsDisabled(name)
 		includeGenerated = c.AnalyzersSettings.Errorstrings.IncludeGenerated
+		excludeTest = c.AnalyzersSettings.Errorstrings.ExcludeTest
 	}
 	if disable {
 		return nil, nil
@@ -78,6 +80,11 @@ func run(pass *analysis.Pass) (any, error) {
 		return nil, err
 	}
 	i.Preorder(nodeFilter, func(n ast.Node) {
+		if excludeTest {
+			if strings.HasSuffix(pass.Fset.File(n.Pos()).Name(), "_test.go") {
+				return
+			}
+		}
 		switch e := n.(type) {
 		case *ast.CallExpr:
 			if len(e.Args) == 0 {
@@ -124,4 +131,5 @@ func isNG(in string) bool {
 func init() {
 	Analyzer.Flags.BoolVar(&disable, "disable", false, "disable "+name+" analyzer")
 	Analyzer.Flags.BoolVar(&includeGenerated, "include-generated", false, "include generated codes")
+	Analyzer.Flags.BoolVar(&excludeTest, "exclude-test", false, "exclude test files")
 }

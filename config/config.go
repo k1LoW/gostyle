@@ -61,6 +61,7 @@ type Dontpanic struct {
 
 type Errorstrings struct {
 	IncludeGenerated bool `yaml:"include-generated"`
+	ExcludeTest      bool `yaml:"exclude-test"`
 }
 
 type Funcfmt struct {
