@@ -1,5 +1,11 @@
 # Changelog
 
+## [v0.18.3](https://github.com/k1LoW/gostyle/compare/v0.18.2...v0.18.3) - 2023-12-13
+### New Features 🎉
+- Add errorstrings.exclude-test by @k1LoW in https://github.com/k1LoW/gostyle/pull/92
+### Other Changes
+- docs: add the installation guide with aqua by @suzuki-shunsuke in https://github.com/k1LoW/gostyle/pull/91
+
 ## [v0.18.2](https://github.com/k1LoW/gostyle/compare/v0.18.1...v0.18.2) - 2023-09-30
 ### New Features 🎉
 - Add space acound URL for clickable links in GitHub by @k1LoW in https://github.com/k1LoW/gostyle/pull/86
