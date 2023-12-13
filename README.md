@@ -142,6 +142,7 @@ analyzers-settings:
 analyzers-settings:
   errorstrings:
     include-generated: false # include generated codes (default: false)
+    exclude-test: true       # exclude test files (default: false)
 ```
 
 #### funcfmt

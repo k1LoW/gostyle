@@ -90,6 +90,11 @@ func run(pass *analysis.Pass) (any, error) {
 	}
 
 	i.Preorder(nodeFilter, func(n ast.Node) {
+		if excludeTest {
+			if strings.HasSuffix(pass.Fset.File(n.Pos()).Name(), "_test.go") {
+				return
+			}
+		}
 		switch nn := n.(type) {
 		case *ast.AssignStmt:
 			if len(nn.Rhs) == 0 {
@@ -106,11 +111,6 @@ func run(pass *analysis.Pass) (any, error) {
 				}
 				if id.Name != "_" {
 					continue
-				}
-				if excludeTest {
-					if strings.HasSuffix(pass.Fset.File(e.Pos()).Name(), "_test.go") {
-						return
-					}
 				}
 				br.report(e, i)
 			}
