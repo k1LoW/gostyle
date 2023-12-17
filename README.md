@@ -71,12 +71,12 @@ jobs:
 
 > ["Google Style Guides"](https://google.github.io/styleguide/) by Google is licensed under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
 
-### [Go Code Review Comments](https://github.com/golang/go/wiki/CodeReviewComments) in Go wiki
+### [Go Code Review Comments](https://go.dev/wiki/CodeReviewComments) in Go wiki
 
-- [contexts](#contexts) ... based on https://github.com/golang/go/wiki/CodeReviewComments#contexts
-- [dontpanic](#dontpanic) ... based on https://github.com/golang/go/wiki/CodeReviewComments#dont-panic
-- [errorstrings](#errorstrings) ... based on https://github.com/golang/go/wiki/CodeReviewComments#error-strings
-- [handlerrors](#handlerrors) ... based on https://github.com/golang/go/wiki/CodeReviewComments#handle-errors
+- [contexts](#contexts) ... based on https://go.dev/wiki/CodeReviewComments#contexts
+- [dontpanic](#dontpanic) ... based on https://go.dev/wiki/CodeReviewComments#dont-panic
+- [errorstrings](#errorstrings) ... based on https://go.dev/wiki/CodeReviewComments#error-strings
+- [handlerrors](#handlerrors) ... based on https://go.dev/wiki/CodeReviewComments#handle-errors
 
 ## Disabling and Ignoring
 

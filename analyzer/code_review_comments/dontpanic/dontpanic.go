@@ -15,8 +15,8 @@ import (
 
 const (
 	name = "dontpanic"
-	doc  = "Analyzer based on https://github.com/golang/go/wiki/CodeReviewComments#dont-panic"
-	msg  = "Don't use panic for normal error handling. Use error and multiple return values. (ref: https://github.com/golang/go/wiki/CodeReviewComments#dont-panic )"
+	doc  = "Analyzer based on https://go.dev/wiki/CodeReviewComments#dont-panic"
+	msg  = "Don't use panic for normal error handling. Use error and multiple return values. (ref: https://go.dev/wiki/CodeReviewComments#dont-panic )"
 )
 
 var (
@@ -25,7 +25,7 @@ var (
 	excludeTest      bool
 )
 
-// Analyzer based on https://github.com/golang/go/wiki/CodeReviewComments#dont-panic
+// Analyzer based on https://go.dev/wiki/CodeReviewComments#dont-panic
 var Analyzer = &analysis.Analyzer{
 	Name: name,
 	Doc:  doc,
@@ -36,7 +36,7 @@ var Analyzer = &analysis.Analyzer{
 	},
 }
 
-// AnalyzerWithConfig based on https://github.com/golang/go/wiki/CodeReviewComments#dont-panic
+// AnalyzerWithConfig based on https://go.dev/wiki/CodeReviewComments#dont-panic
 var AnalyzerWithConfig = &analysis.Analyzer{
 	Name: name,
 	Doc:  doc,
