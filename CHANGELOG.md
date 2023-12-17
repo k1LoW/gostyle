@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.18.4](https://github.com/k1LoW/gostyle/compare/v0.18.3...v0.18.4) - 2023-12-17
+### Other Changes
+- Update Go wiki URL by @k1LoW in https://github.com/k1LoW/gostyle/pull/93
+
 ## [v0.18.3](https://github.com/k1LoW/gostyle/compare/v0.18.2...v0.18.3) - 2023-12-13
 ### New Features 🎉
 - Add errorstrings.exclude-test by @k1LoW in https://github.com/k1LoW/gostyle/pull/92
