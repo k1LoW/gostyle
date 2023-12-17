@@ -16,8 +16,8 @@ import (
 
 const (
 	name = "handlerrors"
-	doc  = "Analyzer based on https://github.com/golang/go/wiki/CodeReviewComments#handle-errors"
-	msg  = "Do not discard errors using `_` variables. If a function returns an error, check it to make sure the function succeeded. Handle the error, return it, or, in truly exceptional situations, panic. (ref: https://github.com/golang/go/wiki/CodeReviewComments#handle-errors )"
+	doc  = "Analyzer based on https://go.dev/wiki/CodeReviewComments#handle-errors"
+	msg  = "Do not discard errors using `_` variables. If a function returns an error, check it to make sure the function succeeded. Handle the error, return it, or, in truly exceptional situations, panic. (ref: https://go.dev/wiki/CodeReviewComments#handle-errors )"
 )
 
 var (
@@ -26,7 +26,7 @@ var (
 	excludeTest      bool
 )
 
-// Analyzer based on https://github.com/golang/go/wiki/CodeReviewComments#handle-errors
+// Analyzer based on https://go.dev/wiki/CodeReviewComments#handle-errors
 var Analyzer = &analysis.Analyzer{
 	Name: name,
 	Doc:  doc,
@@ -37,7 +37,7 @@ var Analyzer = &analysis.Analyzer{
 	},
 }
 
-// AnalyzerWithConfig based on https://github.com/golang/go/wiki/CodeReviewComments#handle-errors
+// AnalyzerWithConfig based on https://go.dev/wiki/CodeReviewComments#handle-errors
 var AnalyzerWithConfig = &analysis.Analyzer{
 	Name: name,
 	Doc:  doc,
