@@ -1,5 +1,11 @@
 # Changelog
 
+## [v0.19.0](https://github.com/k1LoW/gostyle/compare/v0.18.4...v0.19.0) - 2024-04-02
+### Other Changes
+- Update go and pkgs by @k1LoW in https://github.com/k1LoW/gostyle/pull/96
+- [ifacenames] Allow `-or` ( e.g. Validator ) by @k1LoW in https://github.com/k1LoW/gostyle/pull/95
+- chore(deps): bump the dependencies group with 1 update by @dependabot in https://github.com/k1LoW/gostyle/pull/98
+
 ## [v0.18.4](https://github.com/k1LoW/gostyle/compare/v0.18.3...v0.18.4) - 2023-12-17
 ### Other Changes
 - Update Go wiki URL by @k1LoW in https://github.com/k1LoW/gostyle/pull/93
