@@ -12,6 +12,10 @@ type Writer interface {
 	Write() error
 }
 
+type Validator interface {
+	Validate() error
+}
+
 type Add interface {
 	One() error
 	Two() error
