@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.19.1](https://github.com/k1LoW/gostyle/compare/v0.19.0...v0.19.1) - 2024-04-08
+### Other Changes
+- chore(deps): bump golang.org/x/tools from 0.19.0 to 0.20.0 in the dependencies group by @dependabot in https://github.com/k1LoW/gostyle/pull/99
+
 ## [v0.19.0](https://github.com/k1LoW/gostyle/compare/v0.18.4...v0.19.0) - 2024-04-02
 ### Other Changes
 - Update go and pkgs by @k1LoW in https://github.com/k1LoW/gostyle/pull/96
