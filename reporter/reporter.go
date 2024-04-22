@@ -37,7 +37,6 @@ type Reporter struct {
 	includeGenerated  bool
 	configDir         string
 	excludeFiles      []string
-	wd                string
 }
 
 type report struct {
