@@ -54,10 +54,12 @@ func run(pass *analysis.Pass) (any, error) {
 	if err != nil {
 		return nil, err
 	}
+	var opts []reporter.Option
 	if c != nil {
 		disable = c.IsDisabled(name)
 		includeGenerated = c.AnalyzersSettings.Errorstrings.IncludeGenerated
 		excludeTest = c.AnalyzersSettings.Errorstrings.ExcludeTest
+		opts = append(opts, reporter.ExcludeFiles(c.ConfigDir, c.ExcludeFiles))
 	}
 	if disable {
 		return nil, nil
@@ -71,7 +73,6 @@ func run(pass *analysis.Pass) (any, error) {
 		(*ast.CallExpr)(nil),
 	}
 
-	var opts []reporter.Option
 	if includeGenerated {
 		opts = append(opts, reporter.IncludeGenerated())
 	}

@@ -3,9 +3,11 @@ package reporter
 import (
 	"fmt"
 	"go/token"
+	"path/filepath"
 	"regexp"
 	"strings"
 
+	"github.com/bmatcuk/doublestar/v4"
 	"github.com/gostaticanalysis/comment"
 	"github.com/gostaticanalysis/comment/passes/commentmap"
 	"golang.org/x/tools/go/analysis"
@@ -33,6 +35,9 @@ type Reporter struct {
 	disableLintIgnore bool
 	disableNoLint     bool
 	includeGenerated  bool
+	configDir         string
+	excludeFiles      []string
+	wd                string
 }
 
 type report struct {
@@ -78,6 +83,14 @@ func IncludeGenerated() Option {
 	}
 }
 
+// ExcludeFiles excludes files from the report.
+func ExcludeFiles(configDir string, files []string) Option {
+	return func(r *Reporter) {
+		r.configDir = configDir
+		r.excludeFiles = append(r.excludeFiles, files...)
+	}
+}
+
 // New returns a new Reporter.
 func New(name string, pass *analysis.Pass, opts ...Option) (*Reporter, error) {
 	cm, ok := pass.ResultOf[commentmap.Analyzer].(comment.Maps)
@@ -94,6 +107,15 @@ func New(name string, pass *analysis.Pass, opts ...Option) (*Reporter, error) {
 	for _, opt := range opts {
 		opt(r)
 	}
+	var excludeFiles []string
+	if len(r.excludeFiles) > 0 {
+		for _, f := range r.excludeFiles {
+			p := filepath.Join(r.configDir, f)
+			excludeFiles = append(excludeFiles, p)
+		}
+	}
+	r.excludeFiles = excludeFiles
+
 	return r, nil
 }
 
@@ -121,7 +143,19 @@ func (r *Reporter) ignoreReport(pos token.Pos) bool {
 	if !pos.IsValid() {
 		return false
 	}
+
 	f1 := r.pass.Fset.File(pos)
+	for _, e := range r.excludeFiles {
+		match, err := doublestar.PathMatch(e, f1.Name())
+		if err != nil {
+			fmt.Println(err)
+			continue
+		}
+		if match {
+			return true
+		}
+	}
+
 	for i := range r.cm {
 		for n, cgs := range r.cm[i] {
 			f2 := r.pass.Fset.File(n.Pos())
