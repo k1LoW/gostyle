@@ -59,10 +59,12 @@ func run(pass *analysis.Pass) (any, error) {
 		return nil, err
 	}
 	words := strings.Split(exclude, ",")
+	var opts []reporter.Option
 	if c != nil {
 		disable = c.IsDisabled(name)
 		includeGenerated = c.AnalyzersSettings.Recvnames.IncludeGenerated
 		words = c.AnalyzersSettings.Repetition.Exclude
+		opts = append(opts, reporter.ExcludeFiles(c.ConfigDir, c.ExcludeFiles))
 	}
 
 	if disable {
@@ -80,7 +82,6 @@ func run(pass *analysis.Pass) (any, error) {
 		(*ast.FuncDecl)(nil),
 	}
 
-	var opts []reporter.Option
 	if includeGenerated {
 		opts = append(opts, reporter.IncludeGenerated())
 	}

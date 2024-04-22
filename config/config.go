@@ -20,6 +20,8 @@ const (
 type Config struct {
 	Analyzers         Analyzers         `yaml:"analyzers"`
 	AnalyzersSettings AnalyzersSettings `yaml:"analyzers-settings"`
+	ExcludeFiles      []string          `yaml:"exclude-files"`
+	ConfigDir         string            `yaml:"-"`
 	loaded            bool
 	err               error
 }

@@ -57,10 +57,12 @@ func run(pass *analysis.Pass) (any, error) {
 		return nil, err
 	}
 	words := strings.Split(exclude, ",")
+	var opts []reporter.Option
 	if c != nil {
 		disable = c.IsDisabled(name)
 		words = c.AnalyzersSettings.Underscores.Exclude
 		includeGenerated = c.AnalyzersSettings.Underscores.IncludeGenerated
+		opts = append(opts, reporter.ExcludeFiles(c.ConfigDir, c.ExcludeFiles))
 	}
 	if disable {
 		return nil, nil
@@ -81,7 +83,6 @@ func run(pass *analysis.Pass) (any, error) {
 		(*ast.RangeStmt)(nil),
 	}
 
-	var opts []reporter.Option
 	if includeGenerated {
 		opts = append(opts, reporter.IncludeGenerated())
 	}

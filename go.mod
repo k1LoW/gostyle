@@ -1,8 +1,9 @@
 module github.com/k1LoW/gostyle
 
-go 1.22.1
+go 1.22.2
 
 require (
+	github.com/bmatcuk/doublestar/v4 v4.6.1
 	github.com/fatih/camelcase v1.0.0
 	github.com/gostaticanalysis/comment v1.4.2
 	github.com/gostaticanalysis/testutil v0.4.0

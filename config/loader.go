@@ -3,6 +3,7 @@ package config
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 	"reflect"
 	"strings"
 
@@ -44,6 +45,8 @@ func run(pass *analysis.Pass) (any, error) {
 		c.err = fmt.Errorf("failed to decode config file: %w", err)
 		return c, nil
 	}
+	c.ConfigDir = filepath.Dir(configPath)
+
 	// Set default value
 	if c.AnalyzersSettings.Recvnames.Max == 0 {
 		c.AnalyzersSettings.Recvnames.Max = DefaultReceiverNameMax
