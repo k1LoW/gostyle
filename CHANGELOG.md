@@ -1,5 +1,10 @@
 # Changelog
 
+## [v0.20.1](https://github.com/k1LoW/gostyle/compare/v0.20.0...v0.20.1) - 2024-06-20
+### Other Changes
+- chore(deps): bump golang.org/x/tools from 0.20.0 to 0.21.0 in the dependencies group by @dependabot in https://github.com/k1LoW/gostyle/pull/103
+- chore(deps): bump golang.org/x/tools from 0.21.0 to 0.22.0 in the dependencies group by @dependabot in https://github.com/k1LoW/gostyle/pull/105
+
 ## [v0.20.0](https://github.com/k1LoW/gostyle/compare/v0.19.1...v0.20.0) - 2024-04-22
 ### New Features 🎉
 - Add `exclude-files:` section for excluding files from analysis by @k1LoW in https://github.com/k1LoW/gostyle/pull/101
