@@ -1,5 +1,7 @@
 # Changelog
 
+## [v0.20.2](https://github.com/k1LoW/gostyle/compare/v0.20.1...v0.20.2) - 2024-06-20
+
 ## [v0.20.1](https://github.com/k1LoW/gostyle/compare/v0.20.0...v0.20.1) - 2024-06-20
 ### Other Changes
 - chore(deps): bump golang.org/x/tools from 0.20.0 to 0.21.0 in the dependencies group by @dependabot in https://github.com/k1LoW/gostyle/pull/103
