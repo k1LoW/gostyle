@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.20.3](https://github.com/k1LoW/gostyle/compare/v0.20.2...v0.20.3) - 2025-01-01
+### Other Changes
+- Update pkgs and go directive version by @k1LoW in https://github.com/k1LoW/gostyle/pull/111
+
 ## [v0.20.2](https://github.com/k1LoW/gostyle/compare/v0.20.1...v0.20.2) - 2024-06-20
 
 ## [v0.20.1](https://github.com/k1LoW/gostyle/compare/v0.20.0...v0.20.1) - 2024-06-20
