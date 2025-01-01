@@ -25,13 +25,15 @@ jobs:
 
       - name: Run lint
         uses: reviewdog/action-golangci-lint@v2
+        with:
+          go_version_file: go.mod
 
       - name: Run govulncheck
         uses: golang/govulncheck-action@v1
         with:
-           go-version-input: '${{ steps.setup-go.outputs.go-version }}'
-           check-latest: true
-           go-package: ./...
+          go-version-input: '${{ steps.setup-go.outputs.go-version }}'
+          check-latest: true
+          go-package: ./...
 
       - name: Run gostyle
         run: make gostyle
