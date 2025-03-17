@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.21.0](https://github.com/k1LoW/gostyle/compare/v0.20.4...v0.21.0) - 2025-03-17
+### Other Changes
+- chore(deps): bump the dependencies group across 1 directory with 2 updates by @dependabot in https://github.com/k1LoW/gostyle/pull/119
+
 ## [v0.20.4](https://github.com/k1LoW/gostyle/compare/v0.20.3...v0.20.4) - 2025-01-29
 ### Other Changes
 - chore(deps): bump the dependencies group across 1 directory with 2 updates by @dependabot in https://github.com/k1LoW/gostyle/pull/115
