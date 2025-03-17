@@ -2,4 +2,4 @@ package version
 
 const Name string = "gostyle"
 
-var Version = "0.20.4" //nostyle:repetition
+var Version = "0.21.0" //nostyle:repetition
