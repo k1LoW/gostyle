@@ -6,7 +6,7 @@ require (
 	github.com/bmatcuk/doublestar/v4 v4.8.1
 	github.com/fatih/camelcase v1.0.0
 	github.com/gostaticanalysis/comment v1.5.0
-	github.com/gostaticanalysis/testutil v0.6.0
+	github.com/gostaticanalysis/testutil v0.6.1
 	golang.org/x/tools v0.31.0
 	gopkg.in/yaml.v3 v3.0.1
 )
