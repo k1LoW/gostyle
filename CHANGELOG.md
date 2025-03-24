@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.21.1](https://github.com/k1LoW/gostyle/compare/v0.21.0...v0.21.1) - 2025-03-24
+### Other Changes
+- chore(deps): bump github.com/gostaticanalysis/testutil from 0.6.0 to 0.6.1 in the dependencies group by @dependabot in https://github.com/k1LoW/gostyle/pull/121
+
 ## [v0.21.0](https://github.com/k1LoW/gostyle/compare/v0.20.4...v0.21.0) - 2025-03-17
 ### Other Changes
 - chore(deps): bump the dependencies group across 1 directory with 2 updates by @dependabot in https://github.com/k1LoW/gostyle/pull/119
