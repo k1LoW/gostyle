@@ -50,7 +50,22 @@ var AnalyzerWithConfig = &analysis.Analyzer{
 }
 
 var errTyp = func() *types.Interface {
-	return types.Universe.Lookup("error").Type().Underlying().(*types.Interface)
+	obj := types.Universe.Lookup("error")
+	if obj == nil {
+		return nil
+	}
+	typ := obj.Type()
+	if typ == nil {
+		return nil
+	}
+	underlying := typ.Underlying()
+	if underlying == nil {
+		return nil
+	}
+	if iface, ok := underlying.(*types.Interface); ok {
+		return iface
+	}
+	return nil
 }()
 
 func run(pass *analysis.Pass) (any, error) {

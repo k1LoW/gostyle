@@ -96,7 +96,7 @@ func generateConfig() error {
 	if _, err := os.Stat(name); err == nil {
 		return fmt.Errorf("%s already exists", name)
 	}
-	if err := os.WriteFile(name, defaultConfig, os.ModePerm); err != nil {
+	if err := os.WriteFile(name, defaultConfig, os.ModePerm); err != nil { //nolint:gosec
 		return err
 	}
 	if _, err := fmt.Fprintf(os.Stderr, "%s is generated\n", name); err != nil {

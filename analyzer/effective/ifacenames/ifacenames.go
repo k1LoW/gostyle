@@ -89,12 +89,12 @@ func run(pass *analysis.Pass) (any, error) {
 		case *ast.InterfaceType:
 			if len(n.Methods.List) == 1 && len(n.Methods.List[0].Names) > 0 {
 				mn := n.Methods.List[0].Names[0].Name
-				if !strings.HasPrefix(ii.Name, mn[:len(mn)-1]) || !(strings.HasSuffix(ii.Name, "er") || strings.HasSuffix(ii.Name, "or")) { // huristic
+				if !strings.HasPrefix(ii.Name, mn[:len(mn)-1]) || (!strings.HasSuffix(ii.Name, "er") && !strings.HasSuffix(ii.Name, "or")) { // huristic
 					r.Append(n.Pos(), fmt.Sprintf("%s: %s", msg, ii.Name))
 					return
 				}
 			}
-			if all && !(strings.HasSuffix(ii.Name, "er") || strings.HasSuffix(ii.Name, "or")) {
+			if all && !strings.HasSuffix(ii.Name, "er") && !strings.HasSuffix(ii.Name, "or") {
 				r.Append(n.Pos(), fmt.Sprintf("%s: %s", msgc, ii.Name))
 				return
 			}
