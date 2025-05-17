@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.21.2](https://github.com/k1LoW/gostyle/compare/v0.21.1...v0.21.2) - 2025-05-17
+### Other Changes
+- chore(deps): bump golang.org/x/tools from 0.32.0 to 0.33.0 in the dependencies group by @dependabot in https://github.com/k1LoW/gostyle/pull/124
+
 ## [v0.21.1](https://github.com/k1LoW/gostyle/compare/v0.21.0...v0.21.1) - 2025-04-14
 ### Other Changes
 - chore(deps): bump github.com/gostaticanalysis/testutil from 0.6.0 to 0.6.1 in the dependencies group by @dependabot in https://github.com/k1LoW/gostyle/pull/121
