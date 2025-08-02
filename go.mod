@@ -3,7 +3,7 @@ module github.com/k1LoW/gostyle
 go 1.23.11
 
 require (
-	github.com/bmatcuk/doublestar/v4 v4.9.0
+	github.com/bmatcuk/doublestar/v4 v4.9.1
 	github.com/fatih/camelcase v1.0.0
 	github.com/gostaticanalysis/comment v1.5.0
 	github.com/gostaticanalysis/testutil v0.6.1
