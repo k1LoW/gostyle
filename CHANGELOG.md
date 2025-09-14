@@ -1,5 +1,11 @@
 # Changelog
 
+## [v0.23.0](https://github.com/k1LoW/gostyle/compare/v0.22.0...v0.23.0) - 2025-09-14
+### Fix bug 🐛
+- fix: fix tagpr settings for immutable release by @k1LoW in https://github.com/k1LoW/gostyle/pull/135
+### Other Changes
+- fix: fix go directive version by @k1LoW in https://github.com/k1LoW/gostyle/pull/134
+
 ## [v0.22.0](https://github.com/k1LoW/gostyle/compare/v0.21.1...v0.22.0) - 2025-09-14
 ### Other Changes
 - chore(deps): bump golang.org/x/tools from 0.32.0 to 0.33.0 in the dependencies group by @dependabot[bot] in https://github.com/k1LoW/gostyle/pull/124
