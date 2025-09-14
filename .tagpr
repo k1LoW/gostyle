@@ -34,3 +34,4 @@
 	releaseBranch = main
 	versionFile = version/version.go
 	command = "make prerelease_for_tagpr"
+  release = draft
