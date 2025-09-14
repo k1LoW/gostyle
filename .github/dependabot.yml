@@ -11,6 +11,11 @@ updates:
       interval: "weekly"
       time: "08:00"
       timezone: "Asia/Tokyo"
+    cooldown:
+      default-days: 5
+      semver-major-days: 30
+      semver-minor-days: 7
+      semver-patch-days: 3
     commit-message:
       prefix: "chore"
       include: "scope"
@@ -28,6 +33,11 @@ updates:
       interval: "weekly"
       time: "08:00"
       timezone: "Asia/Tokyo"
+    cooldown:
+      default-days: 5
+      semver-major-days: 30
+      semver-minor-days: 7
+      semver-patch-days: 3      
     commit-message:
       prefix: "chore"
       include: "scope"
