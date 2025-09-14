@@ -134,7 +134,7 @@ func (r *Reporter) Report() {
 		if r.ignoreReport(rr.pos) || r.ignoreReport(rr.end) {
 			continue
 		}
-		r.pass.Reportf(rr.pos, fmt.Sprintf("%s%s", r.prefix, rr.msg))
+		r.pass.Reportf(rr.pos, "%s%s", r.prefix, rr.msg)
 	}
 }
 
