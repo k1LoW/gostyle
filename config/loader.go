@@ -77,6 +77,10 @@ func run(pass *analysis.Pass) (any, error) {
 	return c, nil
 }
 
+func SetPath(p string) {
+	configPath = p
+}
+
 func init() {
 	Loader.Flags.StringVar(&configPath, "config", "", "config file path. the config file path must be specified as a full path. if a config file is specified, each analyzer options are ignored")
 }
