@@ -22,7 +22,7 @@ func init() {
 
 func helpCommand(c *cobra.Command, args []string) {
 	w := os.Stdout
-	// copy from spf13/cobra/command.go#defaultUsageFunc()
+	// copy from spf13/cobra/command.go#defaultUsageFunc().
 	fmt.Fprint(w, "Usage:")
 	if c.Runnable() {
 		fmt.Fprintf(w, "\n  %s", c.UseLine())
@@ -106,13 +106,13 @@ func helpCommand(c *cobra.Command, args []string) {
 	fmt.Fprintln(w)
 }
 
-// copy from spf13/cobra/command.go#defaultUsageFunc()
+// copy from spf13/cobra/command.go.
 func rpad(s string, padding int) string {
 	formattedString := fmt.Sprintf("%%-%ds", padding)
 	return fmt.Sprintf(formattedString, s)
 }
 
-// copy from spf13/cobra/command.go#defaultUsageFunc()
+// copy from spf13/cobra/command.go.
 func trimRightSpace(s string) string {
 	return strings.TrimRightFunc(s, unicode.IsSpace)
 }
