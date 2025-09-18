@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.24.0](https://github.com/k1LoW/gostyle/compare/v0.23.0...v0.24.0) - 2025-09-18
+### New Features 🎉
+- feat: add a `run` command to run analyzers as a standalone CLI. by @k1LoW in https://github.com/k1LoW/gostyle/pull/137
+
 ## [v0.23.0](https://github.com/k1LoW/gostyle/compare/v0.22.0...v0.23.0) - 2025-09-14
 ### Fix bug 🐛
 - fix: fix tagpr settings for immutable release by @k1LoW in https://github.com/k1LoW/gostyle/pull/135
