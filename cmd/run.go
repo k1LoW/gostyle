@@ -46,6 +46,9 @@ var runCmd = &cobra.Command{
 			configPath = abs
 		}
 		config.SetPath(configPath)
+		if len(args) == 0 {
+			args = []string{"."}
+		}
 		os.Args = append([]string{"gostlye"}, args...)
 		multichecker.Main(analyzer.Analyzers...)
 		return nil
