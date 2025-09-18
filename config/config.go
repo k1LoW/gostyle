@@ -1,10 +1,14 @@
 package config
 
 import (
+	_ "embed"
 	"slices"
 
 	"golang.org/x/tools/go/analysis"
 )
+
+//go:embed .gostyle.yml.init
+var Default []byte
 
 const (
 	DefaultSmallScopeMax       = 7
