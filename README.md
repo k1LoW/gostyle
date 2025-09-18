@@ -16,8 +16,16 @@
 
 ## Usage
 
+### As a Standalone CLI
+
 ```console
-$ go vet -vettool=`which gostyle`
+$ gostyle run ./...
+```
+
+### As a vet tool
+
+```console
+$ go vet -vettool=`which gostyle` ./...
 ```
 
 ### On GitHub Actions
@@ -80,7 +88,7 @@ jobs:
 
 ## Disabling and Ignoring
 
-### Disable analyzer
+### Disable analyzer ( vet tool only )
 
 Use `-[analyser name].disable` flag.
 
@@ -97,11 +105,14 @@ $ go vet -vettool=`which gostyle` -mixedcaps.disable # Disable mixedcaps analyze
 
 ## Configuration
 
-`gostyle` can be configured by `-gostyle.config=$PWD/.gostyle.yml` like [golangci-lint](https://golangci-lint.run/usage/configuration/).
+`gostyle` can be configured like [golangci-lint](https://golangci-lint.run/usage/configuration/).
 
 ``` console
 $ gostyle init
 .gostyle.yml is generated
+# As a Standalone CLI
+$ gostyle run --config=.gostyle.yml ./...
+# As a vet tool
 $ go vet -vettool=`which gostyle` -gostyle.config=$PWD/.gostyle.yml ./...
 ```
 
