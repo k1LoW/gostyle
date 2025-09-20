@@ -1,5 +1,10 @@
 # Changelog
 
+## [v0.24.1](https://github.com/k1LoW/gostyle/compare/v0.24.0...v0.24.1) - 2025-09-20
+### Other Changes
+- chore: use goccy/go-yaml instead by @k1LoW in https://github.com/k1LoW/gostyle/pull/139
+- chore: fix lint warn by @k1LoW in https://github.com/k1LoW/gostyle/pull/141
+
 ## [v0.24.0](https://github.com/k1LoW/gostyle/compare/v0.23.0...v0.24.0) - 2025-09-18
 ### New Features 🎉
 - feat: add a `run` command to run analyzers as a standalone CLI. by @k1LoW in https://github.com/k1LoW/gostyle/pull/137
