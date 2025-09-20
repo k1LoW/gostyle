@@ -42,25 +42,25 @@ func helpCommand(c *cobra.Command, args []string) {
 		cmds := c.Commands()
 		if len(c.Groups()) == 0 {
 			fmt.Fprintf(w, "\n\nAvailable Commands:")
-			for _, subcmd := range cmds {
-				if subcmd.IsAvailableCommand() || subcmd.Name() == helpCommandName {
-					fmt.Fprintf(w, "\n  %s %s", rpad(subcmd.Name(), subcmd.NamePadding()), subcmd.Short)
+			for _, sub := range cmds {
+				if sub.IsAvailableCommand() || sub.Name() == helpCommandName {
+					fmt.Fprintf(w, "\n  %s %s", rpad(sub.Name(), sub.NamePadding()), sub.Short)
 				}
 			}
 		} else {
-			for _, group := range c.Groups() {
-				fmt.Fprintf(w, "\n\n%s", group.Title)
-				for _, subcmd := range cmds {
-					if subcmd.GroupID == group.ID && (subcmd.IsAvailableCommand() || subcmd.Name() == helpCommandName) {
-						fmt.Fprintf(w, "\n  %s %s", rpad(subcmd.Name(), subcmd.NamePadding()), subcmd.Short)
+			for _, g := range c.Groups() {
+				fmt.Fprintf(w, "\n\n%s", g.Title)
+				for _, sub := range cmds {
+					if sub.GroupID == g.ID && (sub.IsAvailableCommand() || sub.Name() == helpCommandName) {
+						fmt.Fprintf(w, "\n  %s %s", rpad(sub.Name(), sub.NamePadding()), sub.Short)
 					}
 				}
 			}
 			if !c.AllChildCommandsHaveGroup() {
 				fmt.Fprintf(w, "\n\nAdditional Commands:")
-				for _, subcmd := range cmds {
-					if subcmd.GroupID == "" && (subcmd.IsAvailableCommand() || subcmd.Name() == helpCommandName) {
-						fmt.Fprintf(w, "\n  %s %s", rpad(subcmd.Name(), subcmd.NamePadding()), subcmd.Short)
+				for _, sub := range cmds {
+					if sub.GroupID == "" && (sub.IsAvailableCommand() || sub.Name() == helpCommandName) {
+						fmt.Fprintf(w, "\n  %s %s", rpad(sub.Name(), sub.NamePadding()), sub.Short)
 					}
 				}
 			}
@@ -88,15 +88,15 @@ func helpCommand(c *cobra.Command, args []string) {
 			if a.Name == rootCommandName {
 				continue
 			}
-			title := strings.Split(a.Doc, "\n\n")[0]
+			title := strings.Split(a.Doc, "\n\n")[0] //nostyle:varnames
 			fmt.Fprintf(w, "\n  %s %s", rpad(a.Name, padding+1), title)
 		}
 	}
 	if c.HasHelpSubCommands() {
 		fmt.Fprintf(w, "\n\nAdditional help topics:")
-		for _, subcmd := range c.Commands() {
-			if subcmd.IsAdditionalHelpTopicCommand() {
-				fmt.Fprintf(w, "\n  %s %s", rpad(subcmd.CommandPath(), subcmd.CommandPathPadding()), subcmd.Short)
+		for _, sub := range c.Commands() {
+			if sub.IsAdditionalHelpTopicCommand() {
+				fmt.Fprintf(w, "\n  %s %s", rpad(sub.CommandPath(), sub.CommandPathPadding()), sub.Short)
 			}
 		}
 	}
@@ -108,8 +108,7 @@ func helpCommand(c *cobra.Command, args []string) {
 
 // copy from spf13/cobra/command.go.
 func rpad(s string, padding int) string {
-	formattedString := fmt.Sprintf("%%-%ds", padding)
-	return fmt.Sprintf(formattedString, s)
+	return fmt.Sprintf(fmt.Sprintf("%%-%ds", padding), s)
 }
 
 // copy from spf13/cobra/command.go.
