@@ -13,12 +13,12 @@ BUILD_LDFLAGS = -X $(PKG).commit=$(COMMIT) -X $(PKG).date=$(DATE)
 
 default: test
 
-ci: test
+ci: test gostyle
 
 test:
 	go test ./... -coverprofile=coverage.out -covermode=count
 
-lint:
+lint: gostyle
 	golangci-lint run ./...
 	govulncheck ./...
 
@@ -29,7 +29,6 @@ build:
 	go build -ldflags="$(BUILD_LDFLAGS)" -o gostyle
 
 depsdev:
-	go install github.com/Songmu/ghch/cmd/ghch@latest
 	go install github.com/Songmu/gocredits/cmd/gocredits@latest
 	go install golang.org/x/vuln/cmd/govulncheck@latest
 

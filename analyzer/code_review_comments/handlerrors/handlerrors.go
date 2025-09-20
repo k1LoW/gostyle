@@ -62,8 +62,8 @@ var errTyp = func() *types.Interface {
 	if underlying == nil {
 		return nil
 	}
-	if iface, ok := underlying.(*types.Interface); ok {
-		return iface
+	if i, ok := underlying.(*types.Interface); ok {
+		return i
 	}
 	return nil
 }()
