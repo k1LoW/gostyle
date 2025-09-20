@@ -7,8 +7,8 @@ import (
 	"reflect"
 	"strings"
 
+	"github.com/goccy/go-yaml"
 	"golang.org/x/tools/go/analysis"
-	"gopkg.in/yaml.v3"
 )
 
 const (
