@@ -1,6 +1,6 @@
 module github.com/k1LoW/gostyle
 
-go 1.24
+go 1.24.6
 
 require (
 	github.com/bmatcuk/doublestar/v4 v4.9.1
