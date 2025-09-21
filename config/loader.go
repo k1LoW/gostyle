@@ -5,7 +5,6 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
-	"strings"
 
 	"github.com/goccy/go-yaml"
 	"golang.org/x/tools/go/analysis"
@@ -17,6 +16,10 @@ const (
 )
 
 var configPath string
+var defaultFileNames = []string{
+	".gostyle.yml",
+	".gostyle.yaml",
+}
 
 var Loader = &analysis.Analyzer{
 	Name:       name,
@@ -29,10 +32,32 @@ var Loader = &analysis.Analyzer{
 func run(pass *analysis.Pass) (any, error) {
 	c := &Config{}
 	if configPath == "" {
-		return c, nil
+		wd, err := os.Getwd()
+		if err != nil {
+			return nil, err
+		}
+	L:
+		for {
+			if _, err := os.Stat(filepath.Join(wd, ".git", "config")); err == nil {
+				for _, n := range defaultFileNames {
+					p := filepath.Join(wd, n)
+					if _, err := os.Stat(p); err == nil {
+						configPath = p
+						break L
+					}
+				}
+			}
+			if wd == filepath.Dir(wd) {
+				break
+			}
+			wd = filepath.Dir(wd)
+		}
+		if configPath == "" {
+			return c, nil
+		}
 	}
-	if !strings.HasPrefix(configPath, "/") {
-		c.err = fmt.Errorf("config file path must be specified as a full path")
+	if !filepath.IsAbs(configPath) {
+		c.err = fmt.Errorf("config file path must be absolute path: %s", configPath)
 		return c, nil
 	}
 	f, err := os.Open(configPath)
