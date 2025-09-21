@@ -24,6 +24,13 @@ jobs:
         with:
           go-version-file: go.mod
 
+      -
+        name: Check if version of go directive in go.mod is oldstable
+        uses: k1LoW/oldstable@7de2c495d03f9a3cff6606acb1da91af0e90ad7d # v1.1.1
+        with:
+          go-mod-file: go.mod
+          lax: true
+
       - name: Run lint
         uses: reviewdog/action-golangci-lint@f9bba13753278f6a73b27a56a3ffb1bfda90ed71 # v2.8.0
         with:
