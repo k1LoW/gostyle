@@ -116,6 +116,9 @@ $ gostyle run --config=.gostyle.yml ./...
 $ go vet -vettool=`which gostyle` -gostyle.config=$PWD/.gostyle.yml ./...
 ```
 
+> [!NOTE]
+> If no configuration file is specified, `gostyle` will automatically search for `.gostyle.yml` or `.gostyle.yaml` in the Git root directory.
+
 ```yaml
 # All available settings of specific analyzers.
 analyzers-settings:
