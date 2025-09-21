@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.25.0](https://github.com/k1LoW/gostyle/compare/v0.24.1...v0.25.0) - 2025-09-21
+### New Features 🎉
+- feat: add support for default config file discovery by @k1LoW in https://github.com/k1LoW/gostyle/pull/142
+
 ## [v0.24.1](https://github.com/k1LoW/gostyle/compare/v0.24.0...v0.24.1) - 2025-09-20
 ### Other Changes
 - chore: use goccy/go-yaml instead by @k1LoW in https://github.com/k1LoW/gostyle/pull/139
