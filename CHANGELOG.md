@@ -1,5 +1,10 @@
 # Changelog
 
+## [v0.25.2](https://github.com/k1LoW/gostyle/compare/v0.25.1...v0.25.2) - 2025-10-23
+### Other Changes
+- chore: setup tagpr labels by @k1LoW in https://github.com/k1LoW/gostyle/pull/148
+- chore(deps): bump golang.org/x/tools from 0.37.0 to 0.38.0 in the dependencies group by @dependabot[bot] in https://github.com/k1LoW/gostyle/pull/147
+
 ## [v0.25.1](https://github.com/k1LoW/gostyle/compare/v0.25.0...v0.25.1) - 2025-09-25
 
 ## [v0.25.0](https://github.com/k1LoW/gostyle/compare/v0.24.1...v0.25.0) - 2025-09-21
