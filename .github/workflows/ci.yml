@@ -26,7 +26,7 @@ jobs:
 
       -
         name: Check if version of go directive in go.mod is oldstable
-        uses: k1LoW/oldstable@7de2c495d03f9a3cff6606acb1da91af0e90ad7d # v1.1.1
+        uses: k1LoW/oldstable@28b6b2ef2c743f8dbeecba50626e9313b7fa938f # v2.0.0
         with:
           go-mod-file: go.mod
           lax: true
