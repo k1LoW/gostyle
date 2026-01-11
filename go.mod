@@ -5,7 +5,7 @@ go 1.24.10
 require (
 	github.com/bmatcuk/doublestar/v4 v4.9.1
 	github.com/fatih/camelcase v1.0.0
-	github.com/goccy/go-yaml v1.19.1
+	github.com/goccy/go-yaml v1.19.2
 	github.com/gostaticanalysis/comment v1.5.0
 	github.com/gostaticanalysis/testutil v0.6.1
 	github.com/spf13/cobra v1.10.2
