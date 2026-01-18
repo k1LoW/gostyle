@@ -3,7 +3,7 @@ module github.com/k1LoW/gostyle
 go 1.24.10
 
 require (
-	github.com/bmatcuk/doublestar/v4 v4.9.1
+	github.com/bmatcuk/doublestar/v4 v4.9.2
 	github.com/fatih/camelcase v1.0.0
 	github.com/goccy/go-yaml v1.19.2
 	github.com/gostaticanalysis/comment v1.5.0
