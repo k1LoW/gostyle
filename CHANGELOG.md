@@ -1,5 +1,10 @@
 # Changelog
 
+## [v0.25.3](https://github.com/k1LoW/gostyle/compare/v0.25.2...v0.25.3) - 2026-01-18
+### Other Changes
+- chore(deps): bump github.com/goccy/go-yaml from 1.19.1 to 1.19.2 in the dependencies group by @dependabot[bot] in https://github.com/k1LoW/gostyle/pull/158
+- chore(deps): bump github.com/bmatcuk/doublestar/v4 from 4.9.1 to 4.9.2 in the dependencies group by @dependabot[bot] in https://github.com/k1LoW/gostyle/pull/160
+
 ## [v0.25.2](https://github.com/k1LoW/gostyle/compare/v0.25.1...v0.25.2) - 2025-12-22
 ### Other Changes
 - chore: setup tagpr labels by @k1LoW in https://github.com/k1LoW/gostyle/pull/148
