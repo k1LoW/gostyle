@@ -129,6 +129,9 @@ analyzers:
 analyzers-settings:
   # See the dedicated "analyzers-settings" documentation section.
   option: value
+# Exclude files from analysis.
+exclude-files:
+  - globbing
 ```
 
 ### `analyzers-settings:`
