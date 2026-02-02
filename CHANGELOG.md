@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.25.4](https://github.com/k1LoW/gostyle/compare/v0.25.3...v0.25.4) - 2026-02-02
+### Other Changes
+- chore(deps): bump github.com/bmatcuk/doublestar/v4 from 4.9.2 to 4.10.0 in the dependencies group by @dependabot[bot] in https://github.com/k1LoW/gostyle/pull/164
+
 ## [v0.25.3](https://github.com/k1LoW/gostyle/compare/v0.25.2...v0.25.3) - 2026-02-01
 ### Other Changes
 - chore(deps): bump github.com/goccy/go-yaml from 1.19.1 to 1.19.2 in the dependencies group by @dependabot[bot] in https://github.com/k1LoW/gostyle/pull/158
