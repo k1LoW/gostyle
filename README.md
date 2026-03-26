@@ -169,6 +169,7 @@ analyzers-settings:
 analyzers-settings:
   funcfmt:
     include-generated: false # include generated codes (default: false)
+    check-calls: false       # check function and method calls in addition to declarations (default: false)
 ```
 
 #### getters
