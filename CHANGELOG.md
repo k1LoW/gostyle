@@ -1,5 +1,15 @@
 # Changelog
 
+## [v0.26.0](https://github.com/k1LoW/gostyle/compare/v0.25.3...v0.26.0) - 2026-03-26
+### Breaking Changes 🛠
+- fix(funcfmt): disable call expression check by default by @k1LoW in https://github.com/k1LoW/gostyle/pull/172
+### Other Changes
+- chore(deps): bump github.com/bmatcuk/doublestar/v4 from 4.9.2 to 4.10.0 in the dependencies group by @dependabot[bot] in https://github.com/k1LoW/gostyle/pull/164
+- chore(deps): bump golang.org/x/tools from 0.41.0 to 0.42.0 in the dependencies group by @dependabot[bot] in https://github.com/k1LoW/gostyle/pull/167
+- chore(deps): bump the dependencies group with 2 updates by @dependabot[bot] in https://github.com/k1LoW/gostyle/pull/168
+- chore(deps): bump golang.org/x/tools from 0.42.0 to 0.43.0 in the dependencies group by @dependabot[bot] in https://github.com/k1LoW/gostyle/pull/170
+- chore(deps): bump the dependencies group across 1 directory with 3 updates by @dependabot[bot] in https://github.com/k1LoW/gostyle/pull/171
+
 ## [v0.25.3](https://github.com/k1LoW/gostyle/compare/v0.25.2...v0.25.3) - 2026-02-01
 ### Other Changes
 - chore(deps): bump github.com/goccy/go-yaml from 1.19.1 to 1.19.2 in the dependencies group by @dependabot[bot] in https://github.com/k1LoW/gostyle/pull/158
