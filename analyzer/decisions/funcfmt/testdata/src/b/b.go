@@ -1,4 +1,4 @@
-package a
+package b
 
 func b( // want "gostyle.funcfmt"
 	a, b, c, d int,
@@ -8,7 +8,7 @@ func b( // want "gostyle.funcfmt"
 }
 
 func c() error {
-	return b(1, 2, 3, 4,
+	return b(1, 2, 3, 4, // want "gostyle.funcfmt"
 		"", "", "")
 }
 

@@ -22,6 +22,7 @@ const (
 var (
 	disable          bool
 	includeGenerated bool
+	checkCalls       bool
 )
 
 // Analyzer based on https://google.github.io/styleguide/go/decisions#function-formatting
@@ -57,6 +58,7 @@ func run(pass *analysis.Pass) (any, error) {
 	if c != nil {
 		disable = c.IsDisabled(name)
 		includeGenerated = c.AnalyzersSettings.Funcfmt.IncludeGenerated
+		checkCalls = c.AnalyzersSettings.Funcfmt.CheckCalls
 		opts = append(opts, reporter.ExcludeFiles(c.ConfigDir, c.ExcludeFiles))
 	}
 
@@ -70,7 +72,9 @@ func run(pass *analysis.Pass) (any, error) {
 
 	nodeFilter := []ast.Node{
 		(*ast.FuncDecl)(nil),
-		(*ast.CallExpr)(nil),
+	}
+	if checkCalls {
+		nodeFilter = append(nodeFilter, (*ast.CallExpr)(nil))
 	}
 
 	if includeGenerated {
@@ -117,4 +121,5 @@ func run(pass *analysis.Pass) (any, error) {
 func init() {
 	Analyzer.Flags.BoolVar(&disable, "disable", false, "disable "+name+" analyzer")
 	Analyzer.Flags.BoolVar(&includeGenerated, "include-generated", false, "include generated codes")
+	Analyzer.Flags.BoolVar(&checkCalls, "check-calls", false, "check function and method calls in addition to declarations")
 }

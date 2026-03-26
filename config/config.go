@@ -72,6 +72,7 @@ type Errorstrings struct {
 
 type Funcfmt struct {
 	IncludeGenerated bool `yaml:"include-generated"`
+	CheckCalls       bool `yaml:"check-calls"`
 }
 
 type Getters struct {

@@ -9,6 +9,16 @@ import (
 
 // TestAnalyzer is a test for Analyzer.
 func TestAnalyzer(t *testing.T) {
-	td := testutil.WithModules(t, analysistest.TestData(), nil)
-	analysistest.Run(t, td, Analyzer, "a")
+	tests := []struct {
+		calls bool
+		pkg   string
+	}{
+		{false, "a"},
+		{true, "b"},
+	}
+	for _, tt := range tests {
+		checkCalls = tt.calls
+		td := testutil.WithModules(t, analysistest.TestData(), nil)
+		analysistest.Run(t, td, Analyzer, tt.pkg)
+	}
 }
