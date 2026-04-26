@@ -1,5 +1,12 @@
 # Changelog
 
+## [v0.26.1](https://github.com/k1LoW/gostyle/compare/v0.26.0...v0.26.1) - 2026-04-26
+### Other Changes
+- chore(deps): bump actions/setup-go from 6.3.0 to 6.4.0 in the dependencies group by @dependabot[bot] in https://github.com/k1LoW/gostyle/pull/173
+- chore(deps): bump Songmu/tagpr from 1.17.1 to 1.18.0 in the dependencies group by @dependabot[bot] in https://github.com/k1LoW/gostyle/pull/175
+- chore(deps): bump golang.org/x/tools from 0.43.0 to 0.44.0 in the dependencies group by @dependabot[bot] in https://github.com/k1LoW/gostyle/pull/176
+- chore(deps): bump the dependencies group with 2 updates by @dependabot[bot] in https://github.com/k1LoW/gostyle/pull/177
+
 ## [v0.26.0](https://github.com/k1LoW/gostyle/compare/v0.25.3...v0.26.0) - 2026-03-26
 ### Breaking Changes 🛠
 - fix(funcfmt): disable call expression check by default by @k1LoW in https://github.com/k1LoW/gostyle/pull/172
