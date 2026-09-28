@@ -29,16 +29,19 @@ build:
 	go build -ldflags="$(BUILD_LDFLAGS)" -o gostyle
 
 depsdev:
-	go install github.com/Songmu/gocredits/cmd/gocredits@latest
 	go install golang.org/x/vuln/cmd/govulncheck@latest
 
-prerelease_for_tagpr: depsdev
-	gocredits -skip-missing -w .
+credits:
+	go install github.com/Songmu/gocredits/cmd/gocredits@v1.0.0
+	gocredits . > CREDITS
 	cat _REFERENCE_STYLE_CREDITS >> CREDITS
+
+prerelease_for_tagpr:
+	$(MAKE) credits
 	git add CHANGELOG.md CREDITS go.mod go.sum
 
 release:
 	git push origin main --tag
 	goreleaser --clean
 
-.PHONY: default test
+.PHONY: default test credits
