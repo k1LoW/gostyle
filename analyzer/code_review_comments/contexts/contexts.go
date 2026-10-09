@@ -148,7 +148,11 @@ func run(pass *analysis.Pass) (any, error) {
 					continue
 				}
 				if id.Name == "context" && e.Sel.Name == "Context" {
-					r.Append(e.Pos(), fmt.Sprintf("%s: %s", msgs, f.Names[0].Name))
+					name := e.Sel.Name
+					if len(f.Names) > 0 {
+						name = f.Names[0].Name
+					}
+					r.Append(e.Pos(), fmt.Sprintf("%s: %s", msgs, name))
 				}
 			}
 		}
