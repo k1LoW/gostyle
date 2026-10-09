@@ -93,14 +93,18 @@ func run(pass *analysis.Pass) (any, error) {
 					if typ == nil {
 						return
 					}
+					recv := types.ExprString(e.X)
+					if len(f.Names) > 0 {
+						recv = f.Names[0].Name
+					}
 					if _, ok := typ.Underlying().(*types.Map); ok {
-						r.Append(n.Pos(), fmt.Sprintf("%s: %s", msgm, f.Names[0].Name))
+						r.Append(n.Pos(), fmt.Sprintf("%s: %s", msgm, recv))
 					}
 					if _, ok := typ.Underlying().(*types.Signature); ok {
-						r.Append(n.Pos(), fmt.Sprintf("%s: %s", msgm, f.Names[0].Name))
+						r.Append(n.Pos(), fmt.Sprintf("%s: %s", msgm, recv))
 					}
 					if _, ok := typ.Underlying().(*types.Chan); ok {
-						r.Append(n.Pos(), fmt.Sprintf("%s: %s", msgm, f.Names[0].Name))
+						r.Append(n.Pos(), fmt.Sprintf("%s: %s", msgm, recv))
 					}
 				case *ast.Ident:
 					typ := pass.TypesInfo.TypeOf(f.Type)
