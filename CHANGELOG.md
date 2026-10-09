@@ -1,5 +1,14 @@
 # Changelog
 
+## [v0.26.2](https://github.com/k1LoW/gostyle/compare/v0.26.1...v0.26.2) - 2026-10-09
+
+### Fix bug 🐛
+- fix(contexts): handle embedded context fields without panicking by @ben-ranford in https://github.com/k1LoW/gostyle/pull/189
+- fix(recvtype): handle unnamed receivers without panicking by @k1LoW in https://github.com/k1LoW/gostyle/pull/192
+### Other Changes
+- chore(deps): bump Songmu/tagpr from 1.20.1 to 1.21.0 in the dependencies group by @dependabot[bot] in https://github.com/k1LoW/gostyle/pull/188
+- chore(deps): bump the dependencies group with 2 updates by @dependabot[bot] in https://github.com/k1LoW/gostyle/pull/187
+
 ## [v0.26.1](https://github.com/k1LoW/gostyle/compare/v0.26.0...v0.26.1) - 2026-09-28
 
 ### Other Changes
