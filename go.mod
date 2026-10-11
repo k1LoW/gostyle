@@ -9,7 +9,7 @@ require (
 	github.com/gostaticanalysis/comment v1.5.0
 	github.com/gostaticanalysis/testutil v0.6.1
 	github.com/spf13/cobra v1.10.2
-	golang.org/x/tools v0.50.0
+	golang.org/x/tools v0.51.0
 )
 
 require (
